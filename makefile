@@ -1,4 +1,4 @@
-.PHONY: test build install clean examples
+.PHONY: test build install clean examples lint
 
 build:
 		python setup.py sdist bdist_wheel
@@ -8,6 +8,9 @@ install:
 
 test:
 		tox
+
+lint:
+		flake8 src
 
 examples:
 		rm -rf examples
