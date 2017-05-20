@@ -4,6 +4,7 @@ stages:
 
 before_script:
   - pip install -r dev-requirements.txt
+  - if [ -z "$GITHUB_ACCESS_TOKEN" ]; then echo "Environment requires access token" && exit 1; fi
 
 cache:
   key: "$CI_PROJECT_NAME"
