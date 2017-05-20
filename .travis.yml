@@ -3,18 +3,22 @@ language: python
 
 cache:
   directories:
-    - $HOME/.cache/pip
+  - "$HOME/.cache/pip"
+
+env:
+  matrix:
+    secure: 1r59yROi+33PcYR+hCo8eYw18UuecDXRE2L/YLufJz13oBLp6wlZMvvyp4rrf+EPBvbgTi86ACRGLa4c3/YIgxkffHW8LNBRdGQXk+A8nrJOsL+6xzDlF4nwkggSMJI2ZLk6MNye4QtNBsoLhdyHLaO2VC4sAANJLk06e+atXfNzAaIv8vcxZcUXnklLBUz0ZR2uOaYB0ztiuDQNjjQWRB0IFkOKi76s95EYu9Ta/JgIk2UIojMwldB82EF75TMjpl2upvc92b++hfhSjGZKG5cm4bfbPQYN4HSqjycfdi886eRwkvs8z1vhveoHVDq9sqyr28s8636xvtAHy6fqOaTc8LMqTObHcpEhFGi3jH8cH3Ws4PQRlde146DYp4n9XIKpsAURMFIx6n8fA/tDH+pVmNrKim7gfZ++EQpPQT9quP4TBwrO8uZoo5wq0uJEry7TSgdIeAUFVFqeAcFPqhngF7j+pdbja4OB99EMHWBkE/9X5HEfIhSZbp2fO4Zs1k2rCFg7KI0I+RjPtZ7Tdsk+XjqdTCNCk+Ts9xDCswCK6xf54DCbjDwdG2vpioxCS6ZObHjgCRUAZI1ew8+4k1XDtnLs6sIrO953Xe7r5bkAK2DtdpsIGDYRmZ9+9zgrwTyhyr0x/3lVu0EdMix9yT6T9ZDR/sbR81FQTFFW6fk=
 
 matrix:
   include:
-    - python: "2.7"
-      env: TOXENV=py27
-    - python: "3.4"
-      env: TOXENV=py34
-    - python: "3.5"
-      env: TOXENV=py35
-    - python: "3.6"
-      env: TOXENV=py36
+  - python: '2.7'
+    env: TOXENV=py27
+  - python: '3.4'
+    env: TOXENV=py34
+  - python: '3.5'
+    env: TOXENV=py35
+  - python: '3.6'
+    env: TOXENV=py36
 
 install:
   - pip install -r dev-requirements.txt
