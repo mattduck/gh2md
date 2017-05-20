@@ -55,7 +55,7 @@ Full help::
     - The --login flag always takes precedence and will prompt for this user.
     - The --token flag.
     - A `GITHUB_ACCESS_TOKEN` environment variable.
-    - An API token stored in `/Users/matt/.github-token`.
+    - An API token stored in `~/.github-token`.
 
     positional arguments:
     repo                  Github repo to export, in format "owner/repo_name".

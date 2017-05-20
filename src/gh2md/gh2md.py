@@ -23,7 +23,7 @@ Credentials are resolved in the following order:
 - The --login flag always takes precedence and will prompt for this user.
 - The --token flag.
 - A `{token}` environment variable.
-- An API token stored in `{path}`.
+- An API token stored in ~/.github-token.
 
 """.format(token=ENV_GITHUB_TOKEN, path=GITHUB_ACCESS_TOKEN_PATH)
 
