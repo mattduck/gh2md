@@ -1,4 +1,4 @@
-Export of Github issues for [Russell91/sshrc](https://github.com/Russell91/sshrc). Generated on 2017.05.20 at 13:23:01.
+Export of Github issues for [Russell91/sshrc](https://github.com/Russell91/sshrc). Generated on 2017.05.20 at 19:19:02.
 
 # [\#86 PR](https://github.com/Russell91/sshrc/pull/86) `open`: improve readme.md
 
@@ -389,7 +389,7 @@ Yes it does, thanks for closing it. :+1:
 -------------------------------------------------------------------------------
 
 # [\#66 Issue](https://github.com/Russell91/sshrc/issues/66) `closed`: Feedback / code review on new "-t" option
-**Labels**: ('`help wanted`',)
+**Labels**: `help wanted`
 
 
 #### <img src="https://avatars2.githubusercontent.com/u/1069617?v=3" width="50">[Russell Stewart](https://github.com/Russell91) opened issue at [2016-05-04 02:39](https://github.com/Russell91/sshrc/issues/66):
@@ -772,7 +772,7 @@ I'm going to archive this issue for now.
 -------------------------------------------------------------------------------
 
 # [\#50 Issue](https://github.com/Russell91/sshrc/issues/50) `open`: Add homebrew bash completion
-**Labels**: ('`enhancement`',)
+**Labels**: `enhancement`
 
 
 #### <img src="https://avatars2.githubusercontent.com/u/1069617?v=3" width="50">[Russell Stewart](https://github.com/Russell91) opened issue at [2015-08-26 19:59](https://github.com/Russell91/sshrc/issues/50):
@@ -803,7 +803,7 @@ See [`git.rb`](https://github.com/Homebrew/homebrew/blob/master/Library/Formula/
 -------------------------------------------------------------------------------
 
 # [\#49 Issue](https://github.com/Russell91/sshrc/issues/49) `open`: Add apt-get bash completion
-**Labels**: ('`enhancement`',)
+**Labels**: `enhancement`
 
 
 #### <img src="https://avatars2.githubusercontent.com/u/1069617?v=3" width="50">[Russell Stewart](https://github.com/Russell91) opened issue at [2015-08-26 19:57](https://github.com/Russell91/sshrc/issues/49):
@@ -878,7 +878,7 @@ Used an `install` mechanism instead.
 -------------------------------------------------------------------------------
 
 # [\#48 Issue](https://github.com/Russell91/sshrc/issues/48) `open`: man page
-**Labels**: ('`enhancement`',)
+**Labels**: `enhancement`
 
 
 #### <img src="https://avatars2.githubusercontent.com/u/1759876?v=3" width="50">[Pranav Kant](https://github.com/pranavk) opened issue at [2015-08-26 19:14](https://github.com/Russell91/sshrc/issues/48):
@@ -1331,7 +1331,7 @@ I confirm that behavior with my FreeBSD servers. FreeBSD handles redirects and s
 -------------------------------------------------------------------------------
 
 # [\#36 Issue](https://github.com/Russell91/sshrc/issues/36) `open`: Screen support?
-**Labels**: ('`enhancement`',)
+**Labels**: `enhancement`
 
 
 #### <img src="https://avatars0.githubusercontent.com/u/263267?v=3" width="50">[Thomas Riccardi](https://github.com/Niluge-KiWi) opened issue at [2014-10-15 09:52](https://github.com/Russell91/sshrc/issues/36):
@@ -1468,7 +1468,7 @@ I'm closing this because it's not a bug. I'll keep in mind the fact that the cur
 -------------------------------------------------------------------------------
 
 # [\#32 Issue](https://github.com/Russell91/sshrc/issues/32) `closed`: Does sshrc work with mosh?
-**Labels**: ('`help wanted`',)
+**Labels**: `help wanted`
 
 
 #### <img src="https://avatars2.githubusercontent.com/u/1069617?v=3" width="50">[Russell Stewart](https://github.com/Russell91) opened issue at [2014-09-26 05:07](https://github.com/Russell91/sshrc/issues/32):

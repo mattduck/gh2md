@@ -15,6 +15,7 @@ lint:
 examples:
 		rm -rf examples
 		mkdir examples
+		gh2md mattduck/gh2md examples/gh2md.md
 		gh2md Russell91/sshrc examples/sshrc.md
 
 clean:
