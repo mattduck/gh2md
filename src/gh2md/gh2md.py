@@ -167,7 +167,7 @@ def process_issue_to_markdown(issue):
 
     labels = ""
     if issue.labels:
-        labels = ", ".join(["`{}`".format(lab.name) for lab in issue.labels]),
+        labels = ", ".join(["`{}`".format(lab.name) for lab in issue.labels])
         labels = "**Labels**: {}\n\n".format(labels)
 
     formatted_issue = templates_markdown.ISSUE.format(
