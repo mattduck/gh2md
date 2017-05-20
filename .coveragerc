@@ -1,0 +1,12 @@
+[run]
+branch = True
+source =
+    gh2md 
+
+[paths]
+source =
+   src/gh2md
+   .tox/*/lib/python*/site-packages/gh2md
+
+[report]
+show_missing = True
