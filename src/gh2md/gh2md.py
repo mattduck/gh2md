@@ -25,7 +25,7 @@ Credentials are resolved in the following order:
 - A `{token}` environment variable.
 - An API token stored in ~/.github-token.
 
-""".format(token=ENV_GITHUB_TOKEN, path=GITHUB_ACCESS_TOKEN_PATH)
+""".format(token=ENV_GITHUB_TOKEN)
 
 
 def main():
@@ -81,7 +81,8 @@ def parse_args(args):
 
 
 def fetch_repo_and_export_to_markdown(repo_string, output_path, gh_login_user=None, gh_token=None):
-    gh_token = get_environment_token(gh_token)
+    if not gh_token:
+        gh_token = get_environment_token()
     repo, github_api = get_github_repo(
         repo_string,
         gh_login_user,
@@ -208,8 +209,8 @@ def github_login(login_user=None, token=None, fallback_user=None):
     return Github(login_or_token=fallback_user, password=password, per_page=per_page)
 
 
-def get_environment_token(token=None):
-    return token or os.environ.get(ENV_GITHUB_TOKEN) or read_github_token_file()
+def get_environment_token():
+    return os.environ.get(ENV_GITHUB_TOKEN) or read_github_token_file()
 
 
 def read_github_token_file(token_path=GITHUB_ACCESS_TOKEN_PATH):
