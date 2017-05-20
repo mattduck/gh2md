@@ -1,4 +1,4 @@
-.PHONY: test build install clean examples lint
+.PHONY: test build install clean examples lint upload
 
 build:
 		python setup.py sdist bdist_wheel
@@ -20,5 +20,5 @@ examples:
 clean:
 		rm -rf build dist
 
-
-
+upload: clean build
+		twine upload -r pypi dist/gh2md-*
