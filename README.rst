@@ -4,7 +4,7 @@ gh2md
 Dump issues for a Github repository into a single markdown file. 
 
 There are various other projects that handle Github issue exports
-(Eg. [offline-issues](https://github.com/jlord/offline-issues)), but I couldn't
+(Eg. `offline-issues <https://github.com/jlord/offline-issues>`_), but I couldn't
 find one that writes all issues, comments and metadata to a single readable
 file.
 
@@ -12,7 +12,7 @@ file.
 Example exports
 ---------------
 
-An example exported file is included in the [examples directory](./examples/sshrc.md). 
+An example exported file is included in the `examples directory <examples/sshrc.md>`_. 
 
 Default behaviour is to export all issues and open PRs. Closed PRs are ignored.
 
@@ -20,26 +20,26 @@ Default behaviour is to export all issues and open PRs. Closed PRs are ignored.
 Usage
 -----
 
-Run export for `pope/ob-go`, prompting for login to `mygithubuser`::
+Run export for ``pope/ob-go``, prompting for login to ``mygithubuser``::
 
     gh2md pope/ob-go ob-go.md --login mygithubuser
 
 
-Run export for `sarabander/sicp`, passing in token::
+Run export for ``sarabander/sicp``, passing in token::
 
     gh2md sarabander/sicp sicp.md --token myAPItoken
 
 
-Run export for `paulirish/git-open`, pulling token from environment::
+Run export for ``paulirish/git-open``, pulling token from environment::
 
     export GITHUB_ACCESS_TOKEN=myAPItoken
     gh2md paulirish/git-open git-open.md
 
 
-Run export for `shezadkhan137/required`, pulling token from file::
+Run export for ``shezadkhan137/required``, pulling token from file::
 
     echo myAPItoken > ~/.github-token
-    gh2md shezadkhan137/require required.md
+    gh2md shezadkhan137/required required.md
 
 
 Full help::
@@ -76,7 +76,7 @@ Full help::
 Install
 -------
 
-`pip install gh2md`. Alternatively, clone the repository and run `make install`.
+``pip install gh2md``. Alternatively, clone the repository and run ``make install``.
 
 
 TODO
