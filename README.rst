@@ -1,6 +1,8 @@
 gh2md
 =====
 
+|PyPI|  |Travis|
+
 Dump issues for a Github repository into a single markdown file. 
 
 There are various other projects that handle Github issue exports
@@ -91,3 +93,9 @@ TODO
 
 - Support 2FA login - currently if 2FA is enabled on your account you must setup
   an access token.
+
+.. |PyPI| image:: https://img.shields.io/pypi/v/gh2md.svg
+   :target: https://pypi.python.org/pypi/gh2md
+
+.. |Travis| image:: https://travis-ci.org/mattduck/gh2md.svg?branch=master
+   :target: https://travis-ci.org/mattduck/gh2md
