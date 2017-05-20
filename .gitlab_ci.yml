@@ -33,4 +33,4 @@ test_py35:
 test_py36:
   stage: test
   image: python:3.6
-  script: tox -e 'py36'
+  script: tox -e 'py36' 
