@@ -13,24 +13,29 @@ cache:
 lint:
   stage: lint
   image: python:3.6
-  script: make lint
+  script:
+    - make lint
   
 test_py27:
   stage: test
   image: python:2.7
-  script: tox -e 'py27'
+  script:
+    - tox -e 'py27'
 
 test_py34:
   stage: test
   image: python:3.4
-  script: tox -e 'py34'
+  script:
+    - tox -e 'py34'
 
 test_py35:
   stage: test
   image: python:3.5
-  script: tox -e 'py35'
+  script:
+    - tox -e 'py35'
 
 test_py36:
   stage: test
   image: python:3.6
-  script: tox -e 'py36' 
+  script:
+    - tox -e 'py36' 
