@@ -16,19 +16,29 @@ install:
   - pip install -r dev-requirements.txt
 
 script:
-  - make lint
-  - tox
+  - make test
 
 after_success:
   - tox -e coverage-report
 
-matrix:
+jobs:
   include:
-  - python: '2.7'
-    env: TOXENV=py27
-  - python: '3.4'
-    env: TOXENV=py34
-  - python: '3.5'
-    env: TOXENV=py35
-  - python: '3.6'
-    env: TOXENV=py36
+    - stage: lint
+      script:
+        - make lint
+
+    - stage: test
+      python: '2.7'
+      env: TOXENV=py27
+
+    - stage: test
+      python: '3.4'
+      env: TOXENV=py34
+
+    - stage: test
+      python: '3.5'
+      env: TOXENV=py35
+        
+    - stage: test
+      python: '3.6'
+      env: TOXENV=py36
