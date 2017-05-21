@@ -3,5 +3,5 @@ pytest>=3.0
 mock
 tox
 flake8
-twine
+twine==1.8.1
 requests
