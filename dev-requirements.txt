@@ -2,6 +2,6 @@ coverage
 pytest>=3.0
 mock
 tox
-flake8
+flake8==3.3.0
 twine
 requests
