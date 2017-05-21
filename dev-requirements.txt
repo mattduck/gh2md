@@ -4,4 +4,4 @@ mock
 tox
 flake8
 twine
-requests
+requests==2.14.2
