@@ -55,8 +55,8 @@ jobs:
     - stage: release
       python: 3.6
       script: skip  # Only run the deploy step
-      before_install: ignore
-      after_success: ignore
+      before_install: skip
+      after_success: skip
       before_deploy:
         - if [ -z "$TWINE_USERNAME" ]; then exit 1; fi
         - if [ -z "$TWINE_PASSWORD" ]; then exit 1; fi
