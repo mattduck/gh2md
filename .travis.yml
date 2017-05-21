@@ -1,5 +1,10 @@
 # Environment ----------------
 
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+
 sudo: false
 language: python
 
