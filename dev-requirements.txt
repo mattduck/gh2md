@@ -1,6 +1,6 @@
 coverage
 pytest>=3.0
-mock
+mock==2.0.0
 tox
 flake8
 twine
