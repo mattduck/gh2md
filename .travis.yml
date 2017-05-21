@@ -53,6 +53,9 @@ jobs:
       script: make test
 
     - stage: release
+      script: ignore  # Only run the deploy step
+      before_install: ignore
+      after_success: ignore
       before_deploy:
         - if [ -z "$TWINE_USERNAME" ]; then exit 1; fi
         - if [ -z "$TWINE_PASSWORD" ]; then exit 1; fi
