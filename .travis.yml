@@ -53,6 +53,7 @@ jobs:
       script: make test
 
     - stage: release
+      python: 3.6
       script: skip  # Only run the deploy step
       before_install: ignore
       after_success: ignore
