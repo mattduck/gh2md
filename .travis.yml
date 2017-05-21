@@ -53,7 +53,7 @@ jobs:
       script: make test
 
     - stage: release
-      script: ignore  # Only run the deploy step
+      script: skip  # Only run the deploy step
       before_install: ignore
       after_success: ignore
       before_deploy:
@@ -62,6 +62,7 @@ jobs:
         - if [ -z "$GITHUB_TAG_TOKEN" ]; then exit 1; fi
         - git config --global user.email "builds@travis-ci.com"
         - git config --global user.name "Travis CI"
+        - pip install -r dev-requirements.txt
       deploy:
         provider: script
         script: make release && git push --quiet https://mattduck:$GITHUB_TAG_TOKEN@github.com/mattduck/ghmd.git --tags >/dev/null 2>&1 
