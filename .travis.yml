@@ -67,7 +67,7 @@ jobs:
         - git status  # For debugging
       deploy:
         provider: script
-        script: make release && git push --quiet https://mattduck:$GITHUB_TAG_TOKEN@github.com/mattduck/ghmd.git --tags >/dev/null 2>&1 
+        script: make release && git push --quiet https://mattduck:$GITHUB_TAG_TOKEN@github.com/mattduck/gh2md.git --tags >/dev/null 2>&1 
         on:
           branch: master
           tags: false
