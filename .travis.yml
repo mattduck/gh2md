@@ -65,7 +65,7 @@ jobs:
         on:
           branch: master
           tags: false
-          condition: make assert_clean_git assert_new_pypi_version
+          condition: `make assert_clean_git assert_new_pypi_version`
       after_deploy: pip install gh2md --upgrade
       env:
         - secure: "3MFAF/eQLEJIdGYcEWpe1TbEAIUH9/lbaeDdG7obw6Tkwa8vwM0Ji8hvvUtn781qDpcoy0eLbkoUKxmTr06S9ipsj0e/WR4dNH+jOCfr04JJW4JSxFJGP80FFqh/zsIRvBJjCD/l4D22FkYSzLXTV9vM7v6gWvdPHhu/m0lTlF5DXDpOHDFXLi6m/2uEPpnAb+B64L0MQMR+2gk5kFi3ueOztXooXvNA+IR7gC/70TXwAUbpD9le9zi0bYVyfohDNdlgwgX5SFkGRyjFw3lTguRTFm/Nu4u/Ln+TwKIBoKf94IwJAiFgNsfTMGCXGVz689Z7SrqgvRmWKxrjkoS/MZ1+w7fE76t8udJeBYqAIzXZEawGDmRFWgUgEQk3ZdplA2j9eofm1NMnM4ZwWMh1zBG3sDzbqR09S0KjpoeMjgXQ2la8iw5noh0KPaGT9fz29fJpiRxkfvmAsT72QIQ6wmh2HBNuwMDXc/lJdWoPgRqOGxYOwLraCXnqLqVYA3tJkL2KkLur0iWBkaXS3yBVNvG/C/zY6o1J0ykhdwBA1B6o0Z5Q497lL4wqymJdvBw3Lg3bVYGCW/pjRkLNPQ2qgZ26BewIO0P8dNeXHJMs0FPVU/Ok2sfqoAc0igxSgAVN/nAkDf+cVSXZmHAKfOexcz+YjuiKsaXXiFJs6ZyE59E="
