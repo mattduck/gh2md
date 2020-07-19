@@ -18,6 +18,8 @@ GITHUB_ACCESS_TOKEN_PATH = os.path.expanduser(os.path.join("~", ".github-token")
 DESCRIPTION = """Export Github repository issues and comments into a single
 markdown file. https://github.com/mattduck/gh2md.
 
+Example: gh2md mattduck/gh2md my_issues.md
+
 Credentials are resolved in the following order:
 
 - The --login flag always takes precedence and will prompt for this user.
@@ -38,6 +40,7 @@ def main():
         output_path=args.outpath,
         gh_login_user=args.login_user,
         gh_token=args.token,
+        is_idempotent=args.is_idempotent,
     )
 
 
@@ -75,24 +78,31 @@ def parse_args(args):
         action="store",
         dest="token",
     )
+    parser.add_argument(
+        "-I",
+        "--idempotent",
+        help="Remove non-determinstic values like timestamps. Two runs of gh2md will always the same result, as long as the Github data has not changed.",
+        action="store_true",
+        dest="is_idempotent",
+    )
     return parser.parse_args(args)
 
 
 def fetch_repo_and_export_to_markdown(
-    repo_string, output_path, gh_login_user=None, gh_token=None
+    repo_string, output_path, gh_login_user=None, gh_token=None, is_idempotent=False,
 ):
     if not gh_token:
         gh_token = get_environment_token()
     repo, github_api = get_github_repo(repo_string, gh_login_user, gh_token,)
     print("Retrieved repo: {}".format(repo.full_name))
     export_issues_to_markdown_file(
-        repo=repo, outpath=output_path,
+        repo=repo, outpath=output_path, is_idempotent=is_idempotent
     )
     print_rate_limit(github_api)
     print("Done.")
 
 
-def export_issues_to_markdown_file(repo, outpath):
+def export_issues_to_markdown_file(repo, outpath, is_idempotent):
     formatted_issues = []
     for issue in repo.get_issues(state="all"):
         # The Github API includes pull requests as "issues". Skip
@@ -115,11 +125,17 @@ def export_issues_to_markdown_file(repo, outpath):
         else:
             formatted_issues.append(formatted_issue)
 
+    if is_idempotent:
+        datestring = ""
+    else:
+        datestring = " Generated on {}.".format(
+            datetime.datetime.now().strftime("%Y.%m.%d at %H:%M:%S")
+        )
     full_markdown_export = templates_markdown.BASE.format(
         repo_name=repo.full_name,
         repo_url=repo.html_url,
         issues="\n".join(formatted_issues),
-        date=datetime.datetime.now().strftime("%Y.%m.%d at %H:%M:%S"),
+        datestring=datestring,
     )
 
     print("Exported {} issues".format(len(formatted_issues)))

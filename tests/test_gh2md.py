@@ -4,11 +4,12 @@ import mock
 import six
 import tempfile
 import sys
+from typing import List
 
 from gh2md import gh2md
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def gh():
     token = gh2md.get_environment_token()
     gh = gh2md.github_login(token=token)
@@ -28,7 +29,6 @@ def test_get_repo_returns_pygithub_repo():
 
 def test_processing_for_single_issue_produces_result():
     issue = mock.MagicMock()
-
     res = gh2md.process_issue_to_markdown(issue)
     assert res
 
@@ -41,7 +41,6 @@ def test_print_rate_limit_prints_limit(gh):
 
 def test_script_from_entry_point_with_small_repo():
     fd, path = tempfile.mkstemp()
-
     test_args = ["gh2md", "mattduck/dotfiles", path]
     with mock.patch.object(sys, "argv", test_args):
         gh2md.main()
@@ -53,3 +52,31 @@ def test_script_from_entry_point_with_small_repo():
         assert "issue" in contents.lower()
         assert "#1" in contents.lower()
     os.remove(path)
+
+
+def _run_once(args: List[str]):
+    fd, path = tempfile.mkstemp()
+    try:
+        with mock.patch.object(sys, "argv", args + [path]):
+            gh2md.main()
+        assert os.path.exists(path)
+        with open(path) as f:
+            output = f.read()
+        return output
+    except Exception:
+        raise
+    finally:
+        os.remove(path)
+
+
+def test_script_idempotent_flag_makes_two_runs_identical():
+    output1 = _run_once(["gh2md", "mattduck/dotfiles"])
+    output2 = _run_once(["gh2md", "mattduck/dotfiles"])
+    assert output1 != output2
+
+    # Flaky test: this is subject to the race condition that the issues actually
+    # do change. That happens very rarely on this repo though, so although it's
+    # not good practice I'm OK with the risk.
+    output3 = _run_once(["gh2md", "--idempotent", "mattduck/dotfiles"])
+    output4 = _run_once(["gh2md", "-I", "mattduck/dotfiles"])
+    assert output3 == output4

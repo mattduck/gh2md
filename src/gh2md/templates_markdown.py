@@ -1,4 +1,4 @@
-BASE = u"""Export of Github issues for [{repo_name}]({repo_url}). Generated on {date}.
+BASE = u"""Export of Github issues for [{repo_name}]({repo_url}).{datestring}
 
 {issues}
 """
