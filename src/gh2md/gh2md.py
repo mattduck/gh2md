@@ -110,7 +110,7 @@ def export_issues_to_markdown_file(repo, outpath, is_idempotent):
         try:
             if issue.pull_request and issue.state.lower() == "closed":
                 continue
-        except:
+        except Exception:
             traceback.print_exc()
             print("Caught exception checking whether issue is PR, skipping")
             continue
@@ -118,7 +118,7 @@ def export_issues_to_markdown_file(repo, outpath, is_idempotent):
         # Try multiple times to process the issue and append to main issue list
         try:
             formatted_issue = process_issue_to_markdown(issue)
-        except:
+        except Exception:
             traceback.print_exc()
             print("Couldn't process issue due to exceptions, skipping")
             continue
