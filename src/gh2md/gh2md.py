@@ -81,7 +81,7 @@ def parse_args(args):
     parser.add_argument(
         "-I",
         "--idempotent",
-        help="Remove non-determinstic values like timestamps. Two runs of gh2md will always the same result, as long as the Github data has not changed.",
+        help="Remove non-deterministic values like timestamps. Two runs of gh2md will always produce the same result, as long as the Github data has not changed.",
         action="store_true",
         dest="is_idempotent",
     )
