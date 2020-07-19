@@ -40,8 +40,11 @@ jobs:
     - pip install -r dev-requirements.txt
     - git status
     deploy:
-    - "./travis-pypi-release.sh"
-    - pip install gh2md --upgrade
+    - provider:
+      script: bash travis-pypi-release.sh
+      on:
+        branch: master
+        tags: false
     env:
     - secure: 3MFAF/eQLEJIdGYcEWpe1TbEAIUH9/lbaeDdG7obw6Tkwa8vwM0Ji8hvvUtn781qDpcoy0eLbkoUKxmTr06S9ipsj0e/WR4dNH+jOCfr04JJW4JSxFJGP80FFqh/zsIRvBJjCD/l4D22FkYSzLXTV9vM7v6gWvdPHhu/m0lTlF5DXDpOHDFXLi6m/2uEPpnAb+B64L0MQMR+2gk5kFi3ueOztXooXvNA+IR7gC/70TXwAUbpD9le9zi0bYVyfohDNdlgwgX5SFkGRyjFw3lTguRTFm/Nu4u/Ln+TwKIBoKf94IwJAiFgNsfTMGCXGVz689Z7SrqgvRmWKxrjkoS/MZ1+w7fE76t8udJeBYqAIzXZEawGDmRFWgUgEQk3ZdplA2j9eofm1NMnM4ZwWMh1zBG3sDzbqR09S0KjpoeMjgXQ2la8iw5noh0KPaGT9fz29fJpiRxkfvmAsT72QIQ6wmh2HBNuwMDXc/lJdWoPgRqOGxYOwLraCXnqLqVYA3tJkL2KkLur0iWBkaXS3yBVNvG/C/zY6o1J0ykhdwBA1B6o0Z5Q497lL4wqymJdvBw3Lg3bVYGCW/pjRkLNPQ2qgZ26BewIO0P8dNeXHJMs0FPVU/Ok2sfqoAc0igxSgAVN/nAkDf+cVSXZmHAKfOexcz+YjuiKsaXXiFJs6ZyE59E=
     - secure: TCFcv8rBEpJUbrCzCuMA4cqTYehK+HOzZGEo3AhJ/cKXUhoNkLkJ4Jid0+7sKlfZw3BlASUNNt993StVzEIfePbJ4CwKJ2utUudhXFqlqFZx/vI3NUapo53oNB0NH3r+v1yyvDRJscy1AE24IIMSD2KtoaeDGAO8KLwZMhhgVsvSCnrHNma8F/QWKnPYA2gg1Wmj3iXxO7NHELwQRYSs3hfERUIv97Lf7gf5wjGDocrTsFcnHxAxgGC55obXymST4Wn9lKEqyKBQv/6WcYHaGrfRN42GZEbiSzY7XHyzsrj9dVBiU7vK47QsmIR9qW8MMFPiyHYLTtit3xeNzP6L9NuLphku/wDTrfR1OlAVd7H+kNcw4fnlF0ar3I6OL5KyvorNh3zKzs0WLmxRLi1NN1mkWVkoYbgGplmy9yjZ52VM8U2tJhUvrG1ZiDH9atWLvn+dcEK5k9yfXjJqmGh4L+5GtOJhGsiuNMg2IrFD4Ef8nXRNLJI22BSkmBK6pjZCKFHyxkb6EQkACm7PkjXKvQARlcpKaNjUMYrAdeZVDOumc6pOGL+jCuAmHclhh6rMiICPYlGmXAzIQcG8dPDlGfErhvRBV7oJQh3IPL4wk0YnmZ3a/OMPdG7mzL2UnVspN/YW0eMqaKuPWIxPey+ciWiH1Wrv9CNhCUCITxIg2ks=
