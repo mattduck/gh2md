@@ -15,8 +15,8 @@ from . import templates_markdown
 ENV_GITHUB_TOKEN = "GITHUB_ACCESS_TOKEN"
 GITHUB_ACCESS_TOKEN_PATH = os.path.expanduser(os.path.join("~", ".github-token"))
 
-DESCRIPTION = """Export Github repository issues and comments into a single
-markdown file. https://github.com/mattduck/gh2md.
+DESCRIPTION = """Export Github repository issues, pull requests and comments
+into a single markdown file. https://github.com/mattduck/gh2md.
 
 Example: gh2md mattduck/gh2md my_issues.md
 

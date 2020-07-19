@@ -3,7 +3,8 @@ gh2md
 
 |PyPI|  |Travis|
 
-Dump issues for a Github repository into a single, readable markdown file.
+Dump issues and pull requests for a Github repository into a single, readable
+markdown file.
 
 There are various other projects that handle Github issue exports
 (Eg. `offline-issues <https://github.com/jlord/offline-issues>`_), but I couldn't
