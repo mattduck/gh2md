@@ -7,8 +7,11 @@ git config --global user.email "builds@travis-ci.com"
 git config --global user.name "Travis CI"
 pip install -r dev-requirements.txt
 git status
-if [ "$(make assert_clean_git assert_new_pypi_version; echo $?)" == "0" ]; then
+make assert_clean_git
+if [ "$(make assert_new_pypi_version; echo $?)" == "0" ]; then
     make release
     git push --quiet https://mattduck:$GITHUB_TAG_TOKEN@github.com/mattduck/gh2md.git --tags >/dev/null 2>&1
+else
+    echo "Skipping release steps, pypi version already exists"
 fi
 pip install gh2md --upgrade
