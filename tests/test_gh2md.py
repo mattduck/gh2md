@@ -34,7 +34,7 @@ def test_processing_for_single_issue_produces_result():
 
 
 def test_print_rate_limit_prints_limit(gh):
-    with mock.patch('sys.stdout', new_callable=six.StringIO) as stdout:
+    with mock.patch("sys.stdout", new_callable=six.StringIO) as stdout:
         gh2md.print_rate_limit(gh)
         assert "rate limit" in stdout.getvalue().lower()
 
@@ -42,8 +42,8 @@ def test_print_rate_limit_prints_limit(gh):
 def test_script_from_entry_point_with_small_repo():
     fd, path = tempfile.mkstemp()
 
-    test_args = ['gh2md', 'mattduck/dotfiles', path]
-    with mock.patch.object(sys, 'argv', test_args):
+    test_args = ["gh2md", "mattduck/dotfiles", path]
+    with mock.patch.object(sys, "argv", test_args):
         gh2md.main()
 
     assert os.path.exists(path)

@@ -12,7 +12,11 @@ install:
 test:
 	tox
 
+format:
+	black src tests
+
 lint:
+	black src tests --check
 	flake8 src
 
 examples:

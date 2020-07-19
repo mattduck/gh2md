@@ -5,3 +5,4 @@ tox
 flake8
 twine
 requests
+black
