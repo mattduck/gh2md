@@ -3,7 +3,7 @@ gh2md
 
 |PyPI|  |Travis|
 
-Dump issues for a Github repository into a single markdown file. 
+Dump issues for a Github repository into a single, readable markdown file.
 
 There are various other projects that handle Github issue exports
 (Eg. `offline-issues <https://github.com/jlord/offline-issues>`_), but I couldn't
@@ -14,9 +14,21 @@ file.
 Example exports
 ---------------
 
-An example exported file is included in the `examples directory <examples/sshrc.md>`_. 
+An example exported file is included in the `examples directory <examples/sshrc.md>`_.
 
 Default behaviour is to export all issues and open PRs. Closed PRs are ignored.
+
+
+Github workflow: backup issues as a markdown file in your repo
+--------------------------------------------------------------
+
+`@0ut0fcontrol <https://github.com/0ut0fcontrol>`_ contributed a github workflow
+that uses `gh2md` to run a nightly export to `issues.md`, and push it back to
+your repo. You can find the thread and workflow code `here
+<https://github.com/mattduck/gh2md/issues/11>`_.
+
+This has been added to the `gh2md` repo itself, so you can see an up-to-date
+export in `issues.md <./issues.md>`_.
 
 
 Usage
