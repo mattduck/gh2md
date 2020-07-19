@@ -83,3 +83,10 @@ def test_script_idempotent_flag_makes_two_runs_identical():
     time.sleep(1)
     output4 = _run_once(["gh2md", "-I", "mattduck/dotfiles"])
     assert output3 == output4
+
+
+def test_pr_and_issue_flags_dont_error():
+    _run_once(["gh2md", "mattduck/gh2md", "--no-closed-issues"])
+    _run_once(["gh2md", "mattduck/gh2md", "--no-closed-prs"])
+    _run_once(["gh2md", "mattduck/gh2md", "--no-issues"])
+    _run_once(["gh2md", "mattduck/gh2md", "--no-prs"])

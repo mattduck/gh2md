@@ -27,6 +27,9 @@ Credentials are resolved in the following order:
 - A `{token}` environment variable.
 - An API token stored in ~/.github-token.
 
+By default, all issues and pull requests will be fetched. You can disable these
+using the --no... flags, eg. --no-closed-prs, or --no-prs.
+
 """.format(
     token=ENV_GITHUB_TOKEN
 )
@@ -41,6 +44,10 @@ def main():
         gh_login_user=args.login_user,
         gh_token=args.token,
         is_idempotent=args.is_idempotent,
+        include_prs=args.include_prs,
+        include_issues=args.include_issues,
+        include_closed_prs=args.include_closed_prs,
+        include_closed_issues=args.include_closed_issues,
     )
 
 
@@ -85,34 +92,94 @@ def parse_args(args):
         action="store_true",
         dest="is_idempotent",
     )
-    return parser.parse_args(args)
+    parser.add_argument(
+        "--no-prs",
+        help="Don't include pull requests in the export.",
+        action="store_false",
+        dest="include_prs",
+    )
+    parser.add_argument(
+        "--no-closed-prs",
+        help="Don't include closed pull requests in the export.",
+        action="store_false",
+        dest="include_closed_prs",
+    )
+    parser.add_argument(
+        "--no-issues",
+        help="Don't include issues in the export.",
+        action="store_false",
+        dest="include_issues",
+    )
+    parser.add_argument(
+        "--no-closed-issues",
+        help="Don't include closed issues in the export.",
+        action="store_false",
+        dest="include_closed_issues",
+    )
+    return parser.parse_args()
 
 
 def fetch_repo_and_export_to_markdown(
-    repo_string, output_path, gh_login_user=None, gh_token=None, is_idempotent=False,
+    repo_string,
+    output_path,
+    gh_login_user=None,
+    gh_token=None,
+    is_idempotent=False,
+    include_issues=True,
+    include_closed_issues=True,
+    include_prs=True,
+    include_closed_prs=True,
 ):
     if not gh_token:
         gh_token = get_environment_token()
     repo, github_api = get_github_repo(repo_string, gh_login_user, gh_token,)
     print("Retrieved repo: {}".format(repo.full_name))
     export_issues_to_markdown_file(
-        repo=repo, outpath=output_path, is_idempotent=is_idempotent
+        repo=repo,
+        outpath=output_path,
+        is_idempotent=is_idempotent,
+        include_closed_prs=include_closed_prs,
+        include_closed_issues=include_closed_issues,
+        include_prs=include_prs,
+        include_issues=include_issues,
     )
     print_rate_limit(github_api)
     print("Done.")
 
 
-def export_issues_to_markdown_file(repo, outpath, is_idempotent):
+def export_issues_to_markdown_file(
+    repo,
+    outpath,
+    is_idempotent,
+    include_closed_issues=True,
+    include_closed_prs=True,
+    include_issues=True,
+    include_prs=True,
+):
     formatted_issues = []
     for issue in repo.get_issues(state="all"):
         # The Github API includes pull requests as "issues". Skip
         # closed PRs, as they will add a lot of noise to the export.
         try:
-            if issue.pull_request and issue.state.lower() == "closed":
+            if issue.pull_request and not include_prs:
+                continue
+            if (
+                issue.pull_request
+                and issue.state.lower() == "closed"
+                and (not include_closed_prs)
+            ):
+                continue
+            if (not issue.pull_request) and not include_issues:
+                continue
+            if (
+                (not issue.pull_request)
+                and issue.state.lower() == "closed"
+                and (not include_closed_issues)
+            ):
                 continue
         except Exception:
             traceback.print_exc()
-            print("Caught exception checking whether issue is PR, skipping")
+            print("Caught exception checking issue or PR state, skipping")
             continue
 
         # Try multiple times to process the issue and append to main issue list

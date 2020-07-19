@@ -44,32 +44,35 @@ Run export for ``sarabander/sicp``, passing in token::
     gh2md sarabander/sicp sicp.md --token myAPItoken
 
 
-Run export for ``paulirish/git-open``, pulling token from environment::
+Run export for ``paulirish/git-open``, pulling token from environment, and excluding closed PRs::
 
     export GITHUB_ACCESS_TOKEN=myAPItoken
-    gh2md paulirish/git-open git-open.md
+    gh2md paulirish/git-open git-open.md --no-closed-prs
 
 
-Run export for ``shezadkhan137/required``, pulling token from file::
+Run export for ``shezadkhan137/required``, pulling token from file, and excluding closed issues:::
 
-    echo myAPItoken > ~/.github-token
+    echo myAPItoken > ~/.github-token --no-closed-issues
     gh2md shezadkhan137/required required.md
 
 
 Full help::
 
-    $ gh2md -h
-    usage: gh2md [-h] [-l LOGIN_USER] [-t TOKEN] repo outpath
+    usage: gh2md [-h] [-l LOGIN_USER] [-t TOKEN] [-I] [--no-prs] [--no-closed-prs]
+                [--no-issues] [--no-closed-issues]
+                repo outpath
 
     Export Github repository issues and comments into a single
     markdown file. https://github.com/mattduck/gh2md.
+
+    Example: gh2md mattduck/gh2md my_issues.md
 
     Credentials are resolved in the following order:
 
     - The --login flag always takes precedence and will prompt for this user.
     - The --token flag.
     - A `GITHUB_ACCESS_TOKEN` environment variable.
-    - An API token stored in `~/.github-token`.
+    - An API token stored in ~/.github-token.
 
     positional arguments:
     repo                  Github repo to export, in format "owner/repo_name".
@@ -85,6 +88,13 @@ Full help::
     -t TOKEN, --token TOKEN
                             Automatically login with this Github API token. If
                             --login is provided, this is ignored.
+    -I, --idempotent      Remove non-deterministic values like timestamps. Two
+                            runs of gh2md will always produce the same result, as
+                            long as the Github data has not changed.
+    --no-prs              Don't include pull requests in the export.
+    --no-closed-prs       Don't include closed pull requests in the export.
+    --no-issues           Don't include issues in the export.
+    --no-closed-issues    Don't include closed issues in the export.
 
 
 Install
