@@ -30,7 +30,8 @@ jobs:
     python: 3.6
     before_install: skip
     after_success: skip
-    before_script:
+    script: echo "Running the script"
+    before_deploy:
     - if [ -z "$TWINE_USERNAME" ]; then exit 1; fi
     - if [ -z "$TWINE_PASSWORD" ]; then exit 1; fi
     - if [ -z "$GITHUB_TAG_TOKEN" ]; then exit 1; fi
@@ -38,11 +39,10 @@ jobs:
     - git config --global user.name "Travis CI"
     - pip install -r dev-requirements.txt
     - git status
-    script:
-    - ./travis-pypi-release.sh
-    - git push --quiet https://mattduck:$GITHUB_TAG_TOKEN@github.com/mattduck/gh2md.git --tags >/dev/null 2>&1
+    deploy:
+    - "./travis-pypi-release.sh"
     - pip install gh2md --upgrade
     env:
     - secure: 3MFAF/eQLEJIdGYcEWpe1TbEAIUH9/lbaeDdG7obw6Tkwa8vwM0Ji8hvvUtn781qDpcoy0eLbkoUKxmTr06S9ipsj0e/WR4dNH+jOCfr04JJW4JSxFJGP80FFqh/zsIRvBJjCD/l4D22FkYSzLXTV9vM7v6gWvdPHhu/m0lTlF5DXDpOHDFXLi6m/2uEPpnAb+B64L0MQMR+2gk5kFi3ueOztXooXvNA+IR7gC/70TXwAUbpD9le9zi0bYVyfohDNdlgwgX5SFkGRyjFw3lTguRTFm/Nu4u/Ln+TwKIBoKf94IwJAiFgNsfTMGCXGVz689Z7SrqgvRmWKxrjkoS/MZ1+w7fE76t8udJeBYqAIzXZEawGDmRFWgUgEQk3ZdplA2j9eofm1NMnM4ZwWMh1zBG3sDzbqR09S0KjpoeMjgXQ2la8iw5noh0KPaGT9fz29fJpiRxkfvmAsT72QIQ6wmh2HBNuwMDXc/lJdWoPgRqOGxYOwLraCXnqLqVYA3tJkL2KkLur0iWBkaXS3yBVNvG/C/zY6o1J0ykhdwBA1B6o0Z5Q497lL4wqymJdvBw3Lg3bVYGCW/pjRkLNPQ2qgZ26BewIO0P8dNeXHJMs0FPVU/Ok2sfqoAc0igxSgAVN/nAkDf+cVSXZmHAKfOexcz+YjuiKsaXXiFJs6ZyE59E=
     - secure: TCFcv8rBEpJUbrCzCuMA4cqTYehK+HOzZGEo3AhJ/cKXUhoNkLkJ4Jid0+7sKlfZw3BlASUNNt993StVzEIfePbJ4CwKJ2utUudhXFqlqFZx/vI3NUapo53oNB0NH3r+v1yyvDRJscy1AE24IIMSD2KtoaeDGAO8KLwZMhhgVsvSCnrHNma8F/QWKnPYA2gg1Wmj3iXxO7NHELwQRYSs3hfERUIv97Lf7gf5wjGDocrTsFcnHxAxgGC55obXymST4Wn9lKEqyKBQv/6WcYHaGrfRN42GZEbiSzY7XHyzsrj9dVBiU7vK47QsmIR9qW8MMFPiyHYLTtit3xeNzP6L9NuLphku/wDTrfR1OlAVd7H+kNcw4fnlF0ar3I6OL5KyvorNh3zKzs0WLmxRLi1NN1mkWVkoYbgGplmy9yjZ52VM8U2tJhUvrG1ZiDH9atWLvn+dcEK5k9yfXjJqmGh4L+5GtOJhGsiuNMg2IrFD4Ef8nXRNLJI22BSkmBK6pjZCKFHyxkb6EQkACm7PkjXKvQARlcpKaNjUMYrAdeZVDOumc6pOGL+jCuAmHclhh6rMiICPYlGmXAzIQcG8dPDlGfErhvRBV7oJQh3IPL4wk0YnmZ3a/OMPdG7mzL2UnVspN/YW0eMqaKuPWIxPey+ciWiH1Wrv9CNhCUCITxIg2ks=
-    - secure: nCZTIWN8aymv+wCVmBGgkBI8w5oYmsAJ1Y9oVjoIMWGGXxDg9uyuEB5tCo4k9adt4gEouTl3hjqTTTA4JUaiMJ/qkH3P3LzBW+JGXTvDNUkn4inAjF6FtWIsH1M4LF/VTTqdU41/DEfIeFcDfdg6xGUqcuSN2xxeO0HhRPhurH+4ljGQxkxva4LFwgklen/iHGqrQxUo+AMS0mN1oy4GZSkspQ9CBuBYcxAjsMjiGYbFryS3VNZe0jQGvsAnjKXOVKlywdZB6Fsu41MZYlEVarAJBiZKx82wF2oLdZWIfWbBTSB9qXfQgfapslBjUQHKQV73JcfMYiY6DLrUKRyZn48zFKSYoPuOF274ac7YUgxjaDP5Zj3RVlOpFHvaI3VWyxVJE1CpiKSBcPyP72xkXWmEk4CaFcsJbsiKreoDEUlLzFZ+DDL0rpDli/nB1N4xRvEvumFjIRQK252EnCH9uB1XF1VZLfyeQZ4MvoZLIUs2nE3GJqpO68KsftBU9i70XTczETH0JHRHSNjbUOlnovmanBbbjK3ts585UiTl6Y4Kp/J4vgeypfJlZsQ8BybF4bgsUe9BGC3IYwlKCjJOt7/9yfq66/nnUajIBrQiQ0H1TfKshFEdvDBzDOBvwY5GY7ok2OkYHXkx7Od5H/liWqAc6ShYdTphZUOHf4hPVLE=
+    - secure: qRbj71375w7jHenCOdxvF2mEbLH6KYD+QBmVXZnaRB4R3WdS1ghThYwzTBmalBVFqQ2E3LOTY4TIvhCxPIhPaTyRi2kHXKGke6NR4z/rlbMLYm9VRBLG+4dT9LuRYW0xH1XPmo54OCLdS1zPASV5pXoanMwFqKgerfoUjX8WWM/yNz37j4VflBVVQ9lKGsfwbDyK7XpN3kOO4oiC9tFTnzGc6zS7vxfHkqCEB/otPKBdkFED8ZwmaJ0D20MOE619YTMtf0mwxL+PyIEtIO+ocpmfLJILseEicoFrDOgcoJZv2ZS30nsu2MQHZZxvMmI0NNn7fMjMVqdQ5fCPm9V/ASg/b6fqdllDBuSHNyb1sX6ZzVBYPY8RsnjOxZNQzw++ZTOqFW9LF5rADjcUvCcS44Ue8rCL3q7Ob7Xw5fXW0EDqLioTooCsPK00qrPl1s9/bMrhXqRWGv23qcexzwAt7MsqiORhi82Kj3ks9Zn9y4e4qNxtgikQaULXVAUcAsnBRwEm+XHdBWo8FpPi1GFeX+cc73k9+e0lGCMS6LnQsYDaRPPwkfjfXi3IA26obxE6hoPtyQ39PWB0YFVTg9vQmZFA1uFwQXoF2JPIw//Iy50BF9SvJ6xJwWJ4AHeYnDK2rOcGK0cxWSzyl/zmWrb91uBOMnXioxhLA0clWcP+QmI=
