@@ -205,6 +205,9 @@ def export_issues_to_markdown_file(
         datestring=datestring,
     )
 
+    if len(formatted_issues) == 0:
+        print("No issues found, exiting without writing to file")
+        return None
     print("Exported {} issues".format(len(formatted_issues)))
     print("Writing to file: {}".format(outpath))
     with open(outpath, "wb") as out:
