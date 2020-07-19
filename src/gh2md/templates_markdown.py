@@ -1,9 +1,9 @@
-BASE = u"""Export of Github issues for [{repo_name}]({repo_url}).{datestring}
+BASE = r"""Export of Github issues for [{repo_name}]({repo_url}).{datestring}
 
 {issues}
 """
 
-ISSUE = u"""# [\#{number}]({url}) `{state}`: {title}
+ISSUE = r"""# [\#{number}]({url}) `{state}`: {title}
 {labels}
 #### <img src="{avatar_url}" width="50">[{author}]({author_url}) opened issue at [{date}]({url}):
 
@@ -15,7 +15,7 @@ ISSUE = u"""# [\#{number}]({url}) `{state}`: {title}
 -------------------------------------------------------------------------------
 """
 
-COMMENT = u"""#### <img src="{avatar_url}" width="50">[{author}]({author_url}) commented at [{date}]({url}):
+COMMENT = r"""#### <img src="{avatar_url}" width="50">[{author}]({author_url}) commented at [{date}]({url}):
 
 {body}
 """
