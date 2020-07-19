@@ -3,7 +3,6 @@
 # See https://github.com/mattduck/gh2md/issues/11.
 name: Issues2Markdown
 on:
-  push:
   schedule:
     # every day
     - cron: "0 0 * * *"
