@@ -3,6 +3,7 @@ import pytest
 import mock
 import six
 import tempfile
+import time
 import sys
 from typing import List
 
@@ -70,13 +71,15 @@ def _run_once(args: List[str]):
 
 
 def test_script_idempotent_flag_makes_two_runs_identical():
+    # Flaky test: this is subject to the race condition that the issues actually
+    # do change (or that time doesn't change). That happens very rarely on this
+    # repo though, so although it's not good practice I'm OK with the risk.
     output1 = _run_once(["gh2md", "mattduck/dotfiles"])
+    time.sleep(1)
     output2 = _run_once(["gh2md", "mattduck/dotfiles"])
     assert output1 != output2
 
-    # Flaky test: this is subject to the race condition that the issues actually
-    # do change. That happens very rarely on this repo though, so although it's
-    # not good practice I'm OK with the risk.
     output3 = _run_once(["gh2md", "--idempotent", "mattduck/dotfiles"])
+    time.sleep(1)
     output4 = _run_once(["gh2md", "-I", "mattduck/dotfiles"])
     assert output3 == output4
