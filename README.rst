@@ -112,8 +112,6 @@ TODO
 
 - Add flag to toggle inclusion of images.
 
-- Add arg(s) to control which data is exported - open/closed, issues/PRs.
-
 - Support 2FA login - currently if 2FA is enabled on your account you must setup
   an access token.
 
