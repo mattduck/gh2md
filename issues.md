@@ -1,4 +1,4 @@
-Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md). Generated on 2020.07.31 at 00:11:08.
+Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md). Generated on 2020.08.01 at 00:11:10.
 
 # [\#10 Issue](https://github.com/mattduck/gh2md/issues/10) `closed`: Wanna get closed issues
 
