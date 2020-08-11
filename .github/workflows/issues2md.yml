@@ -3,6 +3,7 @@
 # See https://github.com/mattduck/gh2md/issues/11.
 name: Issues2Markdown
 on:
+  push: # add push for debug
   schedule:
     # every day
     - cron: "0 0 * * *"
@@ -16,8 +17,8 @@ jobs:
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - name: Backup github issues to a markdown file.
       run: |
-        pip install wheel
-        pip install --user gh2md
+        pip3 install --user --upgrade setuptools
+        pip3 install --user git+git://github.com/0ut0fcontrol/gh2md@remove-timestamp
         $HOME/.local/bin/gh2md $GITHUB_REPOSITORY issues.md --token ${{ secrets.GITHUB_TOKEN }}
         git add issues.md
     - name: Commit files
