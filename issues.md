@@ -1,4 +1,4 @@
-Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md). Generated on 2020.08.12 at 00:11:30.
+Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md). Generated on 2020.08.13 at 00:11:36.
 
 # [\#12 PR](https://github.com/mattduck/gh2md/pull/12) `open`: Remove timestamp in github actions
 
