@@ -18,7 +18,7 @@ jobs:
       run: |
         pip install wheel
         pip install --user gh2md
-        $HOME/.local/bin/gh2md $GITHUB_REPOSITORY issues.md --token ${{ secrets.GITHUB_TOKEN }}
+        $HOME/.local/bin/gh2md $GITHUB_REPOSITORY issues.md --token ${{secrets.GITHUB_TOKEN }} --idempotent
         git add issues.md
     - name: Commit files
       run: |

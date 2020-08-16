@@ -303,7 +303,7 @@ def read_github_token_file(token_path=GITHUB_ACCESS_TOKEN_PATH):
 
 def print_rate_limit(gh):
     limit = gh.get_rate_limit()
-    print("Github API rate limit: {}".format(limit.rate.raw_data))
+    print("Github API rate limit: {}".format(str(limit)))
 
 
 if __name__ == "__main__":
