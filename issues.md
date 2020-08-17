@@ -1,6 +1,6 @@
-Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md). Generated on 2020.08.16 at 00:13:53.
+Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#12 PR](https://github.com/mattduck/gh2md/pull/12) `open`: Remove timestamp in github actions
+# [\#12 PR](https://github.com/mattduck/gh2md/pull/12) `closed`: Remove timestamp in github actions
 
 #### <img src="https://avatars3.githubusercontent.com/u/11703338?v=4" width="50">[jcyang](https://github.com/0ut0fcontrol) opened issue at [2020-08-11 07:23](https://github.com/mattduck/gh2md/pull/12):
 
@@ -30,7 +30,15 @@ it works in my private repo.
 
 hope this info is helpful. @mattduck 
 
+#### <img src="https://avatars2.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2020-08-16 10:21](https://github.com/mattduck/gh2md/pull/12#issuecomment-674508568):
 
+@0ut0fcontrol thanks a lot! I've just published a new release that includes your fix for the rate limit AttributeError. Looks like it started occurring 12 days ago. The builds are passing again now :+1: 
+
+I'm gonna close this PR - it didn't make sense for me to merge it as the actions file for this repo should probably still just do `pip install gh2md`.
+
+#### <img src="https://avatars3.githubusercontent.com/u/11703338?v=4" width="50">[jcyang](https://github.com/0ut0fcontrol) commented at [2020-08-16 10:41](https://github.com/mattduck/gh2md/pull/12#issuecomment-674510249):
+
+great! thank you!
 
 
 -------------------------------------------------------------------------------
