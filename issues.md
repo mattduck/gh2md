@@ -1,5 +1,16 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#13 Issue](https://github.com/mattduck/gh2md/issues/13) `open`: Is possible to export each issue in a separated file?
+
+#### <img src="https://avatars3.githubusercontent.com/u/12011070?v=4" width="50">[Guilherme Prokisch](https://github.com/guilhermeprokisch) opened issue at [2020-08-17 15:32](https://github.com/mattduck/gh2md/issues/13):
+
+I want to export each issue in a separated file. It's possible to do?
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#12 PR](https://github.com/mattduck/gh2md/pull/12) `closed`: Remove timestamp in github actions
 
 #### <img src="https://avatars3.githubusercontent.com/u/11703338?v=4" width="50">[jcyang](https://github.com/0ut0fcontrol) opened issue at [2020-08-11 07:23](https://github.com/mattduck/gh2md/pull/12):
