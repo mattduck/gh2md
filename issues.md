@@ -1,5 +1,20 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#14 PR](https://github.com/mattduck/gh2md/pull/14) `open`: git commit only if there are changes in issues.
+
+#### <img src="https://avatars3.githubusercontent.com/u/11703338?v=4" width="50">[jcyang](https://github.com/0ut0fcontrol) opened issue at [2020-08-26 09:33](https://github.com/mattduck/gh2md/pull/14):
+
+GitHub Actions failed for ["nothing to commit"](https://github.com/mattduck/gh2md/actions/runs/224515871).
+
+#### <img src="https://avatars3.githubusercontent.com/u/11703338?v=4" width="50">[jcyang](https://github.com/0ut0fcontrol) commented at [2020-08-26 13:48](https://github.com/mattduck/gh2md/pull/14#issuecomment-680890979):
+
+git commit only if there are changes in issues.
+The Actions was [passed](https://github.com/0ut0fcontrol/gh2md/actions/runs/225121459) in my fork.
+`git reset --hard` to https://github.com/mattduck/gh2md/pull/14/commits/5c6709d8cf45af07c15124cf3e08df0d27c4f2da to disable actions on `push` and remove `issues.md` from my fork.
+
+
+-------------------------------------------------------------------------------
+
 # [\#13 Issue](https://github.com/mattduck/gh2md/issues/13) `open`: Is possible to export each issue in a separated file?
 
 #### <img src="https://avatars3.githubusercontent.com/u/12011070?v=4" width="50">[Guilherme Prokisch](https://github.com/guilhermeprokisch) opened issue at [2020-08-17 15:32](https://github.com/mattduck/gh2md/issues/13):
