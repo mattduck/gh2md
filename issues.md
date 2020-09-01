@@ -1,6 +1,6 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#14 PR](https://github.com/mattduck/gh2md/pull/14) `open`: git commit only if there are changes in issues.
+# [\#14 PR](https://github.com/mattduck/gh2md/pull/14) `closed`: git commit only if there are changes in issues.
 
 #### <img src="https://avatars3.githubusercontent.com/u/11703338?v=4" width="50">[jcyang](https://github.com/0ut0fcontrol) opened issue at [2020-08-26 09:33](https://github.com/mattduck/gh2md/pull/14):
 
@@ -12,6 +12,10 @@ git commit only if there are changes in issues.
 The Actions was [passed](https://github.com/0ut0fcontrol/gh2md/actions/runs/225121459) in my fork.
 `git reset --hard` to https://github.com/mattduck/gh2md/pull/14/commits/5c6709d8cf45af07c15124cf3e08df0d27c4f2da to disable actions on `push` and remove `issues.md` from my fork.
 
+#### <img src="https://avatars2.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2020-08-31 09:25](https://github.com/mattduck/gh2md/pull/14#issuecomment-683670039):
+
+@0ut0fcontrol thanks! I noticed this was failing a while back but hadn't had the chance to look at it.
+
 
 -------------------------------------------------------------------------------
 
@@ -21,7 +25,9 @@ The Actions was [passed](https://github.com/0ut0fcontrol/gh2md/actions/runs/2251
 
 I want to export each issue in a separated file. It's possible to do?
 
+#### <img src="https://avatars2.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2020-08-31 09:29](https://github.com/mattduck/gh2md/issues/13#issuecomment-683671572):
 
+That's not currently feature, but it wouldn't be a huge amount of work to implement. I'll try to get to it sometime, but realistically it's going to be at least a few weeks until I sit down to look at it.
 
 
 -------------------------------------------------------------------------------
