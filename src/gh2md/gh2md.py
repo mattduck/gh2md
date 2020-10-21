@@ -157,40 +157,43 @@ def export_issues_to_markdown_file(
     include_prs=True,
 ):
     formatted_issues = []
-    for issue in repo.get_issues(state="all"):
-        # The Github API includes pull requests as "issues". Skip
-        # closed PRs, as they will add a lot of noise to the export.
-        try:
-            if issue.pull_request and not include_prs:
+    try:
+        for issue in repo.get_issues(state="all"):
+            # The Github API includes pull requests as "issues". Skip
+            # closed PRs, as they will add a lot of noise to the export.
+            try:
+                if issue.pull_request and not include_prs:
+                    continue
+                if (
+                    issue.pull_request
+                    and issue.state.lower() == "closed"
+                    and (not include_closed_prs)
+                ):
+                    continue
+                if (not issue.pull_request) and not include_issues:
+                    continue
+                if (
+                    (not issue.pull_request)
+                    and issue.state.lower() == "closed"
+                    and (not include_closed_issues)
+                ):
+                    continue
+            except Exception:
+                traceback.print_exc()
+                print("Caught exception checking issue or PR state, skipping")
                 continue
-            if (
-                issue.pull_request
-                and issue.state.lower() == "closed"
-                and (not include_closed_prs)
-            ):
-                continue
-            if (not issue.pull_request) and not include_issues:
-                continue
-            if (
-                (not issue.pull_request)
-                and issue.state.lower() == "closed"
-                and (not include_closed_issues)
-            ):
-                continue
-        except Exception:
-            traceback.print_exc()
-            print("Caught exception checking issue or PR state, skipping")
-            continue
 
-        # Try multiple times to process the issue and append to main issue list
-        try:
-            formatted_issue = process_issue_to_markdown(issue)
-        except Exception:
-            traceback.print_exc()
-            print("Couldn't process issue due to exceptions, skipping")
-            continue
-        else:
-            formatted_issues.append(formatted_issue)
+            # Try multiple times to process the issue and append to main issue list
+            try:
+                formatted_issue = process_issue_to_markdown(issue)
+            except Exception:
+                traceback.print_exc()
+                print("Couldn't process issue due to exceptions, skipping")
+                continue
+            else:
+                formatted_issues.append(formatted_issue)
+    except (KeyboardInterrupt, SystemExit):
+        pass
 
     if is_idempotent:
         datestring = ""
