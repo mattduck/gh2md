@@ -1,5 +1,18 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#16 PR](https://github.com/mattduck/gh2md/pull/16) `open`: Create Markdown file even after abort
+
+#### <img src="https://avatars2.githubusercontent.com/u/14315968?v=4" width="50">[Daniel Vogt](https://github.com/C0D3D3V) opened issue at [2020-10-21 08:28](https://github.com/mattduck/gh2md/pull/16):
+
+I think it would be great if you can abort the whole process after a rate limit and still create the markdown file for the stuff that has already been downloaded.
+
+Especially if you have already downloaded a few thousand entries this is very annoying.
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#15 PR](https://github.com/mattduck/gh2md/pull/15) `open`: Using python3 (pip3) in Github Actions.
 
 #### <img src="https://avatars3.githubusercontent.com/u/11703338?v=4" width="50">[jcyang](https://github.com/0ut0fcontrol) opened issue at [2020-09-17 02:40](https://github.com/mattduck/gh2md/pull/15):
