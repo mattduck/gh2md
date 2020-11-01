@@ -53,7 +53,8 @@ def main():
 
 def parse_args(args):
     parser = argparse.ArgumentParser(
-        description=DESCRIPTION, formatter_class=argparse.RawDescriptionHelpFormatter,
+        description=DESCRIPTION,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
         "repo",
@@ -63,7 +64,10 @@ def parse_args(args):
         # TODO - validate this is in correct format.
     )
     parser.add_argument(
-        "outpath", help="Path to write exported issues.", type=str, action="store",
+        "outpath",
+        help="Path to write exported issues.",
+        type=str,
+        action="store",
     )
     parser.add_argument(
         "-l",
@@ -132,7 +136,11 @@ def fetch_repo_and_export_to_markdown(
 ):
     if not gh_token:
         gh_token = get_environment_token()
-    repo, github_api = get_github_repo(repo_string, gh_login_user, gh_token,)
+    repo, github_api = get_github_repo(
+        repo_string,
+        gh_login_user,
+        gh_token,
+    )
     print("Retrieved repo: {}".format(repo.full_name))
     export_issues_to_markdown_file(
         repo=repo,
