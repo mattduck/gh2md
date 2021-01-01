@@ -1,5 +1,43 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#17 Issue](https://github.com/mattduck/gh2md/issues/17) `open`: UnicodeEncodeError: 'ascii' codec can't encode character
+
+#### <img src="https://avatars3.githubusercontent.com/u/7646335?v=4" width="50">[Akiicat](https://github.com/akiicat) opened issue at [2020-12-31 08:18](https://github.com/mattduck/gh2md/issues/17):
+
+**error log**
+
+```
+Traceback (most recent call last):
+  File "/home/akiicat/.local/lib/python2.7/site-packages/gh2md/gh2md.py", line 196, in export_issues_to_markdown_file
+    formatted_issue = process_issue_to_markdown(issue)
+  File "/home/akiicat/.local/lib/python2.7/site-packages/retrying.py", line 49, in wrapped_f
+    return Retrying(*dargs, **dkw).call(f, *args, **kw)
+  File "/home/akiicat/.local/lib/python2.7/site-packages/retrying.py", line 212, in call
+    raise attempt.get()
+  File "/home/akiicat/.local/lib/python2.7/site-packages/retrying.py", line 247, in get
+    six.reraise(self.value[0], self.value[1], self.value[2])
+  File "/home/akiicat/.local/lib/python2.7/site-packages/retrying.py", line 200, in call
+    attempt = Attempt(fn(*args, **kwargs), attempt_number, False)
+  File "/home/akiicat/.local/lib/python2.7/site-packages/gh2md/gh2md.py", line 249, in process_issue_to_markdown
+    body=comment.body,
+UnicodeEncodeError: 'ascii' codec can't encode character u'\u2014' in position 173: ordinal not in range(128)
+Couldn't process issue due to exceptions, skipping
+```
+
+It seems the string in [templates_markdown.py](https://github.com/mattduck/gh2md/blob/master/src/gh2md/templates_markdown.py#L18) file are not Unicode strings. One of my solutions is:
+
+```diff
+# src/gh2md/templates_markdown.py
+- COMMENT = r"""#### <img src="{avatar_url}" width="50">[{author}]({author_url}) commented at [{date}]({url}):
++ COMMENT = ur"""#### <img src="{avatar_url}" width="50">[{author}]({author_url}) commented at [{date}]({url}):
+```
+
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#16 PR](https://github.com/mattduck/gh2md/pull/16) `closed`: Create Markdown file even after abort
 
 #### <img src="https://avatars2.githubusercontent.com/u/14315968?v=4" width="50">[Daniel Vogt](https://github.com/C0D3D3V) opened issue at [2020-10-21 08:28](https://github.com/mattduck/gh2md/pull/16):
