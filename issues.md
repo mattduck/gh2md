@@ -33,7 +33,9 @@ It seems the string in [templates_markdown.py](https://github.com/mattduck/gh2md
 ```
 
 
+#### <img src="https://avatars2.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-01-03 19:27](https://github.com/mattduck/gh2md/issues/17#issuecomment-753664999):
 
+@akiicat thanks for reporting this. I'm hoping to release a version with the fix sometime this week.
 
 
 -------------------------------------------------------------------------------
