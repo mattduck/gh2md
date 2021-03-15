@@ -1,6 +1,6 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#17 Issue](https://github.com/mattduck/gh2md/issues/17) `open`: UnicodeEncodeError: 'ascii' codec can't encode character
+# [\#17 Issue](https://github.com/mattduck/gh2md/issues/17) `closed`: UnicodeEncodeError: 'ascii' codec can't encode character
 
 #### <img src="https://avatars.githubusercontent.com/u/7646335?v=4" width="50">[Akiicat](https://github.com/akiicat) opened issue at [2020-12-31 08:18](https://github.com/mattduck/gh2md/issues/17):
 
@@ -36,6 +36,10 @@ It seems the string in [templates_markdown.py](https://github.com/mattduck/gh2md
 #### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-01-03 19:27](https://github.com/mattduck/gh2md/issues/17#issuecomment-753664999):
 
 @akiicat thanks for reporting this. I'm hoping to release a version with the fix sometime this week.
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-03-14 20:45](https://github.com/mattduck/gh2md/issues/17#issuecomment-798976684):
+
+@akiicat I looked into this and had missed that you're running python 2.7. I wasn't able to reproduce the issue in the latest version. I'm going to close this but I'm happy to look at it if you can reproduce in python 3.
 
 
 -------------------------------------------------------------------------------
