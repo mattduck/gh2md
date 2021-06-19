@@ -1,5 +1,40 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#18 Issue](https://github.com/mattduck/gh2md/issues/18) `open`: Issue on macOS
+
+#### <img src="https://avatars.githubusercontent.com/u/923008?v=4" width="50">[nicolas](https://github.com/nclm) opened issue at [2021-06-18 14:39](https://github.com/mattduck/gh2md/issues/18):
+
+I tried using gh2md on the computer here at work (running macOS 11.1) and all I get is this:
+
+```
+nicolas@computer ~ % gh2md user/project issues.md --login user
+Github password for user :
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.9/bin/gh2md", line 8, in <module>
+    sys.exit(main())
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/gh2md/gh2md.py", line 41, in main
+    fetch_repo_and_export_to_markdown(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/gh2md/gh2md.py", line 139, in fetch_repo_and_export_to_markdown
+    repo, github_api = get_github_repo(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/gh2md/gh2md.py", line 286, in get_github_repo
+    return gh_owner.get_repo(repo_name), gh
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/github/NamedUser.py", line 545, in get_repo
+    headers, data = self._requester.requestJsonAndCheck(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/github/Requester.py", line 353, in requestJsonAndCheck
+    return self.__check(
+  File "/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages/github/Requester.py", line 378, in __check
+    raise self.__createException(status, responseHeaders, output)
+github.GithubException.UnknownObjectException: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/reference/repos#get-a-repository"}
+```
+python --version is Python 2.7.16, python3 --version is Python 3.9.5.
+
+Any idea of what is happening? Thanks!
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#17 Issue](https://github.com/mattduck/gh2md/issues/17) `closed`: UnicodeEncodeError: 'ascii' codec can't encode character
 
 #### <img src="https://avatars.githubusercontent.com/u/7646335?v=4" width="50">[Akiicat](https://github.com/akiicat) opened issue at [2020-12-31 08:18](https://github.com/mattduck/gh2md/issues/17):
