@@ -30,7 +30,24 @@ python --version is Python 2.7.16, python3 --version is Python 3.9.5.
 
 Any idea of what is happening? Thanks!
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-06-25 08:02](https://github.com/mattduck/gh2md/issues/18#issuecomment-868304488):
 
+@nclm hey, sorry for slow response here.
+
+I need to look at this more but I was able to reproduce it on my account by trying to clone a private repository using password login. I'm pretty sure this is because it doesn't handle 2FA login properly right now, and so probably I get the 404 because I'm not authenticated.
+
+Do you have 2FA on your account? If so you can pass in an access token using one of:
+
+- The `--token` flag.
+- A `GITHUB_ACCESS_TOKEN` environment variable.
+- An API token stored in `~/.github-token`.
+
+There are a couple of things I'll look at here:
+
+1. 2FA login support
+2. Better error handling to make it clear what's happening
+
+If this is a public repo or you don't have 2FA on your account then let me know.
 
 
 -------------------------------------------------------------------------------
