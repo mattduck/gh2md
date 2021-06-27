@@ -8,7 +8,7 @@ file. You can either create a single file for the repo, or a directory with one
 file per issue. See usage instructions for how to filter by issue type and state.
 
 There are various other projects that handle Github issue exports
-(Eg. ``offline-issues <<https://github.com/jlord/offline-issues>`_>`_), but I
+(Eg. `offline-issues <https://github.com/jlord/offline-issues>`_), but I
 couldn't find one that writes all issues, comments and metadata to a single
 readable file.
 
@@ -18,7 +18,7 @@ Example exports
 
 An example exported file is included in the `examples directory
 <examples/sshrc.md>`_. There is also an `example directory with one issue per
-file <examples/gh2md-multiple-files-example>`
+file <examples/gh2md-multiple-files-example>`_
 
 Default behaviour is to export all issues and PRs.
 
@@ -42,6 +42,7 @@ Run export for public repository ``sarabander/sicp``, using no authentication an
     gh2md sarabander/sicp sicp-issues --multiple-files --no-closed-prs
 
 Full help::
+
     usage: gh2md [-h] [--multiple-files] [-I] [--no-prs] [--no-closed-prs]
                 [--no-issues] [--no-closed-issues]
                 repo output_path
@@ -90,7 +91,7 @@ Install
 Authentication
 ---------------
 
-`gh2md` should be able to read public repositories without any explicit
+``gh2md`` should be able to read public repositories without any explicit
 authentication. However, to read your private repositories, you'll need to
 provide a personal access token with full the full **repo** oauth scope.
 
