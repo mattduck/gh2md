@@ -348,13 +348,16 @@ def github_login():
 
 def get_environment_token():
     try:
-        return os.environ[ENV_GITHUB_TOKEN]
+        token = os.environ[ENV_GITHUB_TOKEN]
+        logger.info("Using token from environment")
+        return token
     except KeyError:
         for path in GITHUB_ACCESS_TOKEN_PATHS:
-            logger.info(path)
+            logger.info(f"Looking for token in file: {path}")
             if os.path.exists(path):
+                logger.info(f"Using token from file: {path}")
                 with open(path, "r") as f:
-                    return f.read().strip()
+                    token = f.read().strip()
 
 
 if __name__ == "__main__":
