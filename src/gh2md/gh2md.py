@@ -278,9 +278,9 @@ def github_login():
     gh_token = get_environment_token()
     gh = Github(login_or_token=gh_token, per_page=100)
     if gh_token:
-        logger.warning(f"Authenticated: {gh.get_user().login}")
+        logger.info(f"Authenticated: {gh.get_user().login}")
     else:
-        logger.info("No token provided. Access to private stuff will fail")
+        logger.warning("No token provided. Access to private repositories will fail")
     return gh
 
 
