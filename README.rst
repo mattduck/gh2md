@@ -1,7 +1,7 @@
 gh2md
 =====
 
-|PyPI|  |Travis|
+|PyPI|
 
 Export issues and pull requests for a Github repository to a readable markdown
 file. You can either create a single file for the repo, or a directory with one
@@ -112,6 +112,3 @@ export in `issues.md <./issues.md>`_.
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/gh2md.svg
    :target: https://pypi.python.org/pypi/gh2md
-
-.. |Travis| image:: https://travis-ci.org/mattduck/gh2md.svg?branch=master
-   :target: https://travis-ci.org/mattduck/gh2md
