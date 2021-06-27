@@ -5,7 +5,6 @@ import datetime
 import logging
 import os
 import sys
-import traceback
 
 from github import Github
 from retrying import retry
@@ -173,16 +172,14 @@ def export_issues_to_markdown_file(
                 ):
                     continue
             except Exception:
-                traceback.print_exc()
-                logger.info("Caught exception checking issue or PR state, skipping")
+                logger.info("Caught exception checking issue or PR state, skipping", exc_info=True)
                 continue
 
             # Try multiple times to process the issue and append to main issue list
             try:
                 formatted_issue = process_issue_to_markdown(issue)
             except Exception:
-                traceback.print_exc()
-                logger.info("Couldn't process issue due to exceptions, skipping")
+                logger.info("Couldn't process issue due to exceptions, skipping", exc_info=True)
                 continue
             else:
                 formatted_issues.append(formatted_issue)
