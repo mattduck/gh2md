@@ -23,6 +23,7 @@ examples:
 	rm -rf examples
 	mkdir examples
 	gh2md mattduck/gh2md examples/gh2md.md
+	gh2md mattduck/gh2md examples/gh2md-multiple-files-example --multiple-files
 	gh2md Russell91/sshrc examples/sshrc.md
 
 release: clean build assert_clean_git assert_new_pypi_version
