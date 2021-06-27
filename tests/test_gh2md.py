@@ -1,7 +1,7 @@
+import datetime
 import os
 import pytest
 import mock
-import six
 import tempfile
 import time
 import sys
@@ -26,8 +26,13 @@ def test_get_repo_returns_pygithub_repo(gh):
 
 def test_processing_for_single_issue_produces_result():
     issue = mock.MagicMock()
-    res = gh2md.process_issue_to_markdown(issue)
-    assert res
+    issue.created_at = datetime.datetime.now()
+    issue.number = 5
+    issue.state = "closed"
+    slug, content = gh2md.process_issue_to_markdown(issue)
+    assert content
+    assert "5" in slug
+    assert "closed" in slug
 
 
 def test_script_from_entry_point_with_small_repo():
@@ -73,6 +78,20 @@ def test_script_idempotent_flag_makes_two_runs_identical():
     time.sleep(1)
     output4 = _run_once(["gh2md", "-I", "mattduck/dotfiles"])
     assert output3 == output4
+
+
+def test_script_runs_with_multiple_files_flag():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        test_args = ["gh2md", "mattduck/gh2md", "--multiple-files", tmpdir]
+        with mock.patch.object(sys, "argv", test_args):
+            gh2md.main()
+        assert os.path.exists(tmpdir)
+        files = os.listdir(tmpdir)
+        assert len(files) > 10, "Expected more than 10 issue files for repo"
+        for fname in files:
+            with open(os.path.join(tmpdir, fname)) as f:
+                contents = f.read()
+                assert "gh2md" in contents
 
 
 def test_pr_and_issue_flags_dont_error():

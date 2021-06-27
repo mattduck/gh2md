@@ -19,3 +19,8 @@ COMMENT = r"""#### <img src="{avatar_url}" width="50">[{author}]({author_url}) c
 
 {body}
 """
+
+ISSUE_FILE_FOOTNOTE = r"""
+
+[Export of Github issue for [{repo_name}]({repo_url}).{datestring}]
+"""

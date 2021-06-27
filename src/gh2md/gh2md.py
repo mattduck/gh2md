@@ -17,8 +17,8 @@ GITHUB_ACCESS_TOKEN_PATHS = [
     os.path.expanduser(os.path.join("~", ".github-token")),
 ]
 
-DESCRIPTION = """Export Github repository issues, pull requests and comments
-into a single markdown file. https://github.com/mattduck/gh2md.
+DESCRIPTION = """Export Github repository issues, pull requests and comments to markdown files:
+https://github.com/mattduck/gh2md
 
 Example: gh2md mattduck/gh2md my_issues.md
 
@@ -27,11 +27,11 @@ Credentials are resolved in the following order:
 - A `{token}` environment variable.
 - An API token stored in ~/.config/gh2md/token or ~/.github-token.
 
-To access your private repositories, you'll need a token with
+To access private repositories, you'll need a token with the full "repo" oauth
+scope.
 
 By default, all issues and pull requests will be fetched. You can disable these
 using the --no... flags, eg. --no-closed-prs, or --no-prs.
-
 """.format(
     token=ENV_GITHUB_TOKEN
 )
@@ -48,7 +48,8 @@ def main():
     fetch_repo_and_export_to_markdown(
         gh=gh,
         repo_string=args.repo,
-        output_path=args.outpath,
+        output_path=args.output_path,
+        use_multiple_files=args.use_multiple_files,
         is_idempotent=args.is_idempotent,
         include_prs=args.include_prs,
         include_issues=args.include_issues,
@@ -69,10 +70,16 @@ def parse_args(args):
         action="store",
     )
     parser.add_argument(
-        "outpath",
+        "output_path",
         help="Path to write exported issues.",
         type=str,
         action="store",
+    )
+    parser.add_argument(
+        "--multiple-files",
+        help="Instead of one file, treat the given path as a directory, and create one file per issue, using a format '{created_at}.{issue_number}.{issue_type}.{issue_state}.md'.",
+        action="store_true",
+        dest="use_multiple_files",
     )
     parser.add_argument(
         "-I",
@@ -113,6 +120,7 @@ def fetch_repo_and_export_to_markdown(
     repo_string,
     output_path,
     is_idempotent=False,
+    use_multiple_files=False,
     include_issues=True,
     include_closed_issues=True,
     include_prs=True,
@@ -121,11 +129,22 @@ def fetch_repo_and_export_to_markdown(
     """
     Main logic (excluding parsing args + login)
     """
+    if use_multiple_files:
+        if os.path.exists(output_path):
+            if len(os.listdir(output_path)):
+                raise RuntimeError(
+                    f"Output directory already exists and has files in it: {output_path}"
+                )
+        else:
+            logger.info(f"Creating output directory: {output_path}")
+            os.mkdir(output_path)
+
     repo = get_github_repo(gh, repo_string)
     logger.info("Retrieved repo: {}".format(repo.full_name))
     export_issues_to_markdown_file(
         repo=repo,
-        outpath=output_path,
+        output_path=output_path,
+        use_multiple_files=use_multiple_files,
         is_idempotent=is_idempotent,
         include_closed_prs=include_closed_prs,
         include_closed_issues=include_closed_issues,
@@ -139,7 +158,8 @@ def fetch_repo_and_export_to_markdown(
 
 def export_issues_to_markdown_file(
     repo,
-    outpath,
+    output_path,
+    use_multiple_files,
     is_idempotent,
     include_closed_issues=True,
     include_closed_prs=True,
@@ -149,11 +169,18 @@ def export_issues_to_markdown_file(
     """
     Export one repo
     """
-    formatted_issues = []
+    formatted_issues = {}
     try:
-        for issue in repo.get_issues(state="all"):
-            # The Github API includes pull requests as "issues". Skip
-            # closed PRs, as they will add a lot of noise to the export.
+        if include_prs and include_closed_prs:
+            filter_state = "all"
+        elif include_issues and include_closed_issues:
+            filter_state = "all"
+        else:
+            # we're only including open issues.
+            filter_state = "open"
+        # TODO: A way to just pass filters as args into this function?
+        for issue in repo.get_issues(state=filter_state):
+            # The Github API includes pull requests as "issues".
             try:
                 if issue.pull_request and not include_prs:
                     continue
@@ -172,40 +199,65 @@ def export_issues_to_markdown_file(
                 ):
                     continue
             except Exception:
-                logger.info("Caught exception checking issue or PR state, skipping", exc_info=True)
+                logger.info(
+                    "Caught exception checking issue or PR state, skipping",
+                    exc_info=True,
+                )
                 continue
 
             # Try multiple times to process the issue and append to main issue list
             try:
-                formatted_issue = process_issue_to_markdown(issue)
+                slug, formatted_issue = process_issue_to_markdown(issue)
             except Exception:
-                logger.info("Couldn't process issue due to exceptions, skipping", exc_info=True)
+                logger.info(
+                    "Couldn't process issue due to exceptions, skipping", exc_info=True
+                )
                 continue
             else:
-                formatted_issues.append(formatted_issue)
+                formatted_issues[slug] = formatted_issue
     except (KeyboardInterrupt, SystemExit):
         pass
 
+    if len(formatted_issues.keys()) == 0:
+        if use_multiple_files:
+            logger.info(f"No issues found, cleaning up directory: {output_path}")
+            os.rmdir(output_path)
+        else:
+            logger.info("No issues found, exiting without writing to file")
+        return None
+
+    logger.info("Found {} issues".format(len(formatted_issues.keys())))
     if is_idempotent:
         datestring = ""
     else:
         datestring = " Generated on {}.".format(
             datetime.datetime.now().strftime("%Y.%m.%d at %H:%M:%S")
         )
-    full_markdown_export = templates_markdown.BASE.format(
-        repo_name=repo.full_name,
-        repo_url=repo.html_url,
-        issues="\n".join(formatted_issues),
-        datestring=datestring,
-    )
 
-    if len(formatted_issues) == 0:
-        logger.info("No issues found, exiting without writing to file")
-        return None
-    logger.info("Exported {} issues".format(len(formatted_issues)))
-    logger.info("Writing to file: {}".format(outpath))
-    with open(outpath, "wb") as out:
-        out.write(full_markdown_export.encode("utf-8"))
+    if use_multiple_files:
+        # Write one file per issue
+        metadata_footnote = templates_markdown.ISSUE_FILE_FOOTNOTE.format(
+            repo_name=repo.full_name,
+            repo_url=repo.html_url,
+            datestring=datestring,
+        )
+        for issue_slug, formatted_issue in formatted_issues.items():
+            issue_file_markdown = "\n".join([formatted_issue, metadata_footnote])
+            issue_path = os.path.join(output_path, f"{issue_slug}.md")
+            logger.info("Writing to file: {}".format(issue_path))
+            with open(issue_path, "wb") as out:
+                out.write(issue_file_markdown.encode("utf-8"))
+    else:
+        # Write everything in one file
+        full_markdown_export = templates_markdown.BASE.format(
+            repo_name=repo.full_name,
+            repo_url=repo.html_url,
+            issues="\n".join(formatted_issues.values()),
+            datestring=datestring,
+        )
+        logger.info("Writing to file: {}".format(output_path))
+        with open(output_path, "wb") as out:
+            out.write(full_markdown_export.encode("utf-8"))
     return None
 
 
@@ -238,8 +290,10 @@ def process_issue_to_markdown(issue):
     number = str(issue.number)
     if issue.pull_request:
         number += " PR"
+        slugtype = "pr"
     else:
         number += " Issue"
+        slugtype = "issue"
 
     labels = ""
     if issue.labels:
@@ -259,7 +313,15 @@ def process_issue_to_markdown(issue):
         comments=formatted_comments,
         labels=labels,
     )
-    return formatted_issue.replace("\r", "")
+    slug = ".".join(
+        [
+            issue.created_at.strftime("%Y-%m-%d"),
+            str(issue.number),
+            slugtype,
+            issue.state,
+        ]
+    )
+    return slug, formatted_issue.replace("\r", "")
 
 
 def get_github_repo(gh, repo_string):
