@@ -30,8 +30,8 @@ CLASSIFIERS = [
 ]
 INSTALL_REQUIRES = [
     "six",
-    "PyGithub~=1.34",
-    "retrying==1.3.3",
+    "PyGithub==1.55",
+    "retrying~=1.3.3",
 ]
 
 ###################################################################
