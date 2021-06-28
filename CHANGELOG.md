@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3
+
+- Fix issue where logging the authenticated user errors if the token isn't tied
+  to a user (eg. if it's a github action token).
+
+
 ## 1.0.0
 
 - Add support for exporting one file per issue using `--multiple-files`.

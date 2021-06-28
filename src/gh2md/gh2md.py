@@ -335,14 +335,12 @@ def get_github_repo(gh, repo_string):
 
 def github_login():
     """
-    Handle login
+    Handle building the github instance
     """
     gh_token = get_environment_token()
+    if not gh_token:
+        logger.warning("No token found. Access to private repositories will fail")
     gh = Github(login_or_token=gh_token, per_page=100)
-    if gh_token:
-        logger.info(f"Authenticated: {gh.get_user().login}")
-    else:
-        logger.warning("No token provided. Access to private repositories will fail")
     return gh
 
 
