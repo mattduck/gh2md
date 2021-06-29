@@ -1,6 +1,6 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#18 Issue](https://github.com/mattduck/gh2md/issues/18) `open`: Issue on macOS
+# [\#18 Issue](https://github.com/mattduck/gh2md/issues/18) `closed`: Issue on macOS
 
 #### <img src="https://avatars.githubusercontent.com/u/923008?v=4" width="50">[nicolas](https://github.com/nclm) opened issue at [2021-06-18 14:39](https://github.com/mattduck/gh2md/issues/18):
 
@@ -48,6 +48,18 @@ There are a couple of things I'll look at here:
 2. Better error handling to make it clear what's happening
 
 If this is a public repo or you don't have 2FA on your account then let me know.
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-06-27 14:21](https://github.com/mattduck/gh2md/issues/18#issuecomment-869171698):
+
+@nclm OK I looked into this properly today. It turns out that Github no longer supports username + password login authentication, and the API is returning its standard 404 response that it gives when the user isn't authenticated (https://docs.github.com/en/rest/overview/other-authentication-methods#basic-authentication).
+
+I haven't been super active maintaining this so had missed the news last year that they were removing this. Apologies.
+
+If you use a personal access token with the "repo" scope it should work fine for private repositories.
+
+I've just released a new version, and now token authentication is required (unless your repo is public, in which case you don't strictly need to authenticate).
+
+Going to close this but LMK if you still have issues.
 
 
 -------------------------------------------------------------------------------
@@ -156,7 +168,7 @@ The Actions was [passed](https://github.com/0ut0fcontrol/gh2md/actions/runs/2251
 
 -------------------------------------------------------------------------------
 
-# [\#13 Issue](https://github.com/mattduck/gh2md/issues/13) `open`: Is possible to export each issue in a separated file?
+# [\#13 Issue](https://github.com/mattduck/gh2md/issues/13) `closed`: Is possible to export each issue in a separated file?
 
 #### <img src="https://avatars.githubusercontent.com/u/12011070?v=4" width="50">[Guilherme Prokisch](https://github.com/guilhermeprokisch) opened issue at [2020-08-17 15:32](https://github.com/mattduck/gh2md/issues/13):
 
@@ -171,6 +183,18 @@ That's not currently feature, but it wouldn't be a huge amount of work to implem
 Hi there! 
 I would also be really interested in this possibility. I am using github issues as get-things-done lists :-) and it would be great to be able to easily export each individual issue as a md file. 
 I got the idea after reading this nice article (https://rabernat.medium.com/advising-and-collaborating-during-a-pandemic-and-sabbatical-ca9531b82b6d).
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-06-27 14:33](https://github.com/mattduck/gh2md/issues/13#issuecomment-869173434):
+
+> it's going to be at least a few weeks until I sit down to look at it.
+
+This was not a good estimate, my bad. Nearly a year late but I finally sat down and implemented multiple file support this morning.
+
+Now if you pass the argument `--multiple-files`, your output path will be treated as a directory (instead of the default markdown file), and each issue/PR will be written to its own file, using the same formatting that it has when it's written to a single file. You can see an example of this at https://github.com/mattduck/gh2md/tree/master/examples/gh2md-multiple-files-example.
+
+There is a new 1.0.1 release of gh2md that includes this feature. (It also removes support for user+password login as Github dropped supporting this a while back).
+
+Hopefully this will be useful for somebody in the future. I'm going to close this as done but LMK if any feedback/issues.
 
 
 -------------------------------------------------------------------------------
