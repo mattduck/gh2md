@@ -356,6 +356,7 @@ def get_environment_token():
                 logger.info(f"Using token from file: {path}")
                 with open(path, "r") as f:
                     token = f.read().strip()
+                    return token
 
 
 if __name__ == "__main__":
