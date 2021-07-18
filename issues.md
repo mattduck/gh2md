@@ -1,5 +1,58 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#20 PR](https://github.com/mattduck/gh2md/pull/20) `open`: Return token after it's read. Fixes #19
+
+#### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) opened issue at [2021-07-17 07:57](https://github.com/mattduck/gh2md/pull/20):
+
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+# [\#19 Issue](https://github.com/mattduck/gh2md/issues/19) `open`: GitHub token is not read from paths
+
+#### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) opened issue at [2021-07-17 07:49](https://github.com/mattduck/gh2md/issues/19):
+
+Running gh2md with the GitHub token in `~/.config/gh2md/token` produces the following:
+
+```
+[2021-07-17 13:09:24,333] [INFO] Looking for token in file: /home/user/.config/gh2md/token
+[2021-07-17 13:09:24,333] [INFO] Using token from file: /home/user/.config/gh2md/token
+[2021-07-17 13:09:24,333] [INFO] Looking for token in file: /home/user/.github-token
+[2021-07-17 13:09:24,333] [WARNING] No token found. Access to private repositories will fail
+```
+
+The token is resolved in the following (in order):
+- A `GITHUB_ACCESS_TOKEN` environment variable.
+- `~/.config/gh2md/token`
+- `~/.github-token`
+
+The problem is that, when the token is read from either of the files, its value is not returned outside to the calling function. Here's the relevant piece of code:
+
+```python
+def get_environment_token():
+    try:
+        token = os.environ[ENV_GITHUB_TOKEN]
+        logger.info("Using token from environment")
+        return token
+    except KeyError:
+        for path in GITHUB_ACCESS_TOKEN_PATHS:
+            logger.info(f"Looking for token in file: {path}")
+            if os.path.exists(path):
+                logger.info(f"Using token from file: {path}")
+                with open(path, "r") as f:
+                    token = f.read().strip()
+```
+
+The fix would be to return the `token` after `token = f.read().strip()`.
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#18 Issue](https://github.com/mattduck/gh2md/issues/18) `closed`: Issue on macOS
 
 #### <img src="https://avatars.githubusercontent.com/u/923008?v=4" width="50">[nicolas](https://github.com/nclm) opened issue at [2021-06-18 14:39](https://github.com/mattduck/gh2md/issues/18):
