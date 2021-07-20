@@ -1,17 +1,19 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#20 PR](https://github.com/mattduck/gh2md/pull/20) `open`: Return token after it's read. Fixes #19
+# [\#20 PR](https://github.com/mattduck/gh2md/pull/20) `closed`: Return token after it's read. Fixes #19
 
 #### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) opened issue at [2021-07-17 07:57](https://github.com/mattduck/gh2md/pull/20):
 
 
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-07-19 06:59](https://github.com/mattduck/gh2md/pull/20#issuecomment-882292350):
 
+Damn - this repo needs a few more tests! Appreciate the fix, thanks. Will release a new version now.
 
 
 -------------------------------------------------------------------------------
 
-# [\#19 Issue](https://github.com/mattduck/gh2md/issues/19) `open`: GitHub token is not read from paths
+# [\#19 Issue](https://github.com/mattduck/gh2md/issues/19) `closed`: GitHub token is not read from paths
 
 #### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) opened issue at [2021-07-17 07:49](https://github.com/mattduck/gh2md/issues/19):
 
@@ -48,7 +50,13 @@ def get_environment_token():
 
 The fix would be to return the `token` after `token = f.read().strip()`.
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-07-19 07:11](https://github.com/mattduck/gh2md/issues/19#issuecomment-882300773):
 
+Thanks for this - have merged the associated PR and released a new version 1.0.4.
+
+#### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) commented at [2021-07-19 12:20](https://github.com/mattduck/gh2md/issues/19#issuecomment-882503256):
+
+@mattduck Awesome, thank you!
 
 
 -------------------------------------------------------------------------------
