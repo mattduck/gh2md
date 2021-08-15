@@ -257,6 +257,10 @@ There is a new 1.0.1 release of gh2md that includes this feature. (It also remov
 
 Hopefully this will be useful for somebody in the future. I'm going to close this as done but LMK if any feedback/issues.
 
+#### <img src="https://avatars.githubusercontent.com/u/12011070?v=4" width="50">[Guilherme Prokisch](https://github.com/guilhermeprokisch) commented at [2021-08-14 03:26](https://github.com/mattduck/gh2md/issues/13#issuecomment-898809516):
+
+Thanks, @mattduck!
+
 
 -------------------------------------------------------------------------------
 
