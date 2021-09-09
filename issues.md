@@ -1,5 +1,20 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#21 Issue](https://github.com/mattduck/gh2md/issues/21) `open`: Handle rate limiting
+
+#### <img src="https://avatars.githubusercontent.com/u/14930?v=4" width="50">[Andrew Dunkman (he/him)](https://github.com/adunkman) opened issue at [2021-09-08 15:10](https://github.com/mattduck/gh2md/issues/21):
+
+I’m attempting to use `gh2md` to export 8,000+ issues in a GitHub Action, and as you can imagine, I’m hitting [GitHub’s rate limits](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting).
+
+I don’t think there’s an easy fix here, but wanted to open an issue to discuss if anyone sees a potential path forward. 
+
+The only potential solution I see is to monitor API rate limiting and slow down requests, but I can imagine that would get pretty tricky. 
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#20 PR](https://github.com/mattduck/gh2md/pull/20) `closed`: Return token after it's read. Fixes #19
 
 #### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) opened issue at [2021-07-17 07:57](https://github.com/mattduck/gh2md/pull/20):
