@@ -10,7 +10,21 @@ I don’t think there’s an easy fix here, but wanted to open an issue to discu
 
 The only potential solution I see is to monitor API rate limiting and slow down requests, but I can imagine that would get pretty tricky. 
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-09-12 16:54](https://github.com/mattduck/gh2md/issues/21#issuecomment-917671626):
 
+Hey @adunkman, I see a couple of things we can do here:
+
+- Right now we're iterating over the issues and making an additional request per issue to fetch the comments, which gets through the rate limit very quickly. It looks like it's possible to instead just fetch all the comments for the repository and then correlate them in the program (https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository), which would reduce the number of requests significantly.
+
+- We could also add support for the `since` parameter - so that rather than doing a full sync every run, you can incrementally store the issues that have changed since the last run, or you can just grab issues that have changed in the last N days.
+
+- I can also look into the Github GraphQL API - curious if that provides a way to fetch the data more efficiently.
+
+- Those changes _might_ be enough. If you have 8000 issues each with 10 comments and we're limited to 100 issues/comments per page, it'll be 80 requests for the issues and 800 requests for the comments. If the GITHUB_TOKEN rate limit is 1000/hour, then you might just be able to do it. And it should definitely be possible authenticating via Oauth (5000/hour).
+
+- Regardless, we could catch rate limit exceptions and wait in the program. It looks like Github provides a reset timestamp, so we could wait until then before executing the next request. This should probably be an opt-in feature so that the program doesn't unexpectedly take hours to run. If the number of issues is particularly large there could still be problems running via Github actions - super quick searching for the maximum job timeout suggests it can only run for 6 hours?
+
+I won't be able to look into this further this coming week, but I have some time off work next week so I should be able to get a few hours to work on it. Let me know if you think these changes sound viable. I've been meaning to look into the one-request-per-issue problem for a while so will at least fix that.
 
 
 -------------------------------------------------------------------------------
