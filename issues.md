@@ -26,6 +26,84 @@ Hey @adunkman, I see a couple of things we can do here:
 
 I won't be able to look into this further this coming week, but I have some time off work next week so I should be able to get a few hours to work on it. Let me know if you think these changes sound viable. I've been meaning to look into the one-request-per-issue problem for a while so will at least fix that.
 
+#### <img src="https://avatars.githubusercontent.com/u/14930?v=4" width="50">[Andrew Dunkman (he/him)](https://github.com/adunkman) commented at [2021-09-22 16:08](https://github.com/mattduck/gh2md/issues/21#issuecomment-925072823):
+
+I know things are stressful in the world these days, and if you’re taking time off, I hope you can use it to relax and recharge. If that’s this project, great! Otherwise, it’s on anyone to write up a PR; not your responsibility. 😄 
+
+I ended up writing a quick app to handle this because the GraphQL endpoint was _significantly_ less expensive — for my needs, each query returns 100 issues with all of their attached metadata (comments, authors, labels, etc), and consumed 2 request tokens ([the GraphQL API uses a token calculation](https://docs.github.com/en/graphql/overview/resource-limitations) to enforce resource limits). 
+
+For GitHub Actions, the rate limit is 1,000 REST requests or 1,000 GraphQL tokens, so that meant I was _well_ within the resource limits by switching to GraphQL — 2 tokens per GraphQL query handles repositories with up to 50,000 issues.
+
+Here’s the GraphQL query I used: 
+
+```graphql
+query ($owner: String!, $repo: String!, $nextPageCursor: String) {
+  rateLimit {
+    limit
+    cost
+    remaining
+    resetAt
+  }
+  repository(owner: $owner, name: $repo) {
+    issues(first: 100, after: $nextPageCursor, orderBy: { field: CREATED_AT, direction: ASC }) {
+      totalCount
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      nodes {
+        number
+        url
+        title
+        body
+        closed
+        closedAt
+        createdAt
+        author {
+          login,
+          url
+        }
+        labels(first: 100) {
+          totalCount
+          nodes {
+            name
+            url
+          }
+        }
+        comments(first: 100) {
+          totalCount
+          nodes {
+            body
+            createdAt
+            author {
+              login,
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+… and I called using TypeScript iteratively: 
+
+```ts
+const { repository, rateLimit } = await octokit.graphql(ISSUE_BATCH_QUERY, {
+  owner,
+  repo,
+  nextPageCursor,
+}) as IssueQueryResponse;
+
+hasNextPage = repository.issues.pageInfo.hasNextPage;
+nextPageCursor = repository.issues.pageInfo.endCursor;
+```
+
+#### <img src="https://avatars.githubusercontent.com/u/14930?v=4" width="50">[Andrew Dunkman (he/him)](https://github.com/adunkman) commented at [2021-09-22 16:10](https://github.com/mattduck/gh2md/issues/21#issuecomment-925074417):
+
+Oh — and I’m a GraphQL newbie, so I don’t really know if I wrote that query "the right way" — if anyone has a better suggestion, I’m all ears!
+
 
 -------------------------------------------------------------------------------
 
