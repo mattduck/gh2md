@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.0.0
+
+- Migrate to the Github v4 GraphQL API. This provides signficantly better
+  performance for our use-case compared to the rest API, and it makes
+  significantly better use of rate limits. This should make the script much more
+  viable for medium-large projects.
+
+  The CLI interface and markdown templates stay the same, but there could be
+  some changes in how the data is formatted. For example, in the v4 API pull
+  requests will have a `merged` state, whereas previously they were only marked
+  as `open` and `closed`.
+
+- Drop dependencies on pygithub and retrying. Add dependencies on requests and
+  python-dateutil.
+
+
 ## 1.0.3
 
 - Fix issue where logging the authenticated user errors if the token isn't tied
