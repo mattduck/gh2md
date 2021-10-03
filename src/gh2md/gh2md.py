@@ -563,13 +563,13 @@ class GithubAPI:
             try:
                 issues.append(self._parse_issue_or_pull_request(i, is_pull_request=False))
             except Exception:
-                logger.warning("Error parsing issue, skipping: {i}")
+                logger.warning(f"Error parsing issue, skipping: {i}")
 
         for pr in repo_data["pullRequests"]["nodes"]:
             try:
                 prs.append(self._parse_issue_or_pull_request(pr, is_pull_request=True))
             except Exception:
-                logger.warning("Error parsing pull request, skipping: {pr}")
+                logger.warning(f"Error parsing pull request, skipping: {pr}")
 
         return GithubRepo(
             full_name=repo_data["nameWithOwner"],
