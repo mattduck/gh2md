@@ -1,38 +1,56 @@
 import datetime
 import os
-import pytest
-import mock
+import sys
 import tempfile
 import time
-import sys
 from typing import List
+
+import mock
+import pytest
 
 from gh2md import gh2md
 
 
 @pytest.fixture(scope="session")
 def gh():
-    return gh2md.github_login()
+    return gh2md.GithubAPI(gh2md.get_environment_token())
 
 
-def test_pygithub_login(gh):
-    assert gh.get_user().name
-
-
-def test_get_repo_returns_pygithub_repo(gh):
-    repo = gh2md.get_github_repo(gh, "mattduck/dotfiles")
-    assert repo.html_url == "https://github.com/mattduck/dotfiles"
+def test_fetch_and_decode_repository(gh):
+    repo = gh.fetch_and_decode_repository(
+        "mattduck/dotfiles",
+        include_issues=True,
+        include_prs=True,
+        include_closed_issues=True,
+        include_closed_prs=True,
+    )
+    assert repo.url == "https://github.com/mattduck/dotfiles"
+    assert repo.full_name == "mattduck/dotfiles"
+    assert repo.issues
 
 
 def test_processing_for_single_issue_produces_result():
-    issue = mock.MagicMock()
-    issue.created_at = datetime.datetime.now()
-    issue.number = 5
-    issue.state = "closed"
-    slug, content = gh2md.process_issue_to_markdown(issue)
+    issue = gh2md.GithubIssue(
+        pull_request=False,
+        created_at=datetime.datetime.now(),
+        number=5,
+        state="closed",
+        user_login="mattduck",
+        user_url="https://example.com",
+        user_avatar_url="https://example.com/avatar",
+        body="test body",
+        comments=[],
+        label_names=[],
+        title="test title",
+        url="https://example.com/issue",
+    )
+    slug, content = gh2md.format_issue_to_markdown(issue)
     assert content
-    assert "5" in slug
-    assert "closed" in slug
+    assert str(issue.number) in slug
+    assert issue.state in content
+    assert issue.title in content
+    assert issue.url in content
+    assert issue.body in content
 
 
 def test_script_from_entry_point_with_small_repo():
@@ -65,19 +83,24 @@ def _run_once(args: List[str]):
         os.remove(path)
 
 
-def test_script_idempotent_flag_makes_two_runs_identical():
+def test_script_idempotent_flag_and_pagination_produce_identical_runs(monkeypatch):
     # Flaky test: this is subject to the race condition that the issues actually
     # do change (or that time doesn't change). That happens very rarely on this
     # repo though, so although it's not good practice I'm OK with the risk.
-    output1 = _run_once(["gh2md", "mattduck/dotfiles"])
+    output1 = _run_once(["gh2md", "mattduck/gh2md"])
     time.sleep(1)
-    output2 = _run_once(["gh2md", "mattduck/dotfiles"])
+    output2 = _run_once(["gh2md", "mattduck/gh2md"])
     assert output1 != output2
 
-    output3 = _run_once(["gh2md", "--idempotent", "mattduck/dotfiles"])
+    output3 = _run_once(["gh2md", "--idempotent", "mattduck/gh2md"])
     time.sleep(1)
-    output4 = _run_once(["gh2md", "-I", "mattduck/dotfiles"])
+    output4 = _run_once(["gh2md", "-I", "mattduck/gh2md"])
     assert output3 == output4
+
+    time.sleep(1)
+    monkeypatch.setenv("_GH2MD_PER_PAGE_OVERRIDE", "2")
+    output5 = _run_once(["gh2md", "-I", "mattduck/gh2md"])
+    assert output5 == output4
 
 
 def test_script_runs_with_multiple_files_flag():
