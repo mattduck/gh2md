@@ -1,17 +1,126 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#20 PR](https://github.com/mattduck/gh2md/pull/20) `open`: Return token after it's read. Fixes #19
+# [\#21 Issue](https://github.com/mattduck/gh2md/issues/21) `open`: Handle rate limiting
+
+#### <img src="https://avatars.githubusercontent.com/u/14930?v=4" width="50">[Andrew Dunkman (he/him)](https://github.com/adunkman) opened issue at [2021-09-08 15:10](https://github.com/mattduck/gh2md/issues/21):
+
+I’m attempting to use `gh2md` to export 8,000+ issues in a GitHub Action, and as you can imagine, I’m hitting [GitHub’s rate limits](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting).
+
+I don’t think there’s an easy fix here, but wanted to open an issue to discuss if anyone sees a potential path forward. 
+
+The only potential solution I see is to monitor API rate limiting and slow down requests, but I can imagine that would get pretty tricky. 
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-09-12 16:54](https://github.com/mattduck/gh2md/issues/21#issuecomment-917671626):
+
+Hey @adunkman, I see a couple of things we can do here:
+
+- Right now we're iterating over the issues and making an additional request per issue to fetch the comments, which gets through the rate limit very quickly. It looks like it's possible to instead just fetch all the comments for the repository and then correlate them in the program (https://docs.github.com/en/rest/reference/issues#list-issue-comments-for-a-repository), which would reduce the number of requests significantly.
+
+- We could also add support for the `since` parameter - so that rather than doing a full sync every run, you can incrementally store the issues that have changed since the last run, or you can just grab issues that have changed in the last N days.
+
+- I can also look into the Github GraphQL API - curious if that provides a way to fetch the data more efficiently.
+
+- Those changes _might_ be enough. If you have 8000 issues each with 10 comments and we're limited to 100 issues/comments per page, it'll be 80 requests for the issues and 800 requests for the comments. If the GITHUB_TOKEN rate limit is 1000/hour, then you might just be able to do it. And it should definitely be possible authenticating via Oauth (5000/hour).
+
+- Regardless, we could catch rate limit exceptions and wait in the program. It looks like Github provides a reset timestamp, so we could wait until then before executing the next request. This should probably be an opt-in feature so that the program doesn't unexpectedly take hours to run. If the number of issues is particularly large there could still be problems running via Github actions - super quick searching for the maximum job timeout suggests it can only run for 6 hours?
+
+I won't be able to look into this further this coming week, but I have some time off work next week so I should be able to get a few hours to work on it. Let me know if you think these changes sound viable. I've been meaning to look into the one-request-per-issue problem for a while so will at least fix that.
+
+#### <img src="https://avatars.githubusercontent.com/u/14930?v=4" width="50">[Andrew Dunkman (he/him)](https://github.com/adunkman) commented at [2021-09-22 16:08](https://github.com/mattduck/gh2md/issues/21#issuecomment-925072823):
+
+I know things are stressful in the world these days, and if you’re taking time off, I hope you can use it to relax and recharge. If that’s this project, great! Otherwise, it’s on anyone to write up a PR; not your responsibility. 😄 
+
+I ended up writing a quick app to handle this because the GraphQL endpoint was _significantly_ less expensive — for my needs, each query returns 100 issues with all of their attached metadata (comments, authors, labels, etc), and consumed 2 request tokens ([the GraphQL API uses a token calculation](https://docs.github.com/en/graphql/overview/resource-limitations) to enforce resource limits). 
+
+For GitHub Actions, the rate limit is 1,000 REST requests or 1,000 GraphQL tokens, so that meant I was _well_ within the resource limits by switching to GraphQL — 2 tokens per GraphQL query handles repositories with up to 50,000 issues.
+
+Here’s the GraphQL query I used: 
+
+```graphql
+query ($owner: String!, $repo: String!, $nextPageCursor: String) {
+  rateLimit {
+    limit
+    cost
+    remaining
+    resetAt
+  }
+  repository(owner: $owner, name: $repo) {
+    issues(first: 100, after: $nextPageCursor, orderBy: { field: CREATED_AT, direction: ASC }) {
+      totalCount
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      nodes {
+        number
+        url
+        title
+        body
+        closed
+        closedAt
+        createdAt
+        author {
+          login,
+          url
+        }
+        labels(first: 100) {
+          totalCount
+          nodes {
+            name
+            url
+          }
+        }
+        comments(first: 100) {
+          totalCount
+          nodes {
+            body
+            createdAt
+            author {
+              login,
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+… and I called using TypeScript iteratively: 
+
+```ts
+const { repository, rateLimit } = await octokit.graphql(ISSUE_BATCH_QUERY, {
+  owner,
+  repo,
+  nextPageCursor,
+}) as IssueQueryResponse;
+
+hasNextPage = repository.issues.pageInfo.hasNextPage;
+nextPageCursor = repository.issues.pageInfo.endCursor;
+```
+
+#### <img src="https://avatars.githubusercontent.com/u/14930?v=4" width="50">[Andrew Dunkman (he/him)](https://github.com/adunkman) commented at [2021-09-22 16:10](https://github.com/mattduck/gh2md/issues/21#issuecomment-925074417):
+
+Oh — and I’m a GraphQL newbie, so I don’t really know if I wrote that query "the right way" — if anyone has a better suggestion, I’m all ears!
+
+
+-------------------------------------------------------------------------------
+
+# [\#20 PR](https://github.com/mattduck/gh2md/pull/20) `closed`: Return token after it's read. Fixes #19
 
 #### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) opened issue at [2021-07-17 07:57](https://github.com/mattduck/gh2md/pull/20):
 
 
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-07-19 06:59](https://github.com/mattduck/gh2md/pull/20#issuecomment-882292350):
 
+Damn - this repo needs a few more tests! Appreciate the fix, thanks. Will release a new version now.
 
 
 -------------------------------------------------------------------------------
 
-# [\#19 Issue](https://github.com/mattduck/gh2md/issues/19) `open`: GitHub token is not read from paths
+# [\#19 Issue](https://github.com/mattduck/gh2md/issues/19) `closed`: GitHub token is not read from paths
 
 #### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) opened issue at [2021-07-17 07:49](https://github.com/mattduck/gh2md/issues/19):
 
@@ -48,7 +157,13 @@ def get_environment_token():
 
 The fix would be to return the `token` after `token = f.read().strip()`.
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?v=4" width="50">[Matt Duck](https://github.com/mattduck) commented at [2021-07-19 07:11](https://github.com/mattduck/gh2md/issues/19#issuecomment-882300773):
 
+Thanks for this - have merged the associated PR and released a new version 1.0.4.
+
+#### <img src="https://avatars.githubusercontent.com/u/3582096?v=4" width="50">[Amal Murali](https://github.com/amalmurali47) commented at [2021-07-19 12:20](https://github.com/mattduck/gh2md/issues/19#issuecomment-882503256):
+
+@mattduck Awesome, thank you!
 
 
 -------------------------------------------------------------------------------
@@ -248,6 +363,10 @@ Now if you pass the argument `--multiple-files`, your output path will be treate
 There is a new 1.0.1 release of gh2md that includes this feature. (It also removes support for user+password login as Github dropped supporting this a while back).
 
 Hopefully this will be useful for somebody in the future. I'm going to close this as done but LMK if any feedback/issues.
+
+#### <img src="https://avatars.githubusercontent.com/u/12011070?v=4" width="50">[Guilherme Prokisch](https://github.com/guilhermeprokisch) commented at [2021-08-14 03:26](https://github.com/mattduck/gh2md/issues/13#issuecomment-898809516):
+
+Thanks, @mattduck!
 
 
 -------------------------------------------------------------------------------
