@@ -186,6 +186,7 @@ class GithubAPI:
               filterBy: { states: $issueStates }
               orderBy: { field: CREATED_AT, direction: DESC }
             ) {
+              totalCount
               pageInfo {
                 endCursor
                 hasNextPage
@@ -210,6 +211,7 @@ class GithubAPI:
                   }
                 }
                 comments(first: $issuePerPage) {
+                  totalCount
                   pageInfo {
                     endCursor
                     hasNextPage
@@ -233,6 +235,7 @@ class GithubAPI:
               states: $pullRequestStates
               orderBy: { field: CREATED_AT, direction: DESC }
             ) {
+              totalCount
               pageInfo {
                 endCursor
                 hasNextPage
@@ -257,6 +260,7 @@ class GithubAPI:
                   }
                 }
                 comments(first: $pullRequestPerPage) {
+                  totalCount
                   pageInfo {
                     endCursor
                     hasNextPage
@@ -289,6 +293,7 @@ class GithubAPI:
           node(id: $id) {
             ... on Issue {
               comments(first: $perPage, after: $commentCursor) {
+                totalCount
                 pageInfo {
                   endCursor
                   hasNextPage
@@ -307,6 +312,7 @@ class GithubAPI:
             }
             ... on PullRequest {
               comments(first: $perPage, after: $commentCursor) {
+                totalCount
                 pageInfo {
                   endCursor
                   hasNextPage
@@ -328,7 +334,8 @@ class GithubAPI:
     """
 
     def __post_init__(self):
-        self._session = None
+        self._session = None  # Requests session
+        self._total_pages_fetched = 0
         if not self.token:
             logger.warning("No token found. Access to private repositories will fail")
 
@@ -359,6 +366,7 @@ class GithubAPI:
                 )
                 resp.raise_for_status()
                 err = False
+                self._total_pages_fetched += 1
                 break
             except Exception:  # Could catch cases that aren't retryable, but I don't think it's too annoying
                 err = True
@@ -429,9 +437,6 @@ class GithubAPI:
         while has_issue_page or has_pr_page:
             try:
                 # Make the request
-                logger.info(
-                    f"Fetching repo page. Issue cursor: {issue_cursor or '-'}, PR cursor: {pr_cursor or '-'}"
-                )
                 if issue_cursor:
                     variables["issueNextPageCursor"] = issue_cursor
                 if pr_cursor:
@@ -457,6 +462,10 @@ class GithubAPI:
                         has_pr_page = prs["pageInfo"]["hasNextPage"]
                     else:
                         pr_cursor, has_pr_page = None, False
+
+                    logger.info(
+                        f"Fetched repo page. total_requests_made={self._total_pages_fetched}, repo_issue_count={issues['totalCount']}, repo_pr_count={prs['totalCount']} issue_cursor={issue_cursor or '-'} pr_cursor={pr_cursor or '-'}"
+                    )
             except (SystemExit, KeyboardInterrupt):
                 logger.warning("Interrupted, will convert retrieved data and exit")
                 was_interrupted = True
@@ -502,9 +511,6 @@ class GithubAPI:
             )
             while has_page:
                 try:
-                    logger.info(
-                        f"Fetching page for additional comments. Cursor: {comment_cursor}"
-                    )
                     variables = {
                         "id": original_node["id"],
                         "perPage": self.per_page,
@@ -523,8 +529,13 @@ class GithubAPI:
                         else:
                             comment_cursor, has_page = None, False
 
+                        logger.info(
+                            f"Fetched page for additional comments. total_requests_made={self._total_pages_fetched}, issue_comment_count={comments['totalCount']}, comment_cusor={comment_cursor}"
+                        )
+
                         # Merge these comments to the original data
                         original_node["comments"]["nodes"].extend(comments["nodes"])
+
                 except (SystemExit, KeyboardInterrupt):
                     logger.warning("Interrupted, will convert retrieved data and exit")
                     break
