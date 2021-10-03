@@ -561,15 +561,19 @@ class GithubAPI:
         prs = []
         for i in repo_data["issues"]["nodes"]:
             try:
-                issues.append(self._parse_issue_or_pull_request(i, is_pull_request=False))
+                issues.append(
+                    self._parse_issue_or_pull_request(i, is_pull_request=False)
+                )
             except Exception:
-                logger.warning(f"Error parsing issue, skipping: {i}")
+                logger.warning(f"Error parsing issue, skipping: {i}", exc_info=True)
 
         for pr in repo_data["pullRequests"]["nodes"]:
             try:
                 prs.append(self._parse_issue_or_pull_request(pr, is_pull_request=True))
             except Exception:
-                logger.warning(f"Error parsing pull request, skipping: {pr}")
+                logger.warning(
+                    f"Error parsing pull request, skipping: {pr}", exc_info=True
+                )
 
         return GithubRepo(
             full_name=repo_data["nameWithOwner"],
@@ -590,19 +594,25 @@ class GithubAPI:
                     GithubComment(
                         created_at=dateutil_parse(i["createdAt"]),
                         body=c["body"],
-                        user_login=c["author"]["login"] if c.get("author") else "(unknown)",
+                        user_login=c["author"]["login"]
+                        if c.get("author")
+                        else "(unknown)",
                         user_url=c["author"]["url"] if c.get("author") else "(unknown)",
-                        user_avatar_url=c["author"]["avatarUrl"] if c.get("author") else "(unknown)",
+                        user_avatar_url=c["author"]["avatarUrl"]
+                        if c.get("author")
+                        else "(unknown)",
                         url=c["url"],
                     )
                 )
             except Exception:
-                logger.warning(f"Error parsing comment, skipping: {c}")
+                logger.warning(f"Error parsing comment, skipping: {c}", exc_info=True)
         return GithubIssue(
             pull_request=is_pull_request,
             user_login=i["author"]["login"] if i.get("author") else "(unknown)",
             user_url=i["author"]["url"] if i.get("author") else "(unknown)",
-            user_avatar_url=i["author"]["avatarUrl"] if i.get("author") else "(unknown)",
+            user_avatar_url=i["author"]["avatarUrl"]
+            if i.get("author")
+            else "(unknown)",
             state=i["state"].lower(),
             body=i["body"],
             number=i["number"],
