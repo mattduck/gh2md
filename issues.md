@@ -1,5 +1,21 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#25 Issue](https://github.com/mattduck/gh2md/issues/25) `open`: gh2.md 
+
+#### <img src="https://avatars.githubusercontent.com/u/85598201?u=4d01d538be4f09c8a85a3ccbda7b75b6b363b8bf&v=4" width="50">[gifhuppp](https://github.com/gifhuppp) opened issue at [2021-12-03 08:35](https://github.com/mattduck/gh2md/issues/25):
+
+# log:
+...
+Writing to file: issues.md
+Github API rate limit: RateLimit(core=Rate(reset=2020-09-17 02:50:05, remaining=977, limit=1000))
+Done.
+
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#24 Issue](https://github.com/mattduck/gh2md/issues/24) `open`: Support `since` parameter
 
 #### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2021-10-03 14:44](https://github.com/mattduck/gh2md/issues/24):
