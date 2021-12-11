@@ -2,7 +2,7 @@ Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
 # [\#25 Issue](https://github.com/mattduck/gh2md/issues/25) `open`: gh2.md 
 
-#### <img src="https://avatars.githubusercontent.com/u/85598201?u=4d01d538be4f09c8a85a3ccbda7b75b6b363b8bf&v=4" width="50">[gifhuppp](https://github.com/gifhuppp) opened issue at [2021-12-03 08:35](https://github.com/mattduck/gh2md/issues/25):
+#### <img src="https://avatars.githubusercontent.com/u/85598201?u=758cee632b0dd7923f7c80911547585258dd4fa7&v=4" width="50">[gifhuppp](https://github.com/gifhuppp) opened issue at [2021-12-03 08:35](https://github.com/mattduck/gh2md/issues/25):
 
 # log:
 ...
