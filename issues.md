@@ -1,5 +1,46 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#26 Issue](https://github.com/mattduck/gh2md/issues/26) `open`: Can't fetch issues from public repo
+
+#### <img src="https://avatars.githubusercontent.com/u/581023?u=2fa91b813ce6c1161a2337869a3ee0b3cc7ab755&v=4" width="50">[kirillt](https://github.com/kirillt) opened issue at [2022-03-29 07:40](https://github.com/mattduck/gh2md/issues/26):
+
+```
+[kirill@lenovo tmp]$ gh2md ethereum/EIPs --no-prs --multiple-files eips/
+[2022-03-29 10:39:54,161] [INFO] Looking for token in file: /home/kirill/.config/gh2md/token
+[2022-03-29 10:39:54,161] [INFO] Looking for token in file: /home/kirill/.github-token
+[2022-03-29 10:39:54,161] [WARNING] No token found. Access to private repositories will fail
+[2022-03-29 10:39:54,161] [INFO] Initiating fetch for repo: ethereum/EIPs
+[2022-03-29 10:39:54,162] [WARNING] Exception response from request attempt 1
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/gh2md/gh2md.py", line 364, in _post
+    resp = self._request_session().post(
+  File "/usr/local/lib/python3.8/site-packages/gh2md/gh2md.py", line 350, in _request_session
+    self._session.headers.update({"Authorization": "token " + self.token})
+TypeError: can only concatenate str (not "NoneType") to str
+[2022-03-29 10:39:57,592] [WARNING] Exception response from request attempt 2
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/gh2md/gh2md.py", line 367, in _post
+    resp.raise_for_status()
+  File "/usr/local/lib/python3.8/site-packages/requests/models.py", line 960, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.github.com/graphql
+[2022-03-29 10:40:00,595] [ERROR] Request failed multiple retries, returning empty data
+[2022-03-29 10:40:00,595] [ERROR] Repository data missing in response, can't proceed
+Traceback (most recent call last):
+  File "/usr/local/bin/gh2md", line 8, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python3.8/site-packages/gh2md/gh2md.py", line 791, in main
+    repo = gh.fetch_and_decode_repository(
+  File "/usr/local/lib/python3.8/site-packages/gh2md/gh2md.py", line 566, in fetch_and_decode_repository
+    repo_data = response["data"]["repository"]
+KeyError: 'data'
+```
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#25 Issue](https://github.com/mattduck/gh2md/issues/25) `open`: gh2.md 
 
 #### <img src="https://avatars.githubusercontent.com/u/85598201?u=758cee632b0dd7923f7c80911547585258dd4fa7&v=4" width="50">[gifhuppp](https://github.com/gifhuppp) opened issue at [2021-12-03 08:35](https://github.com/mattduck/gh2md/issues/25):
