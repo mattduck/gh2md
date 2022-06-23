@@ -36,7 +36,11 @@ Traceback (most recent call last):
 KeyError: 'data'
 ```
 
+#### <img src="https://avatars.githubusercontent.com/u/1917293?v=4" width="50">[ronna](https://github.com/ronna) commented at [2022-03-29 07:40](https://github.com/mattduck/gh2md/issues/26#issuecomment-1163225851):
 
+Hi @kirillt 
+
+You need to set the Github token even if you just want to pull public repos.
 
 
 -------------------------------------------------------------------------------
