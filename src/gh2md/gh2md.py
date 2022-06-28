@@ -603,7 +603,7 @@ class GithubAPI:
             try:
                 comments.append(
                     GithubComment(
-                        created_at=dateutil_parse(i["createdAt"]),
+                        created_at=dateutil_parse(c["createdAt"]),
                         body=c["body"],
                         user_login=c["author"]["login"]
                         if c.get("author")
