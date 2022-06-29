@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 (2022-06-29)
+
+- Fix bug where comments would show the timestamp of the issue instead of the
+  timestamp of the comment. Thanks @galenhuntington.
+
+
 ## 2.0.0
 
 - Migrate to the Github v4 GraphQL API. This provides signficantly better
