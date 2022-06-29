@@ -1,5 +1,16 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#27 PR](https://github.com/mattduck/gh2md/pull/27) `open`: Fix issue comment createdAt.
+
+#### <img src="https://avatars.githubusercontent.com/u/1851962?u=403b8e194c60fcd4b9c6e5b194a5f717e49f93f3&v=4" width="50">[galenhuntington](https://github.com/galenhuntington) opened issue at [2022-06-28 22:15](https://github.com/mattduck/gh2md/pull/27):
+
+I was having a problem where all comments on an issue had the same timestamps.  So far as I can tell, this is just a simple (one-letter) bug.
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#26 Issue](https://github.com/mattduck/gh2md/issues/26) `open`: Can't fetch issues from public repo
 
 #### <img src="https://avatars.githubusercontent.com/u/581023?u=2fa91b813ce6c1161a2337869a3ee0b3cc7ab755&v=4" width="50">[kirillt](https://github.com/kirillt) opened issue at [2022-03-29 07:40](https://github.com/mattduck/gh2md/issues/26):
