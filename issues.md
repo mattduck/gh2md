@@ -1,6 +1,6 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#28 Issue](https://github.com/mattduck/gh2md/issues/28) `open`: Images not downloaded in the markdown
+# [\#28 Issue](https://github.com/mattduck/gh2md/issues/28) `closed`: Images not downloaded in the markdown
 
 #### <img src="https://avatars.githubusercontent.com/u/12879472?v=4" width="50">[working12](https://github.com/working12) opened issue at [2022-06-30 09:26](https://github.com/mattduck/gh2md/issues/28):
 
