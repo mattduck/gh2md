@@ -41,10 +41,11 @@ Run export for public repository ``sarabander/sicp``, using no authentication an
 
     gh2md sarabander/sicp sicp-issues --multiple-files --no-closed-prs
 
-Full help::
+ Full help::
 
     usage: gh2md [-h] [--multiple-files] [-I] [--no-prs] [--no-closed-prs]
                 [--no-issues] [--no-closed-issues]
+                [--file-extension FILE_EXTENSION]
                 repo output_path
 
     Export Github repository issues, pull requests and comments to markdown files:
@@ -64,22 +65,24 @@ Full help::
     using the --no... flags, eg. --no-closed-prs, or --no-prs.
 
     positional arguments:
-    repo                Github repo to export, in format "owner/repo_name".
-    output_path         Path to write exported issues.
+    repo                  Github repo to export, in format "owner/repo_name".
+    output_path           Path to write exported issues.
 
     optional arguments:
-    -h, --help          show this help message and exit
-    --multiple-files    Instead of one file, treat the given path as a
-                        directory, and create one file per issue, using a format
-                        '{created_at}.{issue_number}.{issue_type}.{issue_state}.
-                        md'.
-    -I, --idempotent    Remove non-deterministic values like timestamps. Two
-                        runs of gh2md will always produce the same result, as
-                        long as the Github data has not changed.
-    --no-prs            Don't include pull requests in the export.
-    --no-closed-prs     Don't include closed pull requests in the export.
-    --no-issues         Don't include issues in the export.
-    --no-closed-issues  Don't include closed issues in the export.
+    -h, --help            show this help message and exit
+    --multiple-files      Instead of one file, treat the given path as a
+                            directory, and create one file per issue, using a
+                            format '{created_at}.{issue_number}.{issue_type}.{issu
+                            e_state}{file_extension}'.
+    -I, --idempotent      Remove non-deterministic values like timestamps. Two
+                            runs of gh2md will always produce the same result, as
+                            long as the Github data has not changed.
+    --no-prs              Don't include pull requests in the export.
+    --no-closed-prs       Don't include closed pull requests in the export.
+    --no-issues           Don't include issues in the export.
+    --no-closed-issues    Don't include closed issues in the export.
+    --file-extension FILE_EXTENSION
+                            File extension for output files. Default is '.md'.
 
 
 Install
