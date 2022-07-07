@@ -1,9 +1,16 @@
 # Changelog
 
+
+## 2.1.0 (2022-07-07)
+
+- Add `--file-extension` flag to control the file extension used with the
+  `--multiple-files` option. Authored by https://github.com/milahu.
+
+
 ## 2.0.1 (2022-06-29)
 
 - Fix bug where comments would show the timestamp of the issue instead of the
-  timestamp of the comment. Thanks @galenhuntington.
+  timestamp of the comment. Authored by https://github.com/galenhuntington.
 
 
 ## 2.0.0
