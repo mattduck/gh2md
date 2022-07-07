@@ -112,7 +112,7 @@ def parse_args(args):
     )
     parser.add_argument(
         "--multiple-files",
-        help="Instead of one file, treat the given path as a directory, and create one file per issue, using a format '{created_at}.{issue_number}.{issue_type}.{issue_state}.md'.",
+        help="Instead of one file, treat the given path as a directory, and create one file per issue, using a format '{created_at}.{issue_number}.{issue_type}.{issue_state}{file_extension}'.",
         action="store_true",
         dest="use_multiple_files",
     )
@@ -146,6 +146,14 @@ def parse_args(args):
         help="Don't include closed issues in the export.",
         action="store_false",
         dest="include_closed_issues",
+    )
+    parser.add_argument(
+        "--file-extension",
+        help="File extension for output files. Default is '.md'.",
+        default=".md",
+        type=str,
+        action="store",
+        dest="file_extension",
     )
     return parser.parse_args()
 
@@ -640,6 +648,7 @@ def export_issues_to_markdown_file(
     output_path: str,
     use_multiple_files: bool,
     is_idempotent: bool,
+    file_extension: str = ".md",
 ) -> None:
     """
     Given a GithubRepo type contained already-fetched data, convert it to markdown.
@@ -680,7 +689,7 @@ def export_issues_to_markdown_file(
         )
         for issue_slug, formatted_issue in formatted_issues.items():
             issue_file_markdown = "\n".join([formatted_issue, metadata_footnote])
-            issue_path = os.path.join(output_path, f"{issue_slug}.md")
+            issue_path = os.path.join(output_path, f"{issue_slug}{file_extension}")
             logger.info("Writing to file: {}".format(issue_path))
             with open(issue_path, "wb") as out:
                 out.write(issue_file_markdown.encode("utf-8"))
@@ -821,6 +830,7 @@ def main():
         output_path=args.output_path,
         use_multiple_files=args.use_multiple_files,
         is_idempotent=args.is_idempotent,
+        file_extension=args.file_extension,
     )
     logger.info("Done.")
 
