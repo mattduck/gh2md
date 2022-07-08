@@ -1,5 +1,95 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#30 PR](https://github.com/mattduck/gh2md/pull/30) `merged`: add option --file-extension
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-07 16:31](https://github.com/mattduck/gh2md/pull/30):
+
+part of #29 
+
+example use
+
+```sh
+#!/bin/sh
+set -e
+
+# get issues as gfm files
+gh2md milahu/random issues/ --multiple-files --file-extension .gfm
+
+# convert to md files
+find issues/ -name '*.gfm' -type f | while read f
+do
+  b="${f%.*}"
+  #mv -v "$b.md" "$b.gfm" # no longer needed with: --file-extension .gfm
+  pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$b.gfm" -o "$b.md"
+done
+
+# delete gfm files
+find issues/ -name '*.gfm' -type f | xargs rm
+```
+
+
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-07 17:25](https://github.com/mattduck/gh2md/pull/30#issuecomment-1177965843):
+
+@milahu thanks for this. Agree with your comment on the issue re: pandoc. Maybe gfm would have been a more sensible default at the start, but it makes sense to stick with md now for backwards compatibility. PR looks good - I'll merge it now and try to get a release out later.
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-07 20:11](https://github.com/mattduck/gh2md/pull/30#issuecomment-1178170467):
+
+@milahu released as 2.1.0. Thanks again!
+
+
+-------------------------------------------------------------------------------
+
+# [\#29 Issue](https://github.com/mattduck/gh2md/issues/29) `closed`: convert between markdown flavors
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-07 15:35](https://github.com/mattduck/gh2md/issues/29):
+
+github issues use a different markdown flavor than github tree
+
+mostly: line breaks
+
+github issues: hard linebreaks (github flavored markdown, GFM)
+github tree: soft linebreaks (traditional markdown)
+
+**details**
+
+[Github markdown that respects newlines](https://stackoverflow.com/questions/51049503/github-markdown-that-respects-newlines)
+[Re-add soft line breaks to GitHub-flavored-markdown](https://github.com/github-community/community/discussions/10981)
+[Advanced post option to override markdown linebreak setting](https://meta.discourse.org/t/advanced-post-option-to-override-markdown-linebreak-setting/81722)
+
+
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) commented at [2022-07-07 16:05](https://github.com/mattduck/gh2md/issues/29#issuecomment-1177857611):
+
+closing: out of scope
+
+this is a job for ...
+
+pandoc: convert from github flavored markdown to traditional markdown
+
+```
+pandoc -f gfm+hard_line_breaks -t markdown_strict input.md -o output.md
+```
+
+```sh
+find issues/ -type f | while read f
+do
+  b="${f%.*}"
+  mv -v "$b.md" "$b.gfm"
+  pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$b.gfm" -o "$b.md"
+done
+```
+
+ideally gh2md would produce `*.gfm` files
+
+**details**
+
+[pandoc manual: Markdown variants](https://pandoc.org/MANUAL%202.html#markdown-variants)
+https://github.com/jgm/pandoc/issues/5195
+
+
+-------------------------------------------------------------------------------
+
 # [\#28 Issue](https://github.com/mattduck/gh2md/issues/28) `closed`: Images not downloaded in the markdown
 
 #### <img src="https://avatars.githubusercontent.com/u/12879472?v=4" width="50">[working12](https://github.com/working12) opened issue at [2022-06-30 09:26](https://github.com/mattduck/gh2md/issues/28):
