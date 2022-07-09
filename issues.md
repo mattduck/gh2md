@@ -1,5 +1,111 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#34 Issue](https://github.com/mattduck/gh2md/issues/34) `open`: add --version command
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-08 17:13](https://github.com/mattduck/gh2md/issues/34):
+
+expected:
+
+```
+gh2md --version
+
+2.1.0
+```
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+# [\#33 Issue](https://github.com/mattduck/gh2md/issues/33) `open`: with --multiple-files, generate readme.md index file
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-08 08:22](https://github.com/mattduck/gh2md/issues/33):
+
+for better navigation
+
+navigating an anonymous file list like
+
+```
+2020-09-22.1.issue.closed.md
+2020-09-22.2.issue.closed.md
+2020-11-04.3.issue.closed.md
+2021-07-31.4.issue.open.md
+2022-05-31.7.issue.open.md
+2022-06-01.8.issue.open.md
+2022-06-05.9.issue.open.md
+```
+
+is not user friendly
+
+
+
+
+
+-------------------------------------------------------------------------------
+
+# [\#32 Issue](https://github.com/mattduck/gh2md/issues/32) `closed`: allow to disable the "Generated on" footer
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-08 07:46](https://github.com/mattduck/gh2md/issues/32):
+
+... to reduce diff noise
+
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) commented at [2022-07-08 07:51](https://github.com/mattduck/gh2md/issues/32#issuecomment-1178671501):
+
+argh, sorry
+
+```py
+    if is_idempotent:
+        datestring = ""
+    else:
+        datestring = " Generated on {}.".format(
+            datetime.datetime.now().strftime("%Y.%m.%d at %H:%M:%S")
+        )
+```
+
+```py
+    parser.add_argument(
+        "-I",
+        "--idempotent",
+        help="Remove non-deterministic values like timestamps. Two runs of gh2md will always produce the same result, as long as the Github data has not changed.",
+        action="store_true",
+        dest="is_idempotent",
+    )
+```
+
+
+-------------------------------------------------------------------------------
+
+# [\#31 PR](https://github.com/mattduck/gh2md/pull/31) `open`: fix: use recursive mkdir
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-08 07:42](https://github.com/mattduck/gh2md/pull/31):
+
+error was
+
+```
+$ gh2md milahu/random archive/github/issues/ --multiple-files --file-extension .ghmd
+[2022-07-08 07:36:26,970] [INFO] Creating output directory: archive/github/issues/
+Traceback (most recent call last):
+  File "/home/runner/.local/bin/gh2md", line 8, in <module>
+    sys.exit(main())
+  File "/home/runner/.local/lib/python3.8/site-packages/gh2md/gh2md.py", line 797, in main
+    os.mkdir(args.output_path)
+FileNotFoundError: [Errno 2] No such file or directory: 'archive/github/issues/'
+```
+
+workaround:
+
+```
+mkdir -p archive/github/issues/ || true
+```
+
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#30 PR](https://github.com/mattduck/gh2md/pull/30) `merged`: add option --file-extension
 
 #### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-07 16:31](https://github.com/mattduck/gh2md/pull/30):
@@ -781,6 +887,102 @@ UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-2: ordin
 Using python3 will solve this problem, see https://github.com/0ut0fcontrol/jimmylv.github.io/commit/76a967c741a2fa6fa1080c3b631228efe1205974.
 
 I will update the example in this issue and create a  PR to modify [`issues2md.yml`](https://github.com/mattduck/gh2md/blob/master/.github/workflows/issues2md.yml) in `gh2md`.
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) commented at [2022-07-08 08:16](https://github.com/mattduck/gh2md/issues/11#issuecomment-1178695066):
+
+my version of `.github/workflows/issues2md.yml` (used [here](https://github.com/milahu/alchi))
+
+* use env `GITHUB_ACCESS_TOKEN`, option `--token` was removed
+* set flag `--multiple-files` to produce one file per issue
+* set flag `--idempotent` to reduce diff noise
+* write output files to `archive/github/issues/`
+* use pandoc to convert github-markdown to strict-markdown
+  * github issue: github-markdown
+  * github tree: strict-markdown
+  * file extension .ghmd is not-yet supported in github tree
+  * debian: pandoc 2.5 (old, bugs)
+  * nix: pandoc 2.17
+
+<details>
+
+```yaml
+# .github/workflows/issues2md.yml
+# https://github.com/mattduck/gh2md/issues/11
+
+name: Issues2Markdown
+on:
+  #push: # comment it to reduce update.
+  schedule:
+    # every day
+    #- cron: "0 0 * * *"
+    # every hour
+    - cron: "0 * * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+    - name: Backup github issues to markdown files
+      run: |
+        set -x
+        export GH2MD_OUTPUT_PATH=archive/github/issues/
+        pip3 install --user --upgrade setuptools
+        pip3 install --user gh2md
+        export PATH="$HOME/.local/bin:$PATH"
+        gh2md --version || true
+        export GITHUB_ACCESS_TOKEN=${{ secrets.GITHUB_TOKEN }}
+        # fix: RuntimeError: Output directory already exists and has files in it
+        git rm -rf $GH2MD_OUTPUT_PATH
+        # workaround for https://github.com/mattduck/gh2md/pull/31
+        mkdir -p $GH2MD_OUTPUT_PATH || true
+        gh2md $GITHUB_REPOSITORY $GH2MD_OUTPUT_PATH --idempotent --multiple-files --file-extension .ghmd
+        #sudo apt-get install pandoc # pandoc 2.5 == too old
+    # install nix to install pandoc 2.17
+    - name: install nix
+      uses: cachix/install-nix-action@master
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+    - name: convert github-markdown to strict-markdown
+      uses: workflow/nix-shell-action@main
+      with:
+        packages: pandoc
+        script: |
+          set -x
+          pandoc --version
+          find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read f
+          do
+            b="${f%.*}"
+            pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$b.ghmd" -o "$b.md"
+          done
+    - name: "cleanup: move .ghmd files to separate folder"
+      run: |
+        mkdir -p $GH2MD_OUTPUT_PATHghmd/
+        mv -v $GH2MD_OUTPUT_PATH*.ghmd $GH2MD_OUTPUT_PATHghmd/
+    - name: Commit files
+      run: |
+        git add $GH2MD_OUTPUT_PATH
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        if ! git commit -m "up $GH2MD_OUTPUT_PATH" -a
+        then
+          echo nothing to commit
+          exit 0
+        fi
+    - name: Get branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: get_branch
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ steps.get_branch.outputs.branch }}
+```
+
+</details>
 
 
 -------------------------------------------------------------------------------
