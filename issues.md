@@ -919,16 +919,24 @@ on:
     - cron: "0 * * * *"
 jobs:
   build:
+    name: Backup github issues to markdown files
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - name: Set output path
+      run: echo "GH2MD_OUTPUT_PATH=archive/github/issues/" >> $GITHUB_ENV
+    - name: Check output path
+      run: |
+        if ! [[ "$GH2MD_OUTPUT_PATH" =~ ^[a-zA-Z0-9_/.+~-]+$ ]]; then
+          echo "error: output path does not match the pattern ^[a-zA-Z0-9_/.+~-]+$"
+          exit 1
+        fi
+    - name: checkout
+      uses: actions/checkout@master
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-    - name: Backup github issues to markdown files
+    - name: Run gh2md
       run: |
-        set -x
-        export GH2MD_OUTPUT_PATH=archive/github/issues/
         pip3 install --user --upgrade setuptools
         pip3 install --user gh2md
         export PATH="$HOME/.local/bin:$PATH"
@@ -945,22 +953,22 @@ jobs:
       uses: cachix/install-nix-action@master
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - name: convert github-markdown to strict-markdown
+    - name: "pandoc: convert github-markdown to strict-markdown"
       uses: workflow/nix-shell-action@main
       with:
         packages: pandoc
         script: |
           set -x
-          pandoc --version
-          find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read f
+          pandoc --version || true
+          find $GH2MD_OUTPUT_PATH -name '*.ghmd' -type f | while read path
           do
-            b="${f%.*}"
-            pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$b.ghmd" -o "$b.md"
+            base="${path%.*}"
+            pandoc --verbose -f gfm+hard_line_breaks -t markdown_strict "$base.ghmd" -o "$base.md"
           done
     - name: "cleanup: move .ghmd files to separate folder"
       run: |
-        mkdir -p $GH2MD_OUTPUT_PATHghmd/
-        mv -v $GH2MD_OUTPUT_PATH*.ghmd $GH2MD_OUTPUT_PATHghmd/
+        mkdir -p $GH2MD_OUTPUT_PATH/ghmd/
+        mv -v $GH2MD_OUTPUT_PATH*.ghmd $GH2MD_OUTPUT_PATH/ghmd/
     - name: Commit files
       run: |
         git add $GH2MD_OUTPUT_PATH
