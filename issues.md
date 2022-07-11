@@ -1,5 +1,50 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#35 Issue](https://github.com/mattduck/gh2md/issues/35) `open`: download images to git
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-10 06:19](https://github.com/mattduck/gh2md/issues/35):
+
+currently, images have no special handling
+gh2md simply uses the original image source
+
+ideally, the user can enable image scraping
+
+* download the images to git
+* rewrite the image urls to local paths
+
+also allow special handling of "large" images
+
+* dont download, keep original url (cache the url somewhere to avoid re-downloading)
+* compress large JPEGs
+* reduce large GIFs to the first frame image
+* reduce large video files to a thumbnail image
+
+example avatar
+
+```md
+<img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">
+```
+
+<img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">
+
+example attachment
+
+```md
+<img src="https://user-images.githubusercontent.com/12958815/177718602-943af214-24be-4209-82cc-18e6fa5d04c1.jpg" title="Mephistopheles and Margaretta  19th-century wooden double sculpture" width="10%">
+```
+
+<img src="https://user-images.githubusercontent.com/12958815/177718602-943af214-24be-4209-82cc-18e6fa5d04c1.jpg" title="Mephistopheles and Margaretta  19th-century wooden double sculpture" width="10%">
+
+
+dupe #28 says "completed" but its not
+
+
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#34 Issue](https://github.com/mattduck/gh2md/issues/34) `open`: add --version command
 
 #### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-08 17:13](https://github.com/mattduck/gh2md/issues/34):
