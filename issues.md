@@ -1,5 +1,18 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#36 Issue](https://github.com/mattduck/gh2md/issues/36) `open`: Exporting issues from multiple projects I own
+
+#### <img src="https://avatars.githubusercontent.com/u/25888380?u=ab9e23b167de76c43234ab328f5debad103fdee1&v=4" width="50">[beansrowning](https://github.com/beansrowning) opened issue at [2022-07-13 18:04](https://github.com/mattduck/gh2md/issues/36):
+
+This might be a silly thought, but I'm curious if there's a way to bulk-export all issues/PRs across all projects without explicitly naming them all. I figured it would be easy enough to enumerate them all and loop through each, but that would also require constant updating anytime I had a new repo.
+
+Thanks!
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#35 Issue](https://github.com/mattduck/gh2md/issues/35) `open`: download images to git
 
 #### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-10 06:19](https://github.com/mattduck/gh2md/issues/35):
