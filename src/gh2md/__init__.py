@@ -1,4 +1,4 @@
-__version__ = "2.1.0"
+__version__ = "2.2.0"
 
 __title__ = "gh2md"
 __description__ = "Export Github repository issues to markdown files: https://github.com/mattduck/gh2md."

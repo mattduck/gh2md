@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 2.2.0 (2022-07-17)
+
+- Add `--version` flag to print version and exit (https://github.com/mattduck/gh2md/issues/34).
+
+- Use recursive mdkir when creating the directory for `--multiple-files`
+  (https://github.com/mattduck/gh2md/pull/31). Authored by https://github.com/milahu.
+
+
 ## 2.1.0 (2022-07-07)
 
 - Add `--file-extension` flag to control the file extension used with the
