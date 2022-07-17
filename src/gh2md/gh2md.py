@@ -348,7 +348,10 @@ class GithubAPI:
         self._session = None  # Requests session
         self._total_pages_fetched = 0
         if not self.token:
-            logger.warning("No token found. Access to private repositories will fail")
+            print(
+                "No Github access token found, exiting. Use gh2md --help so see options for providing a token."
+            )
+            sys.exit(1)
 
         # For testing
         per_page_override = os.environ.get("_GH2MD_PER_PAGE_OVERRIDE", None)
@@ -772,6 +775,7 @@ def format_issue_to_markdown(issue: GithubIssue) -> Tuple[str, str]:
 
 def get_environment_token() -> str:
     try:
+        logger.info(f"Looking for token in envvar {ENV_GITHUB_TOKEN}")
         token = os.environ[ENV_GITHUB_TOKEN]
         logger.info("Using token from environment")
         return token
