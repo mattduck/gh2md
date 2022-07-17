@@ -155,7 +155,9 @@ def parse_args(args):
         action="store",
         dest="file_extension",
     )
-    parser.add_argument('--version', action='version', version="gh2md {}".format(__version__))
+    parser.add_argument(
+        "--version", action="version", version="gh2md {}".format(__version__)
+    )
     return parser.parse_args()
 
 
