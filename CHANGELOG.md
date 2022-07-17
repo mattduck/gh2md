@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.0 (2022-07-17)
+
+- Fail more explicitly when a token isn't provide, to prevent confusing error
+  output (https://github.com/mattduck/gh2md/issues/26).
+
 
 ## 2.2.0 (2022-07-17)
 
