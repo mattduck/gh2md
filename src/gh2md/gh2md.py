@@ -14,7 +14,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import requests
 from dateutil.parser import parse as dateutil_parse
 
-from . import templates_markdown
+from . import templates_markdown, __version__
 
 ENV_GITHUB_TOKEN = "GITHUB_ACCESS_TOKEN"
 GITHUB_ACCESS_TOKEN_PATHS = [
@@ -155,6 +155,7 @@ def parse_args(args):
         action="store",
         dest="file_extension",
     )
+    parser.add_argument('--version', action='version', version="gh2md {}".format(__version__))
     return parser.parse_args()
 
 
