@@ -8,7 +8,9 @@ This might be a silly thought, but I'm curious if there's a way to bulk-export a
 
 Thanks!
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:13](https://github.com/mattduck/gh2md/issues/36#issuecomment-1186454849):
 
+Yeah this will definitely be possible and is a good idea. I'll build in support for it sometime. Won't get a chance to start on it for at least a week but I'll leave an update here when I get to it.
 
 
 -------------------------------------------------------------------------------
@@ -58,7 +60,7 @@ dupe #28 says "completed" but its not
 
 -------------------------------------------------------------------------------
 
-# [\#34 Issue](https://github.com/mattduck/gh2md/issues/34) `open`: add --version command
+# [\#34 Issue](https://github.com/mattduck/gh2md/issues/34) `closed`: add --version command
 
 #### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-08 17:13](https://github.com/mattduck/gh2md/issues/34):
 
@@ -71,7 +73,9 @@ gh2md --version
 ```
 
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:39](https://github.com/mattduck/gh2md/issues/34#issuecomment-1186460574):
 
+Released in 2.2.0
 
 
 -------------------------------------------------------------------------------
@@ -135,7 +139,7 @@ argh, sorry
 
 -------------------------------------------------------------------------------
 
-# [\#31 PR](https://github.com/mattduck/gh2md/pull/31) `open`: fix: use recursive mkdir
+# [\#31 PR](https://github.com/mattduck/gh2md/pull/31) `merged`: fix: use recursive mkdir
 
 #### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2022-07-08 07:42](https://github.com/mattduck/gh2md/pull/31):
 
@@ -159,7 +163,13 @@ mkdir -p archive/github/issues/ || true
 ```
 
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:19](https://github.com/mattduck/gh2md/pull/31#issuecomment-1186456192):
 
+Thanks!
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:38](https://github.com/mattduck/gh2md/pull/31#issuecomment-1186460438):
+
+Released in 2.2.0
 
 
 -------------------------------------------------------------------------------
@@ -282,7 +292,7 @@ I was having a problem where all comments on an issue had the same timestamps.  
 
 -------------------------------------------------------------------------------
 
-# [\#26 Issue](https://github.com/mattduck/gh2md/issues/26) `open`: Can't fetch issues from public repo
+# [\#26 Issue](https://github.com/mattduck/gh2md/issues/26) `closed`: Can't fetch issues from public repo
 
 #### <img src="https://avatars.githubusercontent.com/u/581023?u=2fa91b813ce6c1161a2337869a3ee0b3cc7ab755&v=4" width="50">[kirillt](https://github.com/kirillt) opened issue at [2022-03-29 07:40](https://github.com/mattduck/gh2md/issues/26):
 
@@ -327,6 +337,18 @@ You need to set the Github token even if you just want to pull public repos.
 #### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-06-29 20:18](https://github.com/mattduck/gh2md/issues/26#issuecomment-1170454551):
 
 Thanks for raising - I can update the docs + error handling here to make this more explicit
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 10:00](https://github.com/mattduck/gh2md/issues/26#issuecomment-1186465168):
+
+Exiting and error output has been updated in 2.3.0, hopefully this is more explicit for everyone in future:
+
+```
+$ gh2md mattduck/gh2md export.md
+[2022-07-17 10:58:26,888] [INFO] Looking for token in envvar GITHUB_ACCESS_TOKEN
+[2022-07-17 10:58:26,888] [INFO] Looking for token in file: /f/users/matt/.config/gh2md/token
+[2022-07-17 10:58:26,889] [INFO] Looking for token in file: /f/users/matt/.github-token
+No Github access token found, exiting. Use gh2md --help so see options for providing a token.
+```
 
 
 -------------------------------------------------------------------------------
