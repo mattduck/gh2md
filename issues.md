@@ -171,6 +171,10 @@ Thanks!
 
 Released in 2.2.0
 
+#### <img src="https://avatars.githubusercontent.com/u/112364753?v=4" width="50">[Mariusz73-creator](https://github.com/Mariusz73-creator) commented at [2022-09-11 00:23](https://github.com/mattduck/gh2md/pull/31#issuecomment-1242825693):
+
+Jgvu
+
 
 -------------------------------------------------------------------------------
 
