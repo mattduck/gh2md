@@ -1,5 +1,20 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#37 Issue](https://github.com/mattduck/gh2md/issues/37) `open`: Be able to pull last $number of issues or $issues created after $date
+
+#### <img src="https://avatars.githubusercontent.com/u/90968?v=4" width="50">[fumbles](https://github.com/fumbles) opened issue at [2022-11-10 13:54](https://github.com/mattduck/gh2md/issues/37):
+
+Just seeing if it's possible to allow for pulling of a specific number of last issues as well as issues updated after a specified date.
+
+I'm going through your src/gh2md/gh2md.py file. I found for hosted github the ENDPOINT needs changed to match.
+- i.e.: ENDPOINT = "https://github.ibm.com/api/graphql"
+I'm more of a bash scripter...so hence I'm creating an issue here. Still seeing what I can do though by working through your src. Great job! 
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#36 Issue](https://github.com/mattduck/gh2md/issues/36) `open`: Exporting issues from multiple projects I own
 
 #### <img src="https://avatars.githubusercontent.com/u/25888380?u=ab9e23b167de76c43234ab328f5debad103fdee1&v=4" width="50">[beansrowning](https://github.com/beansrowning) opened issue at [2022-07-13 18:04](https://github.com/mattduck/gh2md/issues/36):
