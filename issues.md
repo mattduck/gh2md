@@ -1,6 +1,6 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#37 Issue](https://github.com/mattduck/gh2md/issues/37) `open`: Be able to pull last $number of issues or $issues created after $date
+# [\#37 Issue](https://github.com/mattduck/gh2md/issues/37) `closed`: Be able to pull last $number of issues or $issues created after $date
 
 #### <img src="https://avatars.githubusercontent.com/u/90968?v=4" width="50">[fumbles](https://github.com/fumbles) opened issue at [2022-11-10 13:54](https://github.com/mattduck/gh2md/issues/37):
 
@@ -10,14 +10,32 @@ I'm going through your src/gh2md/gh2md.py file. I found for hosted github the EN
 - i.e.: ENDPOINT = "https://github.ibm.com/api/graphql"
 I'm more of a bash scripter...so hence I'm creating an issue here. Still seeing what I can do though by working through your src. Great job! 
 
+#### <img src="https://avatars.githubusercontent.com/u/90968?v=4" width="50">[fumbles](https://github.com/fumbles) commented at [2023-01-27 20:05](https://github.com/mattduck/gh2md/issues/37#issuecomment-1407019169):
 
+Solution:
+
+ $since: DateTime!
+
+In the query:
+filterBy: { states: $issueStates, since: $since }
+
+
+
+
+updated_since = "2023-01-25T00:00:00.000Z"
+
+variables = {
+            "owner": owner,
+            "repo": repo,
+            "since": updated_since,
+}
 
 
 -------------------------------------------------------------------------------
 
 # [\#36 Issue](https://github.com/mattduck/gh2md/issues/36) `open`: Exporting issues from multiple projects I own
 
-#### <img src="https://avatars.githubusercontent.com/u/25888380?u=ab9e23b167de76c43234ab328f5debad103fdee1&v=4" width="50">[beansrowning](https://github.com/beansrowning) opened issue at [2022-07-13 18:04](https://github.com/mattduck/gh2md/issues/36):
+#### <img src="https://avatars.githubusercontent.com/u/25888380?u=5222688386cfb269bfd19bd56dc0d9a67db759b7&v=4" width="50">[beansrowning](https://github.com/beansrowning) opened issue at [2022-07-13 18:04](https://github.com/mattduck/gh2md/issues/36):
 
 This might be a silly thought, but I'm curious if there's a way to bulk-export all issues/PRs across all projects without explicitly naming them all. I figured it would be easy enough to enumerate them all and loop through each, but that would also require constant updating anytime I had a new repo.
 
