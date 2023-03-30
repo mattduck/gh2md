@@ -1,5 +1,24 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#38 Issue](https://github.com/mattduck/gh2md/issues/38) `open`: [Question] Adding params for more control on appearance-template and filenames on user side
+
+#### <img src="https://avatars.githubusercontent.com/u/2902390?v=4" width="50">[kirk86](https://github.com/kirk86) opened issue at [2023-03-29 11:08](https://github.com/mattduck/gh2md/issues/38):
+
+Hey Matt,
+
+Thanks for the nice work.
+
+- I was wondering if you could add a couple more params in the argparser in order for the user to submit or provide their own template file if they want to?
+
+- Also, the ability when exporting to multiple files to choose the final filename sting? For instance, instead of `date.issue-number.issue.issue-status.md` the user might need to export multiple files using a string like `issue-number.issue-title`, but the `issue title` requires some processing before using it directly since it contains spaces.
+
+- Ideally it would be nice if the user could pass a dynamic string like `issue-number.issue-title.replace(" ", "_").lower()`  which would be expanded and executed by `gh2md` to create multiple files where each filename is comprised by the issue number and issue title after replacing spaces with underscores and lowercasing the letters?
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#37 Issue](https://github.com/mattduck/gh2md/issues/37) `closed`: Be able to pull last $number of issues or $issues created after $date
 
 #### <img src="https://avatars.githubusercontent.com/u/90968?v=4" width="50">[fumbles](https://github.com/fumbles) opened issue at [2022-11-10 13:54](https://github.com/mattduck/gh2md/issues/37):
