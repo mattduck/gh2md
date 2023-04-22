@@ -1,5 +1,46 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#39 Issue](https://github.com/mattduck/gh2md/issues/39) `open`: Can't get gh2md working locally
+
+#### <img src="https://avatars.githubusercontent.com/u/11361?v=4" width="50">[halostatue](https://github.com/halostatue) opened issue at [2023-04-21 03:50](https://github.com/mattduck/gh2md/issues/39):
+
+I’m trying to play with gh2md and I cannot seem to get it working, but if I *recreate* the effective GraphQL query and call with `curl`, I get results and not a 401.
+
+```console
+$ GITHUB_ACCESS_TOKEN="$(gh auth token)" gh2md mattduck/gh2md gh2md
+[2023-04-20 23:22:46,518] [INFO] Looking for token in envvar GITHUB_ACCESS_TOKEN
+[2023-04-20 23:22:46,518] [INFO] Using token from environment
+[2023-04-20 23:22:46,518] [INFO] Initiating fetch for repo: mattduck/gh2md
+[2023-04-20 23:22:46,875] [WARNING] Exception response from request attempt 1
+Traceback (most recent call last):
+  File "/Users/austin/.local/pipx/venvs/gh2md/lib/python3.11/site-packages/gh2md/gh2md.py", line 381, in _post
+    resp.raise_for_status()
+  File "/Users/austin/.local/pipx/venvs/gh2md/lib/python3.11/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.github.com/graphql
+...
+```
+
+But the *same* effective request (verified by modifying the source to output the `json` on `self._post`) gives results (I’ve attached the `| jq keys` at the end to prevent posting a bigger wall of text):
+
+```console
+$ curl -H "Authorization: token $(gh auth token)" -X POST -d'{"query": "\n        query(\n          $owner: String!\n          $repo: String!\n          $issuePerPage: Int!\n          $issueNextPageCursor: String\n          $pullRequestPerPage: Int!\n          $pullRequestNextPageCursor: String\n          $issueStates: [IssueState!]\n          $pullRequestStates: [PullRequestState!]\n        ) {\n          rateLimit {\n            limit\n            cost\n            remaining\n            resetAt\n          }\n          repository(owner: $owner, name: $repo) {\n            nameWithOwner\n            url\n            issues(\n              first: $issuePerPage\n              after: $issueNextPageCursor\n              filterBy: { states: $issueStates }\n              orderBy: { field: CREATED_AT, direction: DESC }\n            ) {\n              totalCount\n              pageInfo {\n                endCursor\n                hasNextPage\n              }\n              nodes {\n                id\n                number\n                url\n                title\n                body\n                state\n                createdAt\n                author {\n                  login\n                  url\n                  avatarUrl\n                }\n                labels(first: $issuePerPage) {\n                  nodes {\n                    name\n                    url\n                  }\n                }\n                comments(first: $issuePerPage) {\n                  totalCount\n                  pageInfo {\n                    endCursor\n                    hasNextPage\n                  }\n                  nodes {\n                    body\n                    createdAt\n                    url\n                    author {\n                      login\n                      url\n                      avatarUrl\n                    }\n                  }\n                }\n              }\n            }\n            pullRequests(\n              first: $pullRequestPerPage\n              after: $pullRequestNextPageCursor\n              states: $pullRequestStates\n              orderBy: { field: CREATED_AT, direction: DESC }\n            ) {\n              totalCount\n              pageInfo {\n                endCursor\n                hasNextPage\n              }\n              nodes {\n                id\n                number\n                url\n                title\n                body\n                state\n                createdAt\n                author {\n                  login\n                  url\n                  avatarUrl\n                }\n                labels(first: $pullRequestPerPage) {\n                  nodes {\n                    name\n                    url\n                  }\n                }\n                comments(first: $pullRequestPerPage) {\n                  totalCount\n                  pageInfo {\n                    endCursor\n                    hasNextPage\n                  }\n                  nodes {\n                    body\n                    createdAt\n                    url\n                    author {\n                      login\n                      url\n                      avatarUrl\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n    ", "variables": {"owner": "mattduck", "repo": "gh2md", "issuePerPage": 100, "pullRequestPerPage": 100}' https://api.github.com/graphql | jq keys
+["data"]
+```
+
+This happens whether I `export GITHUB_ACCESS_TOKEN=aRealTokenValue` or put it online, or whether I use a token created for testing or whether I use `$(gh auth token)` to get the token from the `gh` CLI. I can also pass the same effective request to `gh api` or `curl` and get the results that I expect.
+
+I‘ve installed this on macOS under `pipx` (1.2.0) with Python 3.11.2 as the core interpreter (installed with Homebrew), but I’m not a Python developer, so I’m not sure where to go from here to investigate this issue. Even running it from `~/Library/Python/3.11/bin` doesn’t work after using `pip3 install --user gh2md`.
+
+However, running it in a Docker image (`docker run --rm -it -e GITHUB_ACCESS_TOKEN=$(gh auth token) python:3.11.2 bash`, then `pip3 install gh2md && gh2md mattduck/gh2md /tmp/test`) works.
+
+Any idea why this doesn’t seem to work on macOS, at least for me?
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#38 Issue](https://github.com/mattduck/gh2md/issues/38) `open`: [Question] Adding params for more control on appearance-template and filenames on user side
 
 #### <img src="https://avatars.githubusercontent.com/u/2902390?v=4" width="50">[kirk86](https://github.com/kirk86) opened issue at [2023-03-29 11:08](https://github.com/mattduck/gh2md/issues/38):
