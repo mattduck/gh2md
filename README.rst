@@ -41,7 +41,7 @@ Run export for public repository ``sarabander/sicp``, using no authentication an
 
     gh2md sarabander/sicp sicp-issues --multiple-files --no-closed-prs
 
- Full help::
+Full help::
 
     usage: gh2md [-h] [--multiple-files] [-I] [--no-prs] [--no-closed-prs]
                 [--no-issues] [--no-closed-issues]
