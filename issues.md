@@ -1,5 +1,50 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#41 Issue](https://github.com/mattduck/gh2md/issues/41) `open`: ValueError: too many values to unpack (expected 2)
+
+#### <img src="https://avatars.githubusercontent.com/u/6035856?v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-01 12:51](https://github.com/mattduck/gh2md/issues/41):
+
+```
+[2023-06-01 07:57:38,192] [INFO] Initiating fetch for repo: https://github.com/mrcnski/nimbus-theme
+Traceback (most recent call last):
+  File "/opt/homebrew/bin/gh2md", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/gh2md/gh2md.py", line 807, in main
+    repo = gh.fetch_and_decode_repository(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.11/site-packages/gh2md/gh2md.py", line 569, in fetch_and_decode_repository
+    owner, repo = repo_name.split("/")
+    ^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+```
+
+I get this error when I pass in the full URL, e.g. like this:
+
+```sh
+gh2md https://github.com/mrcnski/nimbus-theme nimbus-theme --multiple-files
+```
+
+I think that github URLs should either work, or at least return a more friendly user-legible error.
+
+I'd be happy to help with this!
+
+
+
+
+-------------------------------------------------------------------------------
+
+# [\#40 PR](https://github.com/mattduck/gh2md/pull/40) `open`: Update README.rst
+
+#### <img src="https://avatars.githubusercontent.com/u/6035856?v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-01 11:42](https://github.com/mattduck/gh2md/pull/40):
+
+Fix formatting ("full help" was being treated as part of the code block).
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#39 Issue](https://github.com/mattduck/gh2md/issues/39) `open`: Can't get gh2md working locally
 
 #### <img src="https://avatars.githubusercontent.com/u/11361?v=4" width="50">[halostatue](https://github.com/halostatue) opened issue at [2023-04-21 03:50](https://github.com/mattduck/gh2md/issues/39):
