@@ -41,7 +41,7 @@ Run export for public repository ``sarabander/sicp``, using no authentication an
 
     gh2md sarabander/sicp sicp-issues --multiple-files --no-closed-prs
 
- Full help::
+Full help::
 
     usage: gh2md [-h] [--multiple-files] [-I] [--no-prs] [--no-closed-prs]
                 [--no-issues] [--no-closed-issues]
@@ -95,8 +95,8 @@ Authentication
 ---------------
 
 ``gh2md`` requires a Github access token to authenticate requests. To read your
-private repositories, you'll need to provide a personal access token with full
-the full **repo** oauth scope.
+private repositories, you'll need to provide a personal access token with the
+full **repo** oauth scope.
 
 **It's not possible to authenticate with a username and password**. Github used
 to support this, but it was discontinued in 2020.
