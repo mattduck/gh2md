@@ -1,3 +1,16 @@
+'''
+Test suite.
+
+Prerequisites:
+
+$ pip3 install mock pytest
+$ export GITHUB_ACCESS_TOKEN=<token>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
+
+Run tests:
+
+$ pytest
+'''
+
 import datetime
 import os
 import sys
@@ -8,7 +21,7 @@ from typing import List
 import mock
 import pytest
 
-from gh2md import gh2md
+from src.gh2md import gh2md
 
 
 @pytest.fixture(scope="session")
@@ -122,3 +135,12 @@ def test_pr_and_issue_flags_dont_error():
     _run_once(["gh2md", "mattduck/gh2md", "--no-closed-prs"])
     _run_once(["gh2md", "mattduck/gh2md", "--no-issues"])
     _run_once(["gh2md", "mattduck/gh2md", "--no-prs"])
+
+def test_invalid_repo_produces_error():
+    repo_name = "https://github.com/mattduck/gh2md"
+    with tempfile.TemporaryDirectory() as tmpdir:
+        test_args = ["gh2md", repo_name, tmpdir]
+        with mock.patch.object(sys, "argv", test_args):
+            with pytest.raises(Exception) as exc_info:
+                gh2md.main()
+            assert exc_info.value.args[0] == f"Repo name is not of the form owner/repo: {repo_name}"
