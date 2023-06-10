@@ -1,5 +1,24 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#43 Issue](https://github.com/mattduck/gh2md/issues/43) `open`: RuntimeError: Output directory already exists and has files in it: issues with --idempotent
+
+#### <img src="https://avatars.githubusercontent.com/u/888633?u=cdaeb31efcc0048d3619651aa18dd4b76e636b21&v=4" width="50">[gdha](https://github.com/gdha) opened issue at [2023-06-09 14:19](https://github.com/mattduck/gh2md/issues/43):
+
+I thought by using `gh2md --multiple-files --idempotent --file-extension .gfm rear/rear issues` the exsiting files in directory `issues/` would be skipped. Seems when the `issues` directory is already present we get an error:
+```
+Traceback (most recent call last):
+  File "/usr/local/bin/gh2md", line 8, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python3.8/dist-packages/gh2md/gh2md.py", line 799, in main
+    raise RuntimeError(
+RuntimeError: Output directory already exists and has files in it: issues
+```
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#42 PR](https://github.com/mattduck/gh2md/pull/42) `open`: Raise user-friendly error on invalid repo name
 
 #### <img src="https://avatars.githubusercontent.com/u/6035856?v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-04 19:54](https://github.com/mattduck/gh2md/pull/42):
