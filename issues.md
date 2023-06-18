@@ -872,7 +872,7 @@ It seems the string in [templates_markdown.py](https://github.com/mattduck/gh2md
 
 # [\#16 PR](https://github.com/mattduck/gh2md/pull/16) `merged`: Create Markdown file even after abort
 
-#### <img src="https://avatars.githubusercontent.com/u/14315968?u=b12eaa9a39c894eb22e2a785903240ecd6149e1e&v=4" width="50">[C0D3D3V](https://github.com/C0D3D3V) opened issue at [2020-10-21 08:28](https://github.com/mattduck/gh2md/pull/16):
+#### <img src="https://avatars.githubusercontent.com/u/14315968?u=97f1b5352d5651a6a2d24871bd5c669b6fd9d402&v=4" width="50">[C0D3D3V](https://github.com/C0D3D3V) opened issue at [2020-10-21 08:28](https://github.com/mattduck/gh2md/pull/16):
 
 I think it would be great if you can abort the whole process after a rate limit and still create the markdown file for the stuff that has already been downloaded.
 
