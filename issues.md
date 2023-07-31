@@ -209,6 +209,8 @@ also allow special handling of "large" images
 * compress large JPEGs
 * reduce large GIFs to the first frame image
 * reduce large video files to a thumbnail image
+* allow storing large files in a separate git branch, to keep the main branch small
+* allow storing large files in [git-lfs](https://github.com/git-lfs/git-lfs) (Git Large File Storage)
 
 example avatar
 
