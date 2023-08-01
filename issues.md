@@ -59,7 +59,7 @@ I think that github URLs should either work, or at least return a more friendly 
 
 I'd be happy to help with this!
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2023-06-04 14:07](https://github.com/mattduck/gh2md/issues/41#issuecomment-1575583229):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2023-06-04 14:07](https://github.com/mattduck/gh2md/issues/41#issuecomment-1575583229):
 
 Yeah that's a good idea, it should be possible to implement this. You're very welcome to take it on and PR it and I can release a new version. If not then I'll take a look at some point - realistically though it won't be for a while.
 
@@ -76,7 +76,7 @@ Cool! To keep it simple I would do this: expect a string with a single slash in 
 
 Fix formatting ("full help" was being treated as part of the code block).
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2023-06-04 14:03](https://github.com/mattduck/gh2md/pull/40#issuecomment-1575581877):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2023-06-04 14:03](https://github.com/mattduck/gh2md/pull/40#issuecomment-1575581877):
 
 Ah great - thanks for tidying this.
 
@@ -184,7 +184,7 @@ This might be a silly thought, but I'm curious if there's a way to bulk-export a
 
 Thanks!
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:13](https://github.com/mattduck/gh2md/issues/36#issuecomment-1186454849):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:13](https://github.com/mattduck/gh2md/issues/36#issuecomment-1186454849):
 
 Yeah this will definitely be possible and is a good idea. I'll build in support for it sometime. Won't get a chance to start on it for at least a week but I'll leave an update here when I get to it.
 
@@ -251,7 +251,7 @@ gh2md --version
 ```
 
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:39](https://github.com/mattduck/gh2md/issues/34#issuecomment-1186460574):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:39](https://github.com/mattduck/gh2md/issues/34#issuecomment-1186460574):
 
 Released in 2.2.0
 
@@ -341,11 +341,11 @@ mkdir -p archive/github/issues/ || true
 ```
 
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:19](https://github.com/mattduck/gh2md/pull/31#issuecomment-1186456192):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:19](https://github.com/mattduck/gh2md/pull/31#issuecomment-1186456192):
 
 Thanks!
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:38](https://github.com/mattduck/gh2md/pull/31#issuecomment-1186460438):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 09:38](https://github.com/mattduck/gh2md/pull/31#issuecomment-1186460438):
 
 Released in 2.2.0
 
@@ -385,11 +385,11 @@ find issues/ -name '*.gfm' -type f | xargs rm
 
 
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-07 17:25](https://github.com/mattduck/gh2md/pull/30#issuecomment-1177965843):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-07 17:25](https://github.com/mattduck/gh2md/pull/30#issuecomment-1177965843):
 
 @milahu thanks for this. Agree with your comment on the issue re: pandoc. Maybe gfm would have been a more sensible default at the start, but it makes sense to stick with md now for backwards compatibility. PR looks good - I'll merge it now and try to get a release out later.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-07 20:11](https://github.com/mattduck/gh2md/pull/30#issuecomment-1178170467):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-07 20:11](https://github.com/mattduck/gh2md/pull/30#issuecomment-1178170467):
 
 @milahu released as 2.1.0. Thanks again!
 
@@ -463,11 +463,11 @@ This should not be the normal behavior. Because images contain meaningful and co
 
 I was having a problem where all comments on an issue had the same timestamps.  So far as I can tell, this is just a simple (one-letter) bug.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-06-29 20:13](https://github.com/mattduck/gh2md/pull/27#issuecomment-1170450210):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-06-29 20:13](https://github.com/mattduck/gh2md/pull/27#issuecomment-1170450210):
 
 @galenhuntington ah damn, thanks very much. This does look like an issue. Will sort out a release for this.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-06-29 20:46](https://github.com/mattduck/gh2md/pull/27#issuecomment-1170477409):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-06-29 20:46](https://github.com/mattduck/gh2md/pull/27#issuecomment-1170477409):
 
 @galenhuntington confirmed it works and released as 2.0.1 - https://github.com/mattduck/gh2md/blob/master/CHANGELOG.md#201-2022-06-29 - thanks again
 
@@ -516,11 +516,11 @@ Hi @kirillt
 
 You need to set the Github token even if you just want to pull public repos.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-06-29 20:18](https://github.com/mattduck/gh2md/issues/26#issuecomment-1170454551):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-06-29 20:18](https://github.com/mattduck/gh2md/issues/26#issuecomment-1170454551):
 
 Thanks for raising - I can update the docs + error handling here to make this more explicit
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 10:00](https://github.com/mattduck/gh2md/issues/26#issuecomment-1186465168):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2022-07-17 10:00](https://github.com/mattduck/gh2md/issues/26#issuecomment-1186465168):
 
 Exiting and error output has been updated in 2.3.0, hopefully this is more explicit for everyone in future:
 
@@ -553,7 +553,7 @@ Done.
 
 # [\#24 Issue](https://github.com/mattduck/gh2md/issues/24) `open`: Support `since` parameter
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2021-10-03 14:44](https://github.com/mattduck/gh2md/issues/24):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2021-10-03 14:44](https://github.com/mattduck/gh2md/issues/24):
 
 You're forced to retrieve issues from the begin of time right now - it'd be useful to support `since`.
 
@@ -566,7 +566,7 @@ This exists on issues, but I couldn't see it for PRs when I looked quickly. So m
 
 # [\#23 Issue](https://github.com/mattduck/gh2md/issues/23) `open`: Support asc/desc ordering in single-file export
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2021-10-03 14:43](https://github.com/mattduck/gh2md/issues/23):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2021-10-03 14:43](https://github.com/mattduck/gh2md/issues/23):
 
 Currently the output for single-file export is always oldest-first.
 
@@ -577,7 +577,7 @@ Currently the output for single-file export is always oldest-first.
 
 # [\#22 Issue](https://github.com/mattduck/gh2md/issues/22) `open`: Support issue timeline events + discussions
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2021-10-03 14:41](https://github.com/mattduck/gh2md/issues/22):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2021-10-03 14:41](https://github.com/mattduck/gh2md/issues/22):
 
 I don't think either of these were available when I first wrote the script - would be handy to support them.
 
@@ -596,7 +596,7 @@ I don’t think there’s an easy fix here, but wanted to open an issue to discu
 
 The only potential solution I see is to monitor API rate limiting and slow down requests, but I can imagine that would get pretty tricky. 
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-09-12 16:54](https://github.com/mattduck/gh2md/issues/21#issuecomment-917671626):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-09-12 16:54](https://github.com/mattduck/gh2md/issues/21#issuecomment-917671626):
 
 Hey @adunkman, I see a couple of things we can do here:
 
@@ -690,7 +690,7 @@ nextPageCursor = repository.issues.pageInfo.endCursor;
 
 Oh — and I’m a GraphQL newbie, so I don’t really know if I wrote that query "the right way" — if anyone has a better suggestion, I’m all ears!
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-10-03 14:40](https://github.com/mattduck/gh2md/issues/21#issuecomment-932965020):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-10-03 14:40](https://github.com/mattduck/gh2md/issues/21#issuecomment-932965020):
 
 Hey @adunkman, thanks for that graphql example! I finally worked on this today and ported the API over - as you say it's way faster and significantly more efficient on rate limits than previously.
 
@@ -709,7 +709,7 @@ Gonna close this but feel free to reopen
 
 
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-07-19 06:59](https://github.com/mattduck/gh2md/pull/20#issuecomment-882292350):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-07-19 06:59](https://github.com/mattduck/gh2md/pull/20#issuecomment-882292350):
 
 Damn - this repo needs a few more tests! Appreciate the fix, thanks. Will release a new version now.
 
@@ -753,7 +753,7 @@ def get_environment_token():
 
 The fix would be to return the `token` after `token = f.read().strip()`.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-07-19 07:11](https://github.com/mattduck/gh2md/issues/19#issuecomment-882300773):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-07-19 07:11](https://github.com/mattduck/gh2md/issues/19#issuecomment-882300773):
 
 Thanks for this - have merged the associated PR and released a new version 1.0.4.
 
@@ -794,7 +794,7 @@ python --version is Python 2.7.16, python3 --version is Python 3.9.5.
 
 Any idea of what is happening? Thanks!
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-06-25 08:02](https://github.com/mattduck/gh2md/issues/18#issuecomment-868304488):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-06-25 08:02](https://github.com/mattduck/gh2md/issues/18#issuecomment-868304488):
 
 @nclm hey, sorry for slow response here.
 
@@ -813,7 +813,7 @@ There are a couple of things I'll look at here:
 
 If this is a public repo or you don't have 2FA on your account then let me know.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-06-27 14:21](https://github.com/mattduck/gh2md/issues/18#issuecomment-869171698):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-06-27 14:21](https://github.com/mattduck/gh2md/issues/18#issuecomment-869171698):
 
 @nclm OK I looked into this properly today. It turns out that Github no longer supports username + password login authentication, and the API is returning its standard 404 response that it gives when the user isn't authenticated (https://docs.github.com/en/rest/overview/other-authentication-methods#basic-authentication).
 
@@ -861,11 +861,11 @@ It seems the string in [templates_markdown.py](https://github.com/mattduck/gh2md
 ```
 
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-01-03 19:27](https://github.com/mattduck/gh2md/issues/17#issuecomment-753664999):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-01-03 19:27](https://github.com/mattduck/gh2md/issues/17#issuecomment-753664999):
 
 @akiicat thanks for reporting this. I'm hoping to release a version with the fix sometime this week.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-03-14 20:45](https://github.com/mattduck/gh2md/issues/17#issuecomment-798976684):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-03-14 20:45](https://github.com/mattduck/gh2md/issues/17#issuecomment-798976684):
 
 @akiicat I looked into this and had missed that you're running python 2.7. I wasn't able to reproduce the issue in the latest version. I'm going to close this but I'm happy to look at it if you can reproduce in python 3.
 
@@ -880,7 +880,7 @@ I think it would be great if you can abort the whole process after a rate limit 
 
 Especially if you have already downloaded a few thousand entries this is very annoying.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-11-01 17:20](https://github.com/mattduck/gh2md/pull/16#issuecomment-720122042):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-11-01 17:20](https://github.com/mattduck/gh2md/pull/16#issuecomment-720122042):
 
 @C0D3D3V thanks a lot for this. Sorry it's taken ages to respond - have just been super busy elsewhere. I think this is a sensible step so I'm going to test it, merge it in and do a release. IIRC this is making an API request for each issue it fetches. It would be nice to batch up multiple issues in one call - I'll try to look into whether that's possible sometime.
 
@@ -906,7 +906,7 @@ Especially if you have already downloaded a few thousand entries this is very an
 > 
 > _Originally posted by @0ut0fcontrol in https://github.com/mattduck/gh2md/issues/11#issuecomment-693768534_
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-11-01 16:26](https://github.com/mattduck/gh2md/pull/15#issuecomment-720114072):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-11-01 16:26](https://github.com/mattduck/gh2md/pull/15#issuecomment-720114072):
 
 Hey, sorry it's taken forever to respond - have been super busy with things. This looks great, I'm merging now.
 
@@ -925,7 +925,7 @@ git commit only if there are changes in issues.
 The Actions was [passed](https://github.com/0ut0fcontrol/gh2md/actions/runs/225121459) in my fork.
 `git reset --hard` to https://github.com/mattduck/gh2md/pull/14/commits/5c6709d8cf45af07c15124cf3e08df0d27c4f2da to disable actions on `push` and remove `issues.md` from my fork.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-08-31 09:25](https://github.com/mattduck/gh2md/pull/14#issuecomment-683670039):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-08-31 09:25](https://github.com/mattduck/gh2md/pull/14#issuecomment-683670039):
 
 @0ut0fcontrol thanks! I noticed this was failing a while back but hadn't had the chance to look at it.
 
@@ -938,7 +938,7 @@ The Actions was [passed](https://github.com/0ut0fcontrol/gh2md/actions/runs/2251
 
 I want to export each issue in a separated file. It's possible to do?
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-08-31 09:29](https://github.com/mattduck/gh2md/issues/13#issuecomment-683671572):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-08-31 09:29](https://github.com/mattduck/gh2md/issues/13#issuecomment-683671572):
 
 That's not currently feature, but it wouldn't be a huge amount of work to implement. I'll try to get to it sometime, but realistically it's going to be at least a few weeks until I sit down to look at it.
 
@@ -948,7 +948,7 @@ Hi there!
 I would also be really interested in this possibility. I am using github issues as get-things-done lists :-) and it would be great to be able to easily export each individual issue as a md file. 
 I got the idea after reading this nice article (https://rabernat.medium.com/advising-and-collaborating-during-a-pandemic-and-sabbatical-ca9531b82b6d).
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-06-27 14:33](https://github.com/mattduck/gh2md/issues/13#issuecomment-869173434):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2021-06-27 14:33](https://github.com/mattduck/gh2md/issues/13#issuecomment-869173434):
 
 > it's going to be at least a few weeks until I sit down to look at it.
 
@@ -997,7 +997,7 @@ it works in my private repo.
 
 hope this info is helpful. @mattduck 
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-08-16 10:21](https://github.com/mattduck/gh2md/pull/12#issuecomment-674508568):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-08-16 10:21](https://github.com/mattduck/gh2md/pull/12#issuecomment-674508568):
 
 @0ut0fcontrol thanks a lot! I've just published a new release that includes your fix for the rate limit AttributeError. Looks like it started occurring 12 days ago. The builds are passing again now :+1: 
 
@@ -1069,7 +1069,7 @@ jobs:
 
 ```
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-16 21:24](https://github.com/mattduck/gh2md/issues/11#issuecomment-659682052):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-16 21:24](https://github.com/mattduck/gh2md/issues/11#issuecomment-659682052):
 
 @0ut0fcontrol thanks for sharing this, it's super cool! I'll find somewhere sensible to publicise it - at least link to it from the README. I think I should set it up for gh2md itself.
 
@@ -1112,7 +1112,7 @@ for i in $DIR/*/; do
 done
 ```
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-19 06:22](https://github.com/mattduck/gh2md/issues/11#issuecomment-660595381):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-19 06:22](https://github.com/mattduck/gh2md/issues/11#issuecomment-660595381):
 
 @0ut0fcontrol I've added this to the repo now - worked fine first time. Thanks again!
 
@@ -1125,13 +1125,13 @@ If I get some time soon, I'll add a flag to optionally remove the timestamp mess
 It seems that `gh2md` doesn't download closed PR.
 Is it an expected behavior?
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-19 19:59](https://github.com/mattduck/gh2md/issues/11#issuecomment-660699734):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-19 19:59](https://github.com/mattduck/gh2md/issues/11#issuecomment-660699734):
 
 @0ut0fcontrol I've just fixed that. Back when I wrote this I didn't need to export closed PRs, and for some reason instead of making it configurable I just hardcoded it.
 
 I've updated the default behaviour to fetch everything by default. You can selectively disable parts with `--no-closed-prs`, `--no-closed-issues`, `--no-prs` or `--no-issues`.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-19 20:02](https://github.com/mattduck/gh2md/issues/11#issuecomment-660700176):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-19 20:02](https://github.com/mattduck/gh2md/issues/11#issuecomment-660700176):
 
 I'm gonna close this issue just so I know that there's no work to do on it. Will leave it pinned though.
 
@@ -1263,7 +1263,7 @@ jobs:
 
 Wanna get all issues at the same time.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-19 19:57](https://github.com/mattduck/gh2md/issues/10#issuecomment-660699450):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2020-07-19 19:57](https://github.com/mattduck/gh2md/issues/10#issuecomment-660699450):
 
 For anybody reading this years later: I finally did some work on this project again. By default it will now fetch all issues + PRs, and you can selectively disabled the parts you don't want using some new flags, eg. `--no-closed-prs`.
 
@@ -6691,15 +6691,15 @@ Happy merging! 🤖
 **Labels**: `enhancement`
 
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2017-05-20 18:11](https://github.com/mattduck/gh2md/issues/1):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) opened issue at [2017-05-20 18:11](https://github.com/mattduck/gh2md/issues/1):
 
 I'm making an issue just so I can run this tool against its own repository.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2017-05-20 18:11](https://github.com/mattduck/gh2md/issues/1#issuecomment-302889476):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2017-05-20 18:11](https://github.com/mattduck/gh2md/issues/1#issuecomment-302889476):
 
 This is a comment.
 
-#### <img src="https://avatars.githubusercontent.com/u/1607892?u=196bf09c14472eee8dccaaecbef3c16974c8e69f&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2017-05-20 18:11](https://github.com/mattduck/gh2md/issues/1#issuecomment-302889489):
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2017-05-20 18:11](https://github.com/mattduck/gh2md/issues/1#issuecomment-302889489):
 
 Closing, as the example data now exists.
 
