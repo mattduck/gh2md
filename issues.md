@@ -25,7 +25,17 @@ RuntimeError: Output directory already exists and has files in it: issues
 
 Closes https://github.com/mattduck/gh2md/issues/41
 
+#### <img src="https://avatars.githubusercontent.com/u/96036032?v=4" width="50">[Wuflamez](https://github.com/Wuflamez) commented at [2023-11-07 03:24](https://github.com/mattduck/gh2md/pull/42#issuecomment-1797597431):
 
+> Closes https://github.com/mattduck/gh2md/issues/41
+
+Mark down
+
+#### <img src="https://avatars.githubusercontent.com/u/96036032?v=4" width="50">[Wuflamez](https://github.com/Wuflamez) commented at [2023-11-07 03:26](https://github.com/mattduck/gh2md/pull/42#issuecomment-1797622814):
+
+> Closes https://github.com/mattduck/gh2md/issues/41
+
+Markdown
 
 
 -------------------------------------------------------------------------------
@@ -66,6 +76,12 @@ Yeah that's a good idea, it should be possible to implement this. You're very we
 #### <img src="https://avatars.githubusercontent.com/u/6035856?v=4" width="50">[mrcnski](https://github.com/mrcnski) commented at [2023-06-04 14:14](https://github.com/mattduck/gh2md/issues/41#issuecomment-1575585499):
 
 Cool! To keep it simple I would do this: expect a string with a single slash in it, and if anything else is found, display an error explaining the expected format. I should be able to start on this soon.
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) commented at [2023-11-07 06:44](https://github.com/mattduck/gh2md/issues/41#issuecomment-1797907919):
+
+> github URLs should either work
+
+see also https://github.com/nephila/giturlparse
 
 
 -------------------------------------------------------------------------------
