@@ -194,7 +194,7 @@ variables = {
 
 # [\#36 Issue](https://github.com/mattduck/gh2md/issues/36) `open`: Exporting issues from multiple projects I own
 
-#### <img src="https://avatars.githubusercontent.com/u/25888380?u=5222688386cfb269bfd19bd56dc0d9a67db759b7&v=4" width="50">[beansrowning](https://github.com/beansrowning) opened issue at [2022-07-13 18:04](https://github.com/mattduck/gh2md/issues/36):
+#### <img src="https://avatars.githubusercontent.com/u/25888380?u=047fd13fb14b77b23ee507b123739d4f0b65aba3&v=4" width="50">[beansrowning](https://github.com/beansrowning) opened issue at [2022-07-13 18:04](https://github.com/mattduck/gh2md/issues/36):
 
 This might be a silly thought, but I'm curious if there's a way to bulk-export all issues/PRs across all projects without explicitly naming them all. I figured it would be easy enough to enumerate them all and loop through each, but that would also require constant updating anytime I had a new repo.
 
