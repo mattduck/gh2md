@@ -21,7 +21,7 @@ RuntimeError: Output directory already exists and has files in it: issues
 
 # [\#42 PR](https://github.com/mattduck/gh2md/pull/42) `open`: Raise user-friendly error on invalid repo name
 
-#### <img src="https://avatars.githubusercontent.com/u/6035856?v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-04 19:54](https://github.com/mattduck/gh2md/pull/42):
+#### <img src="https://avatars.githubusercontent.com/u/6035856?u=45d83cf5e4b6bfebfd2e9d21f12dea7e6986edf6&v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-04 19:54](https://github.com/mattduck/gh2md/pull/42):
 
 Closes https://github.com/mattduck/gh2md/issues/41
 
@@ -42,7 +42,7 @@ Markdown
 
 # [\#41 Issue](https://github.com/mattduck/gh2md/issues/41) `open`: ValueError: too many values to unpack (expected 2)
 
-#### <img src="https://avatars.githubusercontent.com/u/6035856?v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-01 12:51](https://github.com/mattduck/gh2md/issues/41):
+#### <img src="https://avatars.githubusercontent.com/u/6035856?u=45d83cf5e4b6bfebfd2e9d21f12dea7e6986edf6&v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-01 12:51](https://github.com/mattduck/gh2md/issues/41):
 
 ```
 [2023-06-01 07:57:38,192] [INFO] Initiating fetch for repo: https://github.com/mrcnski/nimbus-theme
@@ -73,7 +73,7 @@ I'd be happy to help with this!
 
 Yeah that's a good idea, it should be possible to implement this. You're very welcome to take it on and PR it and I can release a new version. If not then I'll take a look at some point - realistically though it won't be for a while.
 
-#### <img src="https://avatars.githubusercontent.com/u/6035856?v=4" width="50">[mrcnski](https://github.com/mrcnski) commented at [2023-06-04 14:14](https://github.com/mattduck/gh2md/issues/41#issuecomment-1575585499):
+#### <img src="https://avatars.githubusercontent.com/u/6035856?u=45d83cf5e4b6bfebfd2e9d21f12dea7e6986edf6&v=4" width="50">[mrcnski](https://github.com/mrcnski) commented at [2023-06-04 14:14](https://github.com/mattduck/gh2md/issues/41#issuecomment-1575585499):
 
 Cool! To keep it simple I would do this: expect a string with a single slash in it, and if anything else is found, display an error explaining the expected format. I should be able to start on this soon.
 
@@ -88,7 +88,7 @@ see also https://github.com/nephila/giturlparse
 
 # [\#40 PR](https://github.com/mattduck/gh2md/pull/40) `merged`: Update README.rst
 
-#### <img src="https://avatars.githubusercontent.com/u/6035856?v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-01 11:42](https://github.com/mattduck/gh2md/pull/40):
+#### <img src="https://avatars.githubusercontent.com/u/6035856?u=45d83cf5e4b6bfebfd2e9d21f12dea7e6986edf6&v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-01 11:42](https://github.com/mattduck/gh2md/pull/40):
 
 Fix formatting ("full help" was being treated as part of the code block).
 
