@@ -27,7 +27,7 @@ examples:
 	gh2md Russell91/sshrc examples/sshrc.md
 
 release: clean build assert_clean_git assert_new_pypi_version
-	twine upload dist/"$$(python setup.py --name)"*
+	twine upload --repository gh2md dist/"$$(python setup.py --name)"*
 	git tag "v$$(python setup.py --version)"
 	echo "Release successful. You probably want to push the new git tag."
 
