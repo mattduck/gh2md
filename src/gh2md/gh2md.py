@@ -566,6 +566,10 @@ class GithubAPI:
         Entry point for fetching a repo.
         """
         logger.info(f"Initiating fetch for repo: {repo_name}")
+        if repo_name.count("/") != 1:
+            raise ValueError(
+                f"Repo name is not of the form owner/repo: {repo_name}"
+            )
         owner, repo = repo_name.split("/")
         response = self._fetch_repo(
             owner=owner,

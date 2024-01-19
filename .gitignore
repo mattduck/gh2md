@@ -17,3 +17,4 @@ var/
 .installed.cfg
 *.egg
 scratch/
+**/__pycache__
