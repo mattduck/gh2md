@@ -1,5 +1,34 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#44 Issue](https://github.com/mattduck/gh2md/issues/44) `closed`: Readme - show example of output
+
+#### <img src="https://avatars.githubusercontent.com/u/1392068?u=8f6b9952da96f83e452e9a7461c46a77dd354634&v=4" width="50">[geneorama](https://github.com/geneorama) opened issue at [2024-01-18 15:19](https://github.com/mattduck/gh2md/issues/44):
+
+Feel free to close this request if it's not in line with your style / preferences. 
+
+As a user who happened upon this repo it would be helpful to see an example of the output. 
+
+My use case is that I want to export an issue and preserve the links and authors so that I can import it into Obsidian.md, and I was wondering if this output will be something that is painless enough for me to use or if it would be simpler to copy and paste comments manually. 
+
+Although it hardly matters to a general audience what they intended to do with a file format as portable as markdown, I would suggest a non trivial example. I could imagine someone using the md files to train a language model, write a book, provide whispered inspirational quotes delivered at random intervals though Alexa, or whatever.
+
+No matter the use case, a non trivial example will go a long way in helping to evaluate if it's worth their time to try this package.
+
+Thanks 
+
+#### <img src="https://avatars.githubusercontent.com/u/1392068?u=8f6b9952da96f83e452e9a7461c46a77dd354634&v=4" width="50">[geneorama](https://github.com/geneorama) commented at [2024-01-18 15:24](https://github.com/mattduck/gh2md/issues/44#issuecomment-1898691599):
+
+Apologies, I re-read the Readme, and I noticed that you do in fact link to a very good example
+
+https://github.com/mattduck/gh2md/blob/master/issues.md
+
+I might recommend making it more obvious by using the word Example or the phrase Example Output in the header, but this is hardly worth an issue. 
+
+Thank you for making this available.
+
+
+-------------------------------------------------------------------------------
+
 # [\#43 Issue](https://github.com/mattduck/gh2md/issues/43) `open`: RuntimeError: Output directory already exists and has files in it: issues with --idempotent
 
 #### <img src="https://avatars.githubusercontent.com/u/888633?u=cdaeb31efcc0048d3619651aa18dd4b76e636b21&v=4" width="50">[gdha](https://github.com/gdha) opened issue at [2023-06-09 14:19](https://github.com/mattduck/gh2md/issues/43):
@@ -82,6 +111,10 @@ Cool! To keep it simple I would do this: expect a string with a single slash in 
 > github URLs should either work
 
 see also https://github.com/nephila/giturlparse
+
+#### <img src="https://avatars.githubusercontent.com/u/1392068?u=8f6b9952da96f83e452e9a7461c46a77dd354634&v=4" width="50">[geneorama](https://github.com/geneorama) commented at [2024-01-18 22:14](https://github.com/mattduck/gh2md/issues/41#issuecomment-1899305171):
+
+So, does this error just mean that the issue is too big?
 
 
 -------------------------------------------------------------------------------
