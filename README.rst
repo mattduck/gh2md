@@ -16,9 +16,9 @@ readable file.
 Example exports
 ---------------
 
-An example exported file is included in the `examples directory
-<examples/sshrc.md>`_. There is also an `example directory with one issue per
-file <examples/gh2md-multiple-files-example>`_
+- Basic export in `examples directory <examples/sshrc.md>`_.
+- `example directory with one issue per file <examples/gh2md-multiple-files-example>`_
+- gh2md's `own issues in a single file <./issues.md>`_.
 
 Default behaviour is to export all issues and PRs.
 

@@ -26,7 +26,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git diff --quiet && git diff --staged --quiet || git commit -am "Backup all issues into issues.md"
+        git diff --quiet && git diff --staged --quiet || git commit -am "docs: backup all issues into issues.md"
     - name: Extract branch name
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
