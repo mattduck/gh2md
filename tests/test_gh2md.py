@@ -4,6 +4,7 @@ Test suite.
 Prerequisites:
 
 $ pip3 install mock pytest
+$ pip3 install -e .
 $ export GITHUB_ACCESS_TOKEN=<token>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
 
 Run tests:
@@ -21,7 +22,7 @@ from typing import List
 import mock
 import pytest
 
-from src.gh2md import gh2md
+from gh2md import gh2md
 
 
 @pytest.fixture(scope="session")
