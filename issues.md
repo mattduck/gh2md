@@ -26,6 +26,22 @@ I might recommend making it more obvious by using the word Example or the phrase
 
 Thank you for making this available.
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2024-01-19 09:07](https://github.com/mattduck/gh2md/issues/44#issuecomment-1900022787):
+
+Thanks -- I've added that link to the examples section and formatted it as bullet points, hopefully a bit clearer!
+
+#### <img src="https://avatars.githubusercontent.com/u/1392068?u=8f6b9952da96f83e452e9a7461c46a77dd354634&v=4" width="50">[geneorama](https://github.com/geneorama) commented at [2024-01-19 15:55](https://github.com/mattduck/gh2md/issues/44#issuecomment-1900672950):
+
+It took me a few minutes to get the hang of using the tool, but I got it working and it's amazing. Thank you. 
+
+I imported huge threads of government best practices into my personal notes for a nice searchable database of concepts and data strategy. I'm planning to make an issue to recommend the practice to others in their repo. So, you can add that to your success stories. 
+
+I'm not that confident with my Python abilities so I asked ChatGPT for help... that was a mistake. ChatGPT told me every wrong way to install this thing (package? library? command line tool?). I'm an R user and Python makes sense to me in theory, but running it is always challenging. 
+
+Your docs were accurate and helpful, once I trusted them. 
+
+Thank you.
+
 
 -------------------------------------------------------------------------------
 
@@ -48,7 +64,7 @@ RuntimeError: Output directory already exists and has files in it: issues
 
 -------------------------------------------------------------------------------
 
-# [\#42 PR](https://github.com/mattduck/gh2md/pull/42) `open`: Raise user-friendly error on invalid repo name
+# [\#42 PR](https://github.com/mattduck/gh2md/pull/42) `merged`: Raise user-friendly error on invalid repo name
 
 #### <img src="https://avatars.githubusercontent.com/u/6035856?u=45d83cf5e4b6bfebfd2e9d21f12dea7e6986edf6&v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-04 19:54](https://github.com/mattduck/gh2md/pull/42):
 
@@ -66,10 +82,14 @@ Mark down
 
 Markdown
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2024-01-19 08:23](https://github.com/mattduck/gh2md/pull/42#issuecomment-1899961557):
+
+@mrcnski thanks for this, sorry for huge delay... merging now
+
 
 -------------------------------------------------------------------------------
 
-# [\#41 Issue](https://github.com/mattduck/gh2md/issues/41) `open`: ValueError: too many values to unpack (expected 2)
+# [\#41 Issue](https://github.com/mattduck/gh2md/issues/41) `closed`: ValueError: too many values to unpack (expected 2)
 
 #### <img src="https://avatars.githubusercontent.com/u/6035856?u=45d83cf5e4b6bfebfd2e9d21f12dea7e6986edf6&v=4" width="50">[mrcnski](https://github.com/mrcnski) opened issue at [2023-06-01 12:51](https://github.com/mattduck/gh2md/issues/41):
 
@@ -115,6 +135,16 @@ see also https://github.com/nephila/giturlparse
 #### <img src="https://avatars.githubusercontent.com/u/1392068?u=8f6b9952da96f83e452e9a7461c46a77dd354634&v=4" width="50">[geneorama](https://github.com/geneorama) commented at [2024-01-18 22:14](https://github.com/mattduck/gh2md/issues/41#issuecomment-1899305171):
 
 So, does this error just mean that the issue is too big?
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2024-01-19 09:02](https://github.com/mattduck/gh2md/issues/41#issuecomment-1900015488):
+
+> So, does this error just mean that the issue is too big?
+
+No, it's a bad error message -- it means the repo name argument was expected to be in the format "$owner/$repo", but when the string was split on "/" it returned more than two parts.
+
+I've just merged and released @mrcnski's fix for this, which will display a better error message. It's in v2.3.1.
+
+Agree that supporting URLs would be nice.
 
 
 -------------------------------------------------------------------------------
