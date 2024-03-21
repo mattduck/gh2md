@@ -312,7 +312,17 @@ dupe #28 says "completed" but its not
 
 
 
+#### <img src="https://avatars.githubusercontent.com/u/3738070?v=4" width="50">[pattacini](https://github.com/pattacini) commented at [2024-03-20 12:11](https://github.com/mattduck/gh2md/issues/35#issuecomment-2009423544):
 
+Hi there 👋🏻 
+
+First up, this is a nice tool.
+
+Just wanted to share with you all a ruby script I had to write recently to download the images, which can be used in conjunction with `gh2md`.
+
+This is particularly useful for private repositories, as GH has [raised the security bar](https://github.com/orgs/community/discussions/54551) for accessing the assets.
+
+[github.zip](https://github.com/mattduck/gh2md/files/14666151/github.zip)
 
 
 -------------------------------------------------------------------------------
