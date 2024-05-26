@@ -927,7 +927,7 @@ Gonna close this but feel free to reopen
 
 # [\#20 PR](https://github.com/mattduck/gh2md/pull/20) `merged`: Return token after it's read. Fixes #19
 
-#### <img src="https://avatars.githubusercontent.com/u/3582096?u=b68e38db376aa74cd8621e0b93d22ce54ad0aae5&v=4" width="50">[amalmurali47](https://github.com/amalmurali47) opened issue at [2021-07-17 07:57](https://github.com/mattduck/gh2md/pull/20):
+#### <img src="https://avatars.githubusercontent.com/u/3582096?u=5ce2fde539f5914e4b48a24748d901e459786b81&v=4" width="50">[amalmurali47](https://github.com/amalmurali47) opened issue at [2021-07-17 07:57](https://github.com/mattduck/gh2md/pull/20):
 
 
 
@@ -940,7 +940,7 @@ Damn - this repo needs a few more tests! Appreciate the fix, thanks. Will releas
 
 # [\#19 Issue](https://github.com/mattduck/gh2md/issues/19) `closed`: GitHub token is not read from paths
 
-#### <img src="https://avatars.githubusercontent.com/u/3582096?u=b68e38db376aa74cd8621e0b93d22ce54ad0aae5&v=4" width="50">[amalmurali47](https://github.com/amalmurali47) opened issue at [2021-07-17 07:49](https://github.com/mattduck/gh2md/issues/19):
+#### <img src="https://avatars.githubusercontent.com/u/3582096?u=5ce2fde539f5914e4b48a24748d901e459786b81&v=4" width="50">[amalmurali47](https://github.com/amalmurali47) opened issue at [2021-07-17 07:49](https://github.com/mattduck/gh2md/issues/19):
 
 Running gh2md with the GitHub token in `~/.config/gh2md/token` produces the following:
 
@@ -979,7 +979,7 @@ The fix would be to return the `token` after `token = f.read().strip()`.
 
 Thanks for this - have merged the associated PR and released a new version 1.0.4.
 
-#### <img src="https://avatars.githubusercontent.com/u/3582096?u=b68e38db376aa74cd8621e0b93d22ce54ad0aae5&v=4" width="50">[amalmurali47](https://github.com/amalmurali47) commented at [2021-07-19 12:20](https://github.com/mattduck/gh2md/issues/19#issuecomment-882503256):
+#### <img src="https://avatars.githubusercontent.com/u/3582096?u=5ce2fde539f5914e4b48a24748d901e459786b81&v=4" width="50">[amalmurali47](https://github.com/amalmurali47) commented at [2021-07-19 12:20](https://github.com/mattduck/gh2md/issues/19#issuecomment-882503256):
 
 @mattduck Awesome, thank you!
 
