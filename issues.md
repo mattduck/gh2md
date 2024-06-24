@@ -1,5 +1,40 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#45 Issue](https://github.com/mattduck/gh2md/issues/45) `open`: gh2md --multiple-files should produce canonical file paths
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2024-06-23 14:34](https://github.com/mattduck/gh2md/issues/45):
+
+actual
+
+```
+2020-11-04.3.issue.closed.md
+2022-07-09.24.issue.open.md
+```
+
+problem: `closed` and `open` are not "canonical" but variable
+this means issue urls are not permalinks, and git history is broken at file renames
+
+expected
+
+```
+2020-11-04.3.issue.md
+2022-07-09.24.issue.md
+```
+
+or
+
+
+```
+issues/3.md
+issues/24.md
+```
+
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#44 Issue](https://github.com/mattduck/gh2md/issues/44) `closed`: Readme - show example of output
 
 #### <img src="https://avatars.githubusercontent.com/u/1392068?u=8f6b9952da96f83e452e9a7461c46a77dd354634&v=4" width="50">[geneorama](https://github.com/geneorama) opened issue at [2024-01-18 15:19](https://github.com/mattduck/gh2md/issues/44):
@@ -1475,6 +1510,62 @@ jobs:
 ```
 
 </details>
+
+#### <img src="https://avatars.githubusercontent.com/u/173474018?v=4" width="50">[Karmaibringkaosanddrama](https://github.com/Karmaibringkaosanddrama) commented at [2024-06-23 02:48](https://github.com/mattduck/gh2md/issues/11#issuecomment-2184402978):
+
+> Thank you for your great work.
+> 
+> I add my github actions example here, in case someone needs it.
+> 
+> it backups all issues every day.
+> 
+> Because it only backup the issues belong to the repository that contains this workflow. It does not limit by the GitHub API rate.
+> 
+> ```
+> # gh2md log:
+> ...
+> Writing to file: issues.md
+> Github API rate limit: RateLimit(core=Rate(reset=2020-09-17 02:50:05, remaining=977, limit=1000))
+> Done.
+> ```
+> 
+> ```yaml
+> # .github/workflows/issues2md.yml
+> name: Issues2Markdown
+> on:
+>   push: # comment it to reduce update.
+>   schedule:
+>     # every day
+>     - cron: "0 0 * * *"
+> jobs:
+>   build:
+>     runs-on: ubuntu-latest
+>     steps:
+>     - uses: actions/checkout@master
+>       with:
+>         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+>         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+>     - name: Backup github issues to a markdown file.
+>       run: |
+>         pip3 install --user --upgrade setuptools
+>         pip3 install --user gh2md
+>         $HOME/.local/bin/gh2md $GITHUB_REPOSITORY issues.md --token ${{ secrets.GITHUB_TOKEN }}
+>         git add issues.md
+>     - name: Commit files
+>       run: |
+>         git config --local user.email "action@github.com"
+>         git config --local user.name "GitHub Action"
+>         git commit -m "Backup all issues into issues.md" -a
+>     - name: Extract branch name
+>       shell: bash
+>       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+>       id: extract_branch
+>     - name: Push changes
+>       uses: ad-m/github-push-action@master
+>       with:
+>         github_token: ${{ secrets.GITHUB_TOKEN }}
+>         branch: ${{ steps.extract_branch.outputs.branch }}
+> ```
 
 
 -------------------------------------------------------------------------------
