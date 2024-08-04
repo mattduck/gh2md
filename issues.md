@@ -199,7 +199,7 @@ Ah great - thanks for tidying this.
 
 # [\#39 Issue](https://github.com/mattduck/gh2md/issues/39) `open`: Can't get gh2md working locally
 
-#### <img src="https://avatars.githubusercontent.com/u/11361?v=4" width="50">[halostatue](https://github.com/halostatue) opened issue at [2023-04-21 03:50](https://github.com/mattduck/gh2md/issues/39):
+#### <img src="https://avatars.githubusercontent.com/u/11361?u=f1c534a2fbc83940c95debe5d8a6b689ea367696&v=4" width="50">[halostatue](https://github.com/halostatue) opened issue at [2023-04-21 03:50](https://github.com/mattduck/gh2md/issues/39):
 
 I’m trying to play with gh2md and I cannot seem to get it working, but if I *recreate* the effective GraphQL query and call with `curl`, I get results and not a 401.
 
