@@ -733,7 +733,7 @@ I was having a problem where all comments on an issue had the same timestamps.  
 
 # [\#26 Issue](https://github.com/mattduck/gh2md/issues/26) `closed`: Can't fetch issues from public repo
 
-#### <img src="https://avatars.githubusercontent.com/u/581023?u=e635cdfffd5c7aeb2aa8e646908a68f26d644bb2&v=4" width="50">[kirillt](https://github.com/kirillt) opened issue at [2022-03-29 07:40](https://github.com/mattduck/gh2md/issues/26):
+#### <img src="https://avatars.githubusercontent.com/u/581023?u=5576e5ce7245b858de97fd1f7feb5947ab31ac41&v=4" width="50">[kirillt](https://github.com/kirillt) opened issue at [2022-03-29 07:40](https://github.com/mattduck/gh2md/issues/26):
 
 ```
 [kirill@lenovo tmp]$ gh2md ethereum/EIPs --no-prs --multiple-files eips/
