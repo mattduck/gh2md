@@ -1,26 +1,5 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
-# [\#46 Issue](https://github.com/mattduck/gh2md/issues/46) `open`: gitea2md - gh2md for gitea
-
-#### <img src="https://avatars.githubusercontent.com/u/195635798?u=eef9f47ef034c33b2c4d7136a0be384aee38f81f&v=4" width="50">[milahu450](https://github.com/milahu450) opened issue at [2025-02-01 11:41](https://github.com/mattduck/gh2md/issues/46):
-
-is there such a project?
-
-i want to scrape issues from multiple git hosters:
-github, gitea, gitlab, sourcehut, sourceforge, ...
-
-currently i would be happy with a gitea2md
-
-keywords: export archive dump issues bugtracker
-
-related
-https://github.com/go-gitea/gitea/issues/33468
-
-
-
-
--------------------------------------------------------------------------------
-
 # [\#45 Issue](https://github.com/mattduck/gh2md/issues/45) `open`: gh2md --multiple-files should produce canonical file paths
 
 #### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2024-06-23 14:34](https://github.com/mattduck/gh2md/issues/45):
