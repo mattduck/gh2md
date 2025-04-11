@@ -1023,7 +1023,7 @@ Thanks for this - have merged the associated PR and released a new version 1.0.4
 
 # [\#18 Issue](https://github.com/mattduck/gh2md/issues/18) `closed`: Issue on macOS
 
-#### <img src="https://avatars.githubusercontent.com/u/923008?u=b06824c35b9f9f68660e04c9ecd87bd5180cb09c&v=4" width="50">[nclm](https://github.com/nclm) opened issue at [2021-06-18 14:39](https://github.com/mattduck/gh2md/issues/18):
+#### <img src="https://avatars.githubusercontent.com/u/923008?u=b2bf16ca0ad35c824303a0c96d7aa9af0132f18e&v=4" width="50">[nclm](https://github.com/nclm) opened issue at [2021-06-18 14:39](https://github.com/mattduck/gh2md/issues/18):
 
 I tried using gh2md on the computer here at work (running macOS 11.1) and all I get is this:
 
