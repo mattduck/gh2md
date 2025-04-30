@@ -1212,7 +1212,7 @@ The Actions was [passed](https://github.com/0ut0fcontrol/gh2md/actions/runs/2251
 
 # [\#13 Issue](https://github.com/mattduck/gh2md/issues/13) `closed`: Is possible to export each issue in a separated file?
 
-#### <img src="https://avatars.githubusercontent.com/u/12011070?u=f18e95eceaa97f69b9d0c5a06270d7bdfbc44b5a&v=4" width="50">[guilhermeprokisch](https://github.com/guilhermeprokisch) opened issue at [2020-08-17 15:32](https://github.com/mattduck/gh2md/issues/13):
+#### <img src="https://avatars.githubusercontent.com/u/12011070?u=c74ac196f1426836d52b373bd8f97adc864b997b&v=4" width="50">[guilhermeprokisch](https://github.com/guilhermeprokisch) opened issue at [2020-08-17 15:32](https://github.com/mattduck/gh2md/issues/13):
 
 I want to export each issue in a separated file. It's possible to do?
 
@@ -1238,7 +1238,7 @@ There is a new 1.0.1 release of gh2md that includes this feature. (It also remov
 
 Hopefully this will be useful for somebody in the future. I'm going to close this as done but LMK if any feedback/issues.
 
-#### <img src="https://avatars.githubusercontent.com/u/12011070?u=f18e95eceaa97f69b9d0c5a06270d7bdfbc44b5a&v=4" width="50">[guilhermeprokisch](https://github.com/guilhermeprokisch) commented at [2021-08-14 03:26](https://github.com/mattduck/gh2md/issues/13#issuecomment-898809516):
+#### <img src="https://avatars.githubusercontent.com/u/12011070?u=c74ac196f1426836d52b373bd8f97adc864b997b&v=4" width="50">[guilhermeprokisch](https://github.com/guilhermeprokisch) commented at [2021-08-14 03:26](https://github.com/mattduck/gh2md/issues/13#issuecomment-898809516):
 
 Thanks, @mattduck!
 
