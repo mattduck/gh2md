@@ -866,7 +866,7 @@ I don't think either of these were available when I first wrote the script - wou
 
 # [\#21 Issue](https://github.com/mattduck/gh2md/issues/21) `closed`: Handle rate limiting
 
-#### <img src="https://avatars.githubusercontent.com/u/14930?u=370d01da27accdfc747349b8cf799e6dd65174ef&v=4" width="50">[adunkman](https://github.com/adunkman) opened issue at [2021-09-08 15:10](https://github.com/mattduck/gh2md/issues/21):
+#### <img src="https://avatars.githubusercontent.com/u/14930?u=d36e9d1d245493f04fcff0396df19db60b69ad9a&v=4" width="50">[adunkman](https://github.com/adunkman) opened issue at [2021-09-08 15:10](https://github.com/mattduck/gh2md/issues/21):
 
 I’m attempting to use `gh2md` to export 8,000+ issues in a GitHub Action, and as you can imagine, I’m hitting [GitHub’s rate limits](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting).
 
@@ -890,7 +890,7 @@ Hey @adunkman, I see a couple of things we can do here:
 
 I won't be able to look into this further this coming week, but I have some time off work next week so I should be able to get a few hours to work on it. Let me know if you think these changes sound viable. I've been meaning to look into the one-request-per-issue problem for a while so will at least fix that.
 
-#### <img src="https://avatars.githubusercontent.com/u/14930?u=370d01da27accdfc747349b8cf799e6dd65174ef&v=4" width="50">[adunkman](https://github.com/adunkman) commented at [2021-09-22 16:08](https://github.com/mattduck/gh2md/issues/21#issuecomment-925072823):
+#### <img src="https://avatars.githubusercontent.com/u/14930?u=d36e9d1d245493f04fcff0396df19db60b69ad9a&v=4" width="50">[adunkman](https://github.com/adunkman) commented at [2021-09-22 16:08](https://github.com/mattduck/gh2md/issues/21#issuecomment-925072823):
 
 I know things are stressful in the world these days, and if you’re taking time off, I hope you can use it to relax and recharge. If that’s this project, great! Otherwise, it’s on anyone to write up a PR; not your responsibility. 😄 
 
@@ -964,7 +964,7 @@ hasNextPage = repository.issues.pageInfo.hasNextPage;
 nextPageCursor = repository.issues.pageInfo.endCursor;
 ```
 
-#### <img src="https://avatars.githubusercontent.com/u/14930?u=370d01da27accdfc747349b8cf799e6dd65174ef&v=4" width="50">[adunkman](https://github.com/adunkman) commented at [2021-09-22 16:10](https://github.com/mattduck/gh2md/issues/21#issuecomment-925074417):
+#### <img src="https://avatars.githubusercontent.com/u/14930?u=d36e9d1d245493f04fcff0396df19db60b69ad9a&v=4" width="50">[adunkman](https://github.com/adunkman) commented at [2021-09-22 16:10](https://github.com/mattduck/gh2md/issues/21#issuecomment-925074417):
 
 Oh — and I’m a GraphQL newbie, so I don’t really know if I wrote that query "the right way" — if anyone has a better suggestion, I’m all ears!
 
