@@ -1,5 +1,39 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#47 Issue](https://github.com/mattduck/gh2md/issues/47) `open`: Idea: Download a single issue & use repo/issue URLs directly Description
+
+#### <img src="https://avatars.githubusercontent.com/u/31355322?v=4" width="50">[philippedev101](https://github.com/philippedev101) opened issue at [2025-06-07 17:15](https://github.com/mattduck/gh2md/issues/47):
+
+Hello! First off, thanks for creating `gh2md`, it's a super useful tool for backing up issues.
+
+I was just using it and had a thought for a feature that would make it even more convenient. Right now, it seems like I have to download all issues from a repo, but sometimes I just want to save a single important thread. I couldn't find an option to just download one specific issue by its number.
+
+It would be awesome if there was a way to do that.
+
+On a related note, to make things even faster, what if `gh2md` could accept a full GitHub URL instead of just the `owner/repo` format? So instead of manually typing `mattduck/gh2md`, I could just paste `https://github.com/mattduck/gh2md` from my browser.
+
+Putting those two ideas together, the ultimate workflow would be to just paste the URL of a single issue and have `gh2md` know exactly what to do.
+
+For example, a command like this:
+
+`gh2md https://github.com/mattduck/gh2md/issues/1 my-issue-1.md`
+
+...would be smart enough to see the URL, pull out the repo (`mattduck/gh2md`) and the issue number (`1`), and then download just that single issue.
+
+So, to summarize, I'm proposing two related things:
+
+1.  A way to download a single issue, maybe with a new flag like `--issue-number 1`.
+2.  Support for full GitHub URLs, for both the main repo page and specific issue pages, which would make using the tool super quick.
+
+I think this would make `gh2md` even more flexible for different use cases, especially for quickly grabbing a single important conversation.
+
+Thanks for considering it
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#46 Issue](https://github.com/mattduck/gh2md/issues/46) `open`: gitea2md - gh2md for gitea
 
 #### <img src="https://avatars.githubusercontent.com/u/195635798?u=eef9f47ef034c33b2c4d7136a0be384aee38f81f&v=4" width="50">[milahu450](https://github.com/milahu450) opened issue at [2025-02-01 11:41](https://github.com/mattduck/gh2md/issues/46):
