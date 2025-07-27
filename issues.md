@@ -172,7 +172,13 @@ Traceback (most recent call last):
 RuntimeError: Output directory already exists and has files in it: issues
 ```
 
+#### <img src="https://avatars.githubusercontent.com/u/136486808?u=3cebdfd50d6dd51e238c73f0fca67d56c970ad1e&v=4" width="50">[DevGauravShinde](https://github.com/DevGauravShinde) commented at [2025-07-26 06:53](https://github.com/mattduck/gh2md/issues/43#issuecomment-3121401998):
 
+1.remove or clean the file (if you don't need the old data)
+rm -r issues
+
+2.or you can use a ew directory for the output
+gh2md -o github_issues_export
 
 
 -------------------------------------------------------------------------------
