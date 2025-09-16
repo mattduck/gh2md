@@ -17,6 +17,7 @@ from dateutil.parser import parse as dateutil_parse
 from . import templates_markdown, __version__
 
 ENV_GITHUB_TOKEN = "GITHUB_ACCESS_TOKEN"
+ENV_GITHUB_API_URL = "GITHUB_API_URL"
 GITHUB_ACCESS_TOKEN_PATHS = [
     os.path.expanduser(os.path.join("~", ".config", "gh2md", "token")),
     os.path.expanduser(os.path.join("~", ".github-token")),
@@ -32,13 +33,17 @@ Credentials are resolved in the following order:
 - A `{token}` environment variable.
 - An API token stored in ~/.config/gh2md/token or ~/.github-token.
 
+You can override the GitHub API endpoint by setting the `{api_url}` environment
+variable. This defaults to "https://git.target.com/api/graphql".
+
 To access private repositories, you'll need a token with the full "repo" oauth
 scope.
 
 By default, all issues and pull requests will be fetched. You can disable these
 using the --no... flags, eg. --no-closed-prs, or --no-prs.
 """.format(
-    token=ENV_GITHUB_TOKEN
+    token=ENV_GITHUB_TOKEN,
+    api_url=ENV_GITHUB_API_URL
 )
 
 logformat = "[%(asctime)s] [%(levelname)s] %(msg)s"
@@ -170,7 +175,6 @@ class GithubAPI:
     token: str = None
     per_page: int = 100
 
-    _ENDPOINT = "https://git.target.com/api/graphql"
     _REPO_QUERY = """
         query(
           $owner: String!
@@ -347,6 +351,7 @@ class GithubAPI:
     def __post_init__(self):
         self._session = None  # Requests session
         self._total_pages_fetched = 0
+        self._endpoint = get_environment_endpoint()
         if not self.token:
             print(
                 "No Github access token found, exiting. Use gh2md --help so see options for providing a token."
@@ -376,7 +381,7 @@ class GithubAPI:
         for attempt in range(1, 3):
             try:
                 resp = self._request_session().post(
-                    self._ENDPOINT, json=json, headers=headers
+                    self._endpoint, json=json, headers=headers
                 )
                 resp.raise_for_status()
                 err = False
@@ -791,6 +796,20 @@ def get_environment_token() -> str:
                 with open(path, "r") as f:
                     token = f.read().strip()
                     return token
+
+
+def get_environment_endpoint() -> str:
+    """
+    Get the GitHub API endpoint from environment variable or use default.
+    
+    Returns:
+        The GitHub API endpoint URL. Defaults to "https://git.target.com/api/graphql"
+        if no environment variable is set.
+    """
+    endpoint = os.environ.get(ENV_GITHUB_API_URL, "https://git.target.com/api/graphql")
+    if endpoint != "https://git.target.com/api/graphql":
+        logger.info(f"Using endpoint from environment: {endpoint}")
+    return endpoint
 
 
 def main():
