@@ -170,7 +170,7 @@ class GithubAPI:
     token: str = None
     per_page: int = 100
 
-    _ENDPOINT = "https://api.github.com/graphql"
+    _ENDPOINT = "https://git.target.com/api/graphql"
     _REPO_QUERY = """
         query(
           $owner: String!
