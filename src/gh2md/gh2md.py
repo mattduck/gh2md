@@ -806,6 +806,7 @@ def get_environment_endpoint() -> str:
         The GitHub API endpoint URL. Defaults to "https://api.github.com/graphql"
         if no environment variable is set.
     """
+    logger.info(f"Looking for api-url in envvar {ENV_GITHUB_API_URL}")
     endpoint = os.environ.get(ENV_GITHUB_API_URL, "https://api.github.com/graphql")
     if endpoint != "https://api.github.com/graphql":
         logger.info(f"Using endpoint from environment: {endpoint}")
