@@ -34,7 +34,7 @@ Credentials are resolved in the following order:
 - An API token stored in ~/.config/gh2md/token or ~/.github-token.
 
 You can override the GitHub API endpoint by setting the `{api_url}` environment
-variable. This defaults to "https://git.target.com/api/graphql".
+variable. This defaults to "https://api.github.com/graphql".
 
 To access private repositories, you'll need a token with the full "repo" oauth
 scope.
@@ -803,11 +803,11 @@ def get_environment_endpoint() -> str:
     Get the GitHub API endpoint from environment variable or use default.
     
     Returns:
-        The GitHub API endpoint URL. Defaults to "https://git.target.com/api/graphql"
+        The GitHub API endpoint URL. Defaults to "https://api.github.com/graphql"
         if no environment variable is set.
     """
-    endpoint = os.environ.get(ENV_GITHUB_API_URL, "https://git.target.com/api/graphql")
-    if endpoint != "https://git.target.com/api/graphql":
+    endpoint = os.environ.get(ENV_GITHUB_API_URL, "https://api.github.com/graphql")
+    if endpoint != "https://api.github.com/graphql":
         logger.info(f"Using endpoint from environment: {endpoint}")
     return endpoint
 
