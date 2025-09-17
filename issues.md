@@ -1,5 +1,22 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#49 PR](https://github.com/mattduck/gh2md/pull/49) `open`: enhance: support api url env override
+
+#### <img src="https://avatars.githubusercontent.com/u/48764154?u=808a20352abe076bf22e3fd587c0a4e2f30cb556&v=4" width="50">[plyr4](https://github.com/plyr4) opened issue at [2025-09-16 14:48](https://github.com/mattduck/gh2md/pull/49):
+
+hey there 👋 
+
+this PR adds environment override support for the `_ENDPOINT` variable to allow the utility to work with GitHub Enterprise Server using `GITHUB_API_URL`.
+
+setting nothing retains the default behavior, so this should be non-breaking and opt-in.
+
+and, thank you for building this tool, its been extremely useful and i appreciate the hard work.
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#48 PR](https://github.com/mattduck/gh2md/pull/48) `open`: fix: add --idempotent-paths
 
 #### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2025-06-13 13:42](https://github.com/mattduck/gh2md/pull/48):
