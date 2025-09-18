@@ -12,7 +12,9 @@ setting nothing retains the default behavior, so this should be non-breaking and
 
 and, thank you for building this tool, its been extremely useful and i appreciate the hard work.
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2025-09-17 04:21](https://github.com/mattduck/gh2md/pull/49#issuecomment-3301254993):
 
+Hey thanks for this, glad it's useful -- I can't get to this right away but at a glance it looks like a sensible change, should be able to get it merged and released around next Tuesday/Wednesday.
 
 
 -------------------------------------------------------------------------------
