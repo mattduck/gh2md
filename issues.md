@@ -32,7 +32,7 @@ fix https://github.com/mattduck/gh2md/issues/45
 
 # [\#47 Issue](https://github.com/mattduck/gh2md/issues/47) `open`: Idea: Download a single issue & use repo/issue URLs directly Description
 
-#### <img src="https://avatars.githubusercontent.com/u/31355322?v=4" width="50">[philippedev101](https://github.com/philippedev101) opened issue at [2025-06-07 17:15](https://github.com/mattduck/gh2md/issues/47):
+#### <img src="https://avatars.githubusercontent.com/u/31355322?u=62b64f3bfb0f5a40fd525ee8248d095751f26768&v=4" width="50">[philippedev101](https://github.com/philippedev101) opened issue at [2025-06-07 17:15](https://github.com/mattduck/gh2md/issues/47):
 
 Hello! First off, thanks for creating `gh2md`, it's a super useful tool for backing up issues.
 
