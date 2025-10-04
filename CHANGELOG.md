@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.4.0 (2025-10-04)
+
+- Add support for overriding base url (https://github.com/mattduck/gh2md/pull/49). Authored by
+  https://github.com/plyr4.
+
+
+## 2.3.1 (2024-01-19)
+
+- Improve error message on invalid repo name (https://github.com/mattduck/gh2md/pull/42).
+  Authored by https://github.com/mrcnski.
+
+
 ## 2.3.0 (2022-07-17)
 
 - Fail more explicitly when a token isn't provide, to prevent confusing error
