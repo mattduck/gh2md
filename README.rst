@@ -97,7 +97,7 @@ Full help::
 Install
 -------
 
-``pip install gh2md``. Alternatively, clone the repository and run ``make install``.
+You can ``pip install gh2md``, or install to a dedicated environment using ``pipx install gh2md``. Alternatively, clone the repository and run ``make install``.
 
 
 Authentication
