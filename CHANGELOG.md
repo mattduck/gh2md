@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.0 (2025-10-04)
+
+- Add `--idempotent-paths` flag to ensure file paths are actually idempotent,
+  instead of depending on the current issue state (https://github.com/mattduck/gh2md/pull/48/files). Authored by https://github.com/milahu.
+
+
 ## 2.4.0 (2025-10-04)
 
 - Add support for overriding base url (https://github.com/mattduck/gh2md/pull/49). Authored by
