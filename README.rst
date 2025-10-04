@@ -135,7 +135,7 @@ that uses ``gh2md`` to run a nightly export to ``issues.md``, and push it back t
 your repo. You can find the thread and workflow code `here
 <https://github.com/mattduck/gh2md/issues/11>`_.
 
-This has been added to the ``gh2md`` repo itself, so you can see an up-to-date
+You can see past examples of the export on the `gh2md` repo at
 export in `issues.md <./issues.md>`_.
 
 
