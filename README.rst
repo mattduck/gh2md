@@ -41,6 +41,12 @@ Run export for public repository ``sarabander/sicp``, using no authentication an
 
     gh2md sarabander/sicp sicp-issues --multiple-files --no-closed-prs
 
+Run export for GitHub Enterprise Server or custom GitHub instance:::
+
+    export GITHUB_API_URL=https://github.example.com/api/graphql
+    export GITHUB_ACCESS_TOKEN=myAPItoken
+    gh2md owner/repo-name output.md
+
 Full help::
 
     usage: gh2md [-h] [--multiple-files] [-I] [--no-prs] [--no-closed-prs]
@@ -57,6 +63,9 @@ Full help::
 
     - A `GITHUB_ACCESS_TOKEN` environment variable.
     - An API token stored in ~/.config/gh2md/token or ~/.github-token.
+
+    You can override the GitHub API endpoint by setting the `GITHUB_API_URL` environment
+    variable. This defaults to "https://api.github.com/graphql" and requires no change when using github.com.
 
     To access private repositories, you'll need a token with the full "repo" oauth
     scope.
@@ -102,6 +111,22 @@ full **repo** oauth scope.
 to support this, but it was discontinued in 2020.
 
 
+Private GitHub server support
+---------------------------------
+
+``gh2md`` supports GitHub Enterprise Server instances by allowing you to override
+the API endpoint URL. Set the ``GITHUB_API_URL`` environment variable to point
+to your GitHub Enterprise Server GraphQL API endpoint.
+
+Usage with GitHub Enterprise Server:::
+
+    export GITHUB_API_URL=https://github.example.com/api/graphql
+    export GITHUB_ACCESS_TOKEN=myAPItoken
+    gh2md owner/repo-name output.md
+
+If no ``GITHUB_API_URL`` is specified, it defaults to ``https://api.github.com/graphql``.
+
+
 Github workflow: backup issues as a markdown file in your repo
 --------------------------------------------------------------
 
@@ -110,7 +135,7 @@ that uses ``gh2md`` to run a nightly export to ``issues.md``, and push it back t
 your repo. You can find the thread and workflow code `here
 <https://github.com/mattduck/gh2md/issues/11>`_.
 
-This has been added to the ``gh2md`` repo itself, so you can see an up-to-date
+You can see past examples of the export on the `gh2md` repo at
 export in `issues.md <./issues.md>`_.
 
 

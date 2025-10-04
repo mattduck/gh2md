@@ -1,8 +1,38 @@
 Export of Github issues for [mattduck/gh2md](https://github.com/mattduck/gh2md).
 
+# [\#49 PR](https://github.com/mattduck/gh2md/pull/49) `open`: enhance: support api url env override
+
+#### <img src="https://avatars.githubusercontent.com/u/48764154?u=808a20352abe076bf22e3fd587c0a4e2f30cb556&v=4" width="50">[plyr4](https://github.com/plyr4) opened issue at [2025-09-16 14:48](https://github.com/mattduck/gh2md/pull/49):
+
+hey there 👋 
+
+this PR adds environment override support for the `_ENDPOINT` variable to allow the utility to work with GitHub Enterprise Server using `GITHUB_API_URL`.
+
+setting nothing retains the default behavior, so this should be non-breaking and opt-in.
+
+and, thank you for building this tool, its been extremely useful and i appreciate the hard work.
+
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2025-09-17 04:21](https://github.com/mattduck/gh2md/pull/49#issuecomment-3301254993):
+
+Hey thanks for this, glad it's useful -- I can't get to this right away but at a glance it looks like a sensible change, should be able to get it merged and released around next Tuesday/Wednesday.
+
+
+-------------------------------------------------------------------------------
+
+# [\#48 PR](https://github.com/mattduck/gh2md/pull/48) `open`: fix: add --idempotent-paths
+
+#### <img src="https://avatars.githubusercontent.com/u/12958815?v=4" width="50">[milahu](https://github.com/milahu) opened issue at [2025-06-13 13:42](https://github.com/mattduck/gh2md/pull/48):
+
+fix https://github.com/mattduck/gh2md/issues/45
+
+
+
+
+-------------------------------------------------------------------------------
+
 # [\#47 Issue](https://github.com/mattduck/gh2md/issues/47) `open`: Idea: Download a single issue & use repo/issue URLs directly Description
 
-#### <img src="https://avatars.githubusercontent.com/u/31355322?v=4" width="50">[philippedev101](https://github.com/philippedev101) opened issue at [2025-06-07 17:15](https://github.com/mattduck/gh2md/issues/47):
+#### <img src="https://avatars.githubusercontent.com/u/31355322?u=62b64f3bfb0f5a40fd525ee8248d095751f26768&v=4" width="50">[philippedev101](https://github.com/philippedev101) opened issue at [2025-06-07 17:15](https://github.com/mattduck/gh2md/issues/47):
 
 Hello! First off, thanks for creating `gh2md`, it's a super useful tool for backing up issues.
 
@@ -29,12 +59,14 @@ I think this would make `gh2md` even more flexible for different use cases, espe
 
 Thanks for considering it
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2025-06-13 07:19](https://github.com/mattduck/gh2md/issues/47#issuecomment-2969358662):
 
+@philippedev101 hey, glad you find the script useful, thanks for the suggestion. I don't get much time to work on this repo at the moment, but both changes would be pretty simple to implement and add tests for, if you or someone else wants to try it
 
 
 -------------------------------------------------------------------------------
 
-# [\#46 Issue](https://github.com/mattduck/gh2md/issues/46) `open`: gitea2md - gh2md for gitea
+# [\#46 Issue](https://github.com/mattduck/gh2md/issues/46) `closed`: gitea2md - gh2md for gitea
 
 #### <img src="https://avatars.githubusercontent.com/u/195635798?u=eef9f47ef034c33b2c4d7136a0be384aee38f81f&v=4" width="50">[milahu450](https://github.com/milahu450) opened issue at [2025-02-01 11:41](https://github.com/mattduck/gh2md/issues/46):
 
@@ -50,7 +82,15 @@ keywords: export archive dump issues bugtracker
 related
 https://github.com/go-gitea/gitea/issues/33468
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2025-06-13 07:28](https://github.com/mattduck/gh2md/issues/46#issuecomment-2969380146):
 
+> is there such a project?
+
+@milahu450 hey, I have no idea to be honest -- this repo is just a script I needed a few years back that I've sort-of maintained over the years, although not very much recently. If similar issue/PR-fetching APIs are available for those services then it should be fairly straightforward to build something that pulls issues and renders markdown templates for them.
+
+If gitea has an API available and you just want to get something working for yourself then LLMs could probably get you most of the way there.
+
+I won't get the time to build + maintain other sources for this repo myself, so I'm going to close this issue.
 
 
 -------------------------------------------------------------------------------
@@ -85,7 +125,9 @@ issues/24.md
 ```
 
 
+#### <img src="https://avatars.githubusercontent.com/u/1607892?u=1fb426249e95a3d1cad937e722284ede08318e67&v=4" width="50">[mattduck](https://github.com/mattduck) commented at [2025-06-13 07:29](https://github.com/mattduck/gh2md/issues/45#issuecomment-2969383381):
 
+Yes agree -- have no idea why I did this this way. Feel free to make a PR, I think for backwards compatibility initially it'd make sense to have this be optional behaviour controlled by a flag.
 
 
 -------------------------------------------------------------------------------
@@ -149,7 +191,13 @@ Traceback (most recent call last):
 RuntimeError: Output directory already exists and has files in it: issues
 ```
 
+#### <img src="https://avatars.githubusercontent.com/u/136486808?u=3cebdfd50d6dd51e238c73f0fca67d56c970ad1e&v=4" width="50">[DevGauravShinde](https://github.com/DevGauravShinde) commented at [2025-07-26 06:53](https://github.com/mattduck/gh2md/issues/43#issuecomment-3121401998):
 
+1.remove or clean the file (if you don't need the old data)
+rm -r issues
+
+2.or you can use a ew directory for the output
+gh2md -o github_issues_export
 
 
 -------------------------------------------------------------------------------
