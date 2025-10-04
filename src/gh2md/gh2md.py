@@ -129,6 +129,12 @@ def parse_args(args):
         dest="is_idempotent",
     )
     parser.add_argument(
+        "--idempotent-paths",
+        help="With --multiple-files, write output files to issues/1.md, pull/2.md, ...",
+        action="store_true",
+        dest="is_idempotent_paths",
+    )
+    parser.add_argument(
         "--no-prs",
         help="Don't include pull requests in the export.",
         action="store_false",
@@ -663,6 +669,7 @@ def export_issues_to_markdown_file(
     output_path: str,
     use_multiple_files: bool,
     is_idempotent: bool,
+    is_idempotent_paths: bool,
     file_extension: str = ".md",
 ) -> None:
     """
@@ -704,7 +711,18 @@ def export_issues_to_markdown_file(
         )
         for issue_slug, formatted_issue in formatted_issues.items():
             issue_file_markdown = "\n".join([formatted_issue, metadata_footnote])
-            issue_path = os.path.join(output_path, f"{issue_slug}{file_extension}")
+            issue_filename = f"{issue_slug}{file_extension}"
+            if is_idempotent_paths:
+                issue_number = int(issue_slug.split(".")[1])
+                issue_slugtype = issue_slug.split(".")[2] # "issue" or "pr"
+                # use same dirs as github.com
+                if issue_slugtype == "issue":
+                    issue_dir = "issues"
+                if issue_slugtype == "pr":
+                    issue_dir = "pull"
+                issue_filename = f"{issue_dir}/{issue_number}{file_extension}"
+                os.makedirs(os.path.join(output_path, issue_dir), exist_ok=True)
+            issue_path = os.path.join(output_path, issue_filename)
             logger.info("Writing to file: {}".format(issue_path))
             with open(issue_path, "wb") as out:
                 out.write(issue_file_markdown.encode("utf-8"))
@@ -861,6 +879,7 @@ def main():
         output_path=args.output_path,
         use_multiple_files=args.use_multiple_files,
         is_idempotent=args.is_idempotent,
+        is_idempotent_paths=args.is_idempotent_paths,
         file_extension=args.file_extension,
     )
     logger.info("Done.")
