@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.5.1 (2025-10-05
+
+- Allow `GITHUB_API_URL` to point to api.github.com without requiring the
+  graphql endpoint. Partially mitigates any cases where `GITHUB_API_URL` was
+  already set in the environment where gh2md runs (eg. github actions).
+
+
 ## 2.5.0 (2025-10-04)
 
 - Add `--idempotent-paths` flag to ensure file paths are actually idempotent,
