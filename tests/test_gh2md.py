@@ -145,3 +145,81 @@ def test_invalid_repo_produces_error():
             with pytest.raises(Exception) as exc_info:
                 gh2md.main()
             assert exc_info.value.args[0] == f"Repo name is not of the form owner/repo: {repo_name}"
+
+
+class TestGetEnvironmentEndpoint:
+    """Test suite for get_environment_endpoint() URL handling"""
+
+    def test_default_endpoint_when_no_env_var(self, monkeypatch):
+        """Should return default GitHub API endpoint when env var not set"""
+        monkeypatch.delenv("GITHUB_API_URL", raising=False)
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://api.github.com/graphql"
+
+    def test_api_github_com_http_appends_graphql(self, monkeypatch):
+        """Should append /graphql to http://api.github.com"""
+        monkeypatch.setenv("GITHUB_API_URL", "http://api.github.com")
+        result = gh2md.get_environment_endpoint()
+        assert result == "http://api.github.com/graphql"
+
+    def test_api_github_com_https_appends_graphql(self, monkeypatch):
+        """Should append /graphql to https://api.github.com"""
+        monkeypatch.setenv("GITHUB_API_URL", "https://api.github.com")
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://api.github.com/graphql"
+
+    def test_api_github_com_with_trailing_slash_appends_graphql(self, monkeypatch):
+        """Should append /graphql to https://api.github.com/"""
+        monkeypatch.setenv("GITHUB_API_URL", "https://api.github.com/")
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://api.github.com/graphql"
+
+    def test_api_github_com_with_existing_path_preserves_path(self, monkeypatch):
+        """Should preserve existing path for api.github.com/v3"""
+        monkeypatch.setenv("GITHUB_API_URL", "https://api.github.com/v3")
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://api.github.com/v3"
+
+    def test_api_github_com_with_graphql_path_preserves_path(self, monkeypatch):
+        """Should preserve /graphql path when already present"""
+        monkeypatch.setenv("GITHUB_API_URL", "https://api.github.com/graphql")
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://api.github.com/graphql"
+
+    def test_enterprise_url_preserves_path(self, monkeypatch):
+        """Should preserve path for enterprise GitHub URLs"""
+        monkeypatch.setenv("GITHUB_API_URL", "https://github.enterprise.com/api/graphql")
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://github.enterprise.com/api/graphql"
+
+    def test_enterprise_url_with_version_preserves_path(self, monkeypatch):
+        """Should preserve versioned path for enterprise URLs"""
+        monkeypatch.setenv("GITHUB_API_URL", "https://github.enterprise.com/api/v4/graphql")
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://github.enterprise.com/api/v4/graphql"
+
+    def test_trailing_slash_removed_from_enterprise_url(self, monkeypatch):
+        """Should strip trailing slash from enterprise URL"""
+        monkeypatch.setenv("GITHUB_API_URL", "https://github.enterprise.com/api/graphql/")
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://github.enterprise.com/api/graphql"
+
+    def test_trailing_slash_removed_from_api_github_path(self, monkeypatch):
+        """Should strip trailing slash from api.github.com with path"""
+        monkeypatch.setenv("GITHUB_API_URL", "https://api.github.com/v3/")
+        result = gh2md.get_environment_endpoint()
+        assert result == "https://api.github.com/v3"
+
+    def test_invalid_url_missing_scheme_exits(self, monkeypatch):
+        """Should exit when URL is missing scheme"""
+        monkeypatch.setenv("GITHUB_API_URL", "api.github.com")
+        with pytest.raises(SystemExit) as exc_info:
+            gh2md.get_environment_endpoint()
+        assert exc_info.value.code == 1
+
+    def test_invalid_url_format_exits(self, monkeypatch):
+        """Should exit when URL format is invalid"""
+        monkeypatch.setenv("GITHUB_API_URL", "not-a-url")
+        with pytest.raises(SystemExit) as exc_info:
+            gh2md.get_environment_endpoint()
+        assert exc_info.value.code == 1

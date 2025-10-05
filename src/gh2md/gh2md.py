@@ -10,6 +10,7 @@ import time
 from collections import defaultdict
 from dataclasses import dataclass
 from typing import Any, Dict, List, Optional, Tuple
+from urllib.parse import urlparse, urlunparse
 
 import requests
 from dateutil.parser import parse as dateutil_parse
@@ -819,15 +820,41 @@ def get_environment_token() -> str:
 def get_environment_endpoint() -> str:
     """
     Get the GitHub API endpoint from environment variable or use default.
-    
+
     Returns:
         The GitHub API endpoint URL. Defaults to "https://api.github.com/graphql"
         if no environment variable is set.
     """
     logger.info(f"Looking for api-url in envvar {ENV_GITHUB_API_URL}")
     endpoint = os.environ.get(ENV_GITHUB_API_URL, "https://api.github.com/graphql")
+
     if endpoint != "https://api.github.com/graphql":
         logger.info(f"Using endpoint from environment: {endpoint}")
+
+        # Parse the URL to validate and manipulate it
+        try:
+            parsed = urlparse(endpoint)
+        except Exception as e:
+            logger.error(f"Invalid URL provided in {ENV_GITHUB_API_URL}: {endpoint}. Error: {e}")
+            sys.exit(1)
+
+        # Validate that we have a valid URL with scheme and netloc
+        if not parsed.scheme or not parsed.netloc:
+            logger.error(f"Invalid URL provided in {ENV_GITHUB_API_URL}: {endpoint}. Must include scheme and domain.")
+            sys.exit(1)
+
+        path = parsed.path
+
+        # Only auto-append /graphql for api.github.com with no path or just "/"
+        if parsed.netloc == "api.github.com" and path in ("", "/"):
+            path = "/graphql"
+
+        # Strip trailing slashes from the path
+        path = path.rstrip("/")
+
+        # Reconstruct the URL
+        endpoint = urlunparse((parsed.scheme, parsed.netloc, path, parsed.params, parsed.query, parsed.fragment))
+
     return endpoint
 
 
